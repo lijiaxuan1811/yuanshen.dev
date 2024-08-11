@@ -1,0 +1,16 @@
+@font-face {
+  font-family: 'GenshinImpactZhV1';
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+  src: url(https://www.yuanshen.dev/gichn_mini_zhlv1.ttf) format('TrueType');
+}
+
+.body {
+	font-family: 'GenshinImpactZhV1';
+}
+
+.navi {
+	float: left;
+	margin-right: 25px;
+}
