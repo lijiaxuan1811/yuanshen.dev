@@ -2,32 +2,28 @@
 <html>
 	<head>
 		<meta charset="GB2312">
-		<title>GIRCH(Legacy)-Pinball</title>
+		<title>YuanRetro-JS弹球</title>
 		<link rel="stylesheet" href="./style.css">
 	</head>
 	<body class="body">
 		<ul>
-			<li class="navi"><a href="http://www.yuanshen.dev/">Main</a></li>
-			<li class="navi"><a href="http://www.yuanshen.dev/music.html">Music</a></li>
-			<li class="navi"><a href="http://www.yuanshen.dev/pinball.html">JS Pinball Game</a></li>
+			<li class="navi"><a href="http://www.yuanshen.dev/">主页</a></li>
+			<li class="navi"><a href="http://www.yuanshen.dev/music.html">音乐</a></li>
+			<li class="navi"><a href="http://www.yuanshen.dev/pinball.html">JS弹球</a></li>
 			<li class="navi"><a href="http://www.yuanshen.dev/crtirgen.html">中国铁路行程信息提示生成器(CRTIRGen)</a></li>
-			<li class="navi"><a href="http://www.yuanshen.dev/about.html">About</a></li>
+			<li class="navi"><a href="http://www.yuanshen.dev/about.html">关于</a></li>
 			<li class="navi"><a href="http://www.yuanshen.dev/en/index.html">English</a></li>
 		</ul>
 		<br />
-		<h2>Pinball game V2.0...</h2>
-		<p>This is a small pinball game using plain javascript. You can control the panel using 'a' and 'd' keys for
-			left and right or click the buttons. This game might not work if your browser do not support Javascript. You
-			earn 5 points each time you catch the ball using the panel, but if you fail to catch the ball, the game
-			would be over. The game would restart after you press the button on the pop-out dialog.</p>
-		<p>Big thank to Nille Cheng and his book 'Learn to Create Web Games Using Javascript'(ISBN 978-7-115-46238-1), as the
-			concept of this game and part of the algorithm is base on his codes in the book.</p>
-		<!--Create a 400 by 400 px canvas for the game-->
+		<h2>弹球游戏 V2.0 <del>更新日期未知</del></h2>
+		<p>用纯JavaScript写的小小游戏，可以分别用键盘的“a”和“d”键控制挡板左右移动，也可以使用<del>（移动设备不友好）</del>的按钮哦~<br />如果浏览器不支持或者屏蔽了JavaScript，游戏可（ken）能（ding）就不能运行了哦~<br />每次接住弹球可以得到5分，但是如果没接住的话，就寄喽~</p>
+		<p>感谢<del>（n年前买的x）</del>程晨的《JavaScript网页游戏制作轻松学》(ISBN 978-7-115-46238-1)，这里的算法和部分代码参考了书中的思路哦~</p>
+		<!--创建400x400像素的画布-->
 		<canvas id="canvas" width="400" height="400"></canvas>
 		<script type="text/javascript">
 			var canv = document.getElementById("canvas");
-			var ctx = canv.getContext("2d"); //Create canvas and pointer
-			//Define several variables for later use
+			var ctx = canv.getContext("2d"); //创建画布和画笔对象
+			//声明一些杂七杂八的变量
 			var startX = 0;
 			var startY = 0;
 			var panelX = 0;
@@ -35,11 +31,10 @@
 			var score = 0;
 			//var testI = 0;
 			function debounce(func, wait, imme) {
-				//This function can lower the bounce when the keyboard keys are pressed
-				//Bounce means that a single key press is treated like mutiple presses in the code
-				//Func is the function you want to debounce, wait is the timeout that a second press is counted
-				//Imme is a boolean argument, if you don't want any timeout, please set it as 'true'
-				//Thanks to Peter Mortensen on Stackoverflow forum
+				//防止键盘按下某个按键之后连续114.5(x)次的重复情况
+				//参数func是传入的需要通过按键执行的方法，wait是如果连续执行则每次执行的间隔时间（毫秒）
+				//布尔类型参数imme如果被设置为“true”则取消等待时间（那你为啥还要用这个方法x）
+				//参（chao）考（de）以下帖子中的代码，作者为Peter Mortensen
 				//https://www.stackoverflow.com/questions/24004791/what-is-the-debounce-function-in-javascript/24004942#24004942
 				var timeout;
 				return function() {
@@ -60,11 +55,12 @@
 			}
 
 			function prep() {
-				//Generate random numbers for the position of the ball and the panel separately
-				//The generating process will continue until a number between the limits are found
-				//10 px<startX<390 px: avoid getting in to the border (the radius of the ball is 10 px)
-				//10 px<startY<380 px: avoid getting in to the border and game over at the beginning
-				//0 px<panelX<350 px: avoid getting in to the border (the length of the panel is 50 px)
+				//随机生成弹球和挡板的初始位置坐标
+				//只有生成的数在某一个范围内才跳出死循环（看起来很危险的样子，不过实际上几乎不会超过几毫秒x）
+				//确实有用数学运算的优化方法，但是实在不（lan）想（de）改代码了
+				//10 px<startX<390 px: 避免球卡进左右边框
+				//10 px<startY<380 px: 避免球卡进上下边框或者一开局就gg（当然还是有可能的）
+				//0 px<panelX<350 px: 避免挡板卡进左右边框
 				while (true) {
 					startX = Math.floor(Math.random() * 1000);
 					if (startX > 10 && startX < 390) {
@@ -92,41 +88,41 @@
 			}
 			prep();
 			var ball = {
-				//Define items about the bouncing ball
-				//Including position and internal moving and collision detect functions
+				//声明弹球的基本属性
+				//包括初始坐标，下一步的移动速度和一些方法
 				x: startX,
 				y: startY,
-				//Moving steps
+				//移动速度，正负分别代表不同方向
 				xSpeed: -2,
 				ySpeed: -2,
 				draw: function() {
 					ctx.fillStyle = "Red";
 					ctx.beginPath();
-					ctx.arc(this.x, this.y, 10, 0, Math.PI * 2, false); //Draw the ball
+					ctx.arc(this.x, this.y, 10, 0, Math.PI * 2, false); //在画布上画出弹球
 					ctx.fill();
 				},
 				move: function(panelSt, panelEn) {
 					if (this.x + this.xSpeed < 10 || this.x + this.xSpeed > 390) {
-						this.xSpeed = -this.xSpeed; //Reached left/right border, bounce
+						this.xSpeed = -this.xSpeed; //碰左右壁，反弹
 					} else {
-						this.x += this.xSpeed; //Continue moving
+						this.x += this.xSpeed; //继续移动
 					}
 					if (this.y + this.ySpeed < 10 || this.y + this.ySpeed > 390) {
-						this.ySpeed = -this.ySpeed; //Reached top border
+						this.ySpeed = -this.ySpeed; //碰顶，反弹
 					} else if (this.y + this.ySpeed >= 380 && this.y + this.ySpeed <= 390) {
-						//Reached the panel area, perform collision detection
+						//碰底，检测是否被接住了
 						if (this.x > panelSt - 10 && this.x < panelEn + 10) {
 							this.ySpeed = -this.ySpeed;
 							score += 5;
-							//Reached the panel, bounce and score up by 5 pts
+							//接住了，弹起并且加五分
 						} else {
 							//this.y += this.ySpeed;
-							window.alert("Game over!");
+							window.alert("完喽，寄了!");
 							//this.x = 0;
 							//this.y = 0;
 							score = 0;
 							flag = true;
-							//Missed the panel, report game over, set the score to 0 and request init
+							//没接住，积分清零并且初始化一些东西
 						}
 					} else {
 						this.y += this.ySpeed; //Continue moving
@@ -134,8 +130,8 @@
 				}
 			};
 			var panel = {
-				//Define items about the panel
-				//Including position and x-axis keyboard control functions
+				//声明挡板的基本属性
+				//比如位置还有键盘控制的方法
 				x: panelX,
 				y: 390,
 				xSize: 50,
@@ -148,25 +144,26 @@
 
 			function keyPanel(event) {
 				if (event.keyCode == 65) {
-					//'A' key, move left
+					//‘a’被按下了，向左移动
 					//console.log("Left!",testI);
 					//testI++;
 					panel.x -= 8;
 					if (panel.x < 0) {
-						panel.x = 0; //Exceed the left border limit, set x to 0 
+						panel.x = 0; //再移动就出左边界喽，所以移动到左边界就好
 					}
 				}
 				if (event.keyCode == 68) {
-					//'D' key, move right
+					//‘d’被按下了，向右移动
 					//console.log("Right!",testI);
 					//testI++;
 					panel.x += 8;
 					if (panel.x > 400 - panel.xSize) {
-						panel.x = 400 - panel.xSize; //Exceed the right border limit, set x to the max value available
+						panel.x = 400 - panel.xSize; //再移动就出右边界喽，所以移动到右边界就好
+						//注意哦，挡板的定位点在左上角诶
 					}
 				}
 			}
-			//Invoke the debounce function
+			//调用debounce函数
 			var dbPanelKey = debounce(keyPanel, 20);
 
 			function leftClick() {
@@ -174,7 +171,7 @@
 				if (panel.x < 0) {
 					panel.x = 0;
 				}
-				//Routine after the 'Left' button is clicked
+				//如果向左按钮按下了就向左移动（总不会有人认为按钮还要除颤吧~）
 			}
 
 			function rightClick() {
@@ -182,35 +179,34 @@
 				if (panel.x > 400 - panel.xSize) {
 					panel.x = 400 - panel.xSize;
 				}
-				//Routine after the 'right' button is clicked
+				//同理，向右移动
 			}
-			const leftButton = document.createElement("button"); //Define 'left' button
-			leftButton.innerText = "Left"; //Define button text
-			leftButton.addEventListener("click", leftClick); //Monitor 'left' button click
-			document.body.appendChild(leftButton); //Let 'left' button appear on screen
-			const rightButton = document.createElement("button"); //Define 'right' button
-			rightButton.innerText = "Right"; //Define button text
-			rightButton.addEventListener("click", rightClick); //Monitor 'right' button click
-			document.body.appendChild(rightButton); //Let 'right' button appear on screen
-			window.addEventListener("keydown", dbPanelKey); //Monitor keyboard press
-			//Refresh the ball movement every 20 ms
+			const leftButton = document.createElement("button"); //创建向左按钮对象
+			leftButton.innerText = "左"; //按钮文本
+			leftButton.addEventListener("click", leftClick); //如果被点击那么执行方法移动挡板
+			document.body.appendChild(leftButton); //让向左按钮出现
+			const rightButton = document.createElement("button"); //向右按钮同理
+			rightButton.innerText = "右"; 
+			rightButton.addEventListener("click", rightClick); 
+			document.body.appendChild(rightButton); 
+			window.addEventListener("keydown", dbPanelKey); //检测是否有键盘按键按下
+			//每隔20毫秒刷新一次弹球位置（更改这个就可以显著改变游戏难度哦~）
 			setInterval(function() {
 				if (flag == true) {
-					//Perform init because game over last time, redefine the ball and panel position
+					//上一次寄了，所以重新生成小球和挡板的位置（也许可以但不能百分百避免游戏寄掉的死循环）
 					prep();
 					ball.x = startX;
 					ball.y = startY;
 					panel.x = panelX;
 					flag = false;
 				} else {
-					ctx.clearRect(0, 0, 400, 400); //Clear the square area last time
-					ctx.font = "20px Arial"; //Select the font for score display
-					ctx.fillText("score:" + score, 10, 30); //Write the score on the canvas
-					ball.draw(); //Invoke the drawing function of the ball
-					panel.draw(); //Invoke the drawing function of the panel
-					ball.move(panel.x, panel.x + panel
-					.xSize); //Invoke the move and collision detection function of the ball
-					ctx.strokeRect(0, 0, 400, 400); //Mark the square area of the canvas
+					ctx.clearRect(0, 0, 400, 400); //清除画布，不要留下轨迹
+					ctx.font = "20px GenshinImpactZhLv1"; //选择积分显示字体
+					ctx.fillText("分数：" + score, 10, 30); //在画布上显示最新积分
+					ball.draw(); //调用方法绘制弹球
+					panel.draw(); //调用方法绘制挡板
+					ball.move(panel.x, panel.x + panel.xSize); //移动弹球，同时传入挡板最新位置，进行碰撞检测
+					ctx.strokeRect(0, 0, 400, 400); //用黑线标记画布边界
 				}
 			}, 30);
 		</script>

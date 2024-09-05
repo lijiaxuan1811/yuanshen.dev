@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="GB2312">
-		<title>GIRCH(Legacy)-Pinball</title>
+		<title>YuanRetro-Pinball</title>
 		<link rel="stylesheet" href="./style.css">
 	</head>
 	<body class="body">
@@ -208,8 +208,7 @@
 					ctx.fillText("score:" + score, 10, 30); //Write the score on the canvas
 					ball.draw(); //Invoke the drawing function of the ball
 					panel.draw(); //Invoke the drawing function of the panel
-					ball.move(panel.x, panel.x + panel
-					.xSize); //Invoke the move and collision detection function of the ball
+					ball.move(panel.x, panel.x + panel.xSize); //Invoke the move and collision detection function of the ball
 					ctx.strokeRect(0, 0, 400, 400); //Mark the square area of the canvas
 				}
 			}, 30);
