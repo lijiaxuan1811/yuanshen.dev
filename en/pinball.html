@@ -4,6 +4,29 @@
 		<meta charset="GB2312">
 		<title>YuanRetro-Pinball</title>
 		<link rel="stylesheet" href="./style.css">
+		<style>
+			/* Base style */
+			.custom-button {
+				background-color: #4CAF50; /* Green background */
+            	border: none; /* No border */
+            	color: white; /* White font */
+            	padding: 12px 24px; /* Inner padding */
+            	font-size: 16px; /* Font size */
+            	border-radius: 10px; /* Small rounded corner */
+           		cursor: pointer; /* Mouse pointer style */
+            	transition: background-color 0.3s ease; /* Transition effect of background */
+				width: 70px;
+				height: 40px;
+			}
+			/* Hover */
+			.custom-button:hover {
+				background-color: #45a049; /* Deeper shade of green */
+			}
+			/* Press */
+			.custom-button:active {
+            	background-color: #2E7D32; /* Deepest shade of green */
+        	}
+		</style>
 	</head>
 	<body class="body">
 		<ul>
@@ -15,15 +38,17 @@
 			<li class="navi"><a href="http://www.yuanshen.dev/">简体中文</a></li>
 		</ul>
 		<br />
-		<h2>Pinball game V2.0...</h2>
+		<h2>Pinball game V2.0... Updated 2024.09.11</h2>
 		<p>This is a small pinball game using plain javascript. You can control the panel using 'a' and 'd' keys for
 			left and right or click the buttons. This game might not work if your browser do not support Javascript. You
 			earn 5 points each time you catch the ball using the panel, but if you fail to catch the ball, the game
 			would be over. The game would restart after you press the button on the pop-out dialog.</p>
 		<p>Big thank to Nille Cheng and his book 'Learn to Create Web Games Using Javascript'(ISBN 978-7-115-46238-1), as the
 			concept of this game and part of the algorithm is base on his codes in the book.</p>
+		<input type="button" id="leftButton" class="custom-button" value="Left"/><!--Left button-->
 		<!--Create a 400 by 400 px canvas for the game-->
 		<canvas id="canvas" width="400" height="400"></canvas>
+		<input type="button" id="rightButton" class="custom-button" value="Right"/><!--Right button-->
 		<script type="text/javascript">
 			var canv = document.getElementById("canvas");
 			var ctx = canv.getContext("2d"); //Create canvas and pointer
@@ -33,6 +58,8 @@
 			var panelX = 0;
 			var flag = false;
 			var score = 0;
+			var leftInterval;
+			var rightInterval;
 			//var testI = 0;
 			function debounce(func, wait, imme) {
 				//This function can lower the bounce when the keyboard keys are pressed
@@ -174,7 +201,14 @@
 				if (panel.x < 0) {
 					panel.x = 0;
 				}
-				//Routine after the 'Left' button is clicked
+				//If left button pressed then move left, only do this if press time is less than 100 ms
+				leftInterval = setInterval(function() {
+					panel.x -= 15;
+					if (panel.x < 0) {
+						panel.x = 0;
+					}
+				}, 100);
+				//If long press then move left every 100 ms
 			}
 
 			function rightClick() {
@@ -182,16 +216,20 @@
 				if (panel.x > 400 - panel.xSize) {
 					panel.x = 400 - panel.xSize;
 				}
-				//Routine after the 'right' button is clicked
+				rightInterval = setInterval(function() {
+					panel.x += 15;
+					if (panel.x > 400 - panel.xSize) {
+						panel.x = 400 - panel.xSize;
+					}
+				}, 100);
+				//The same to right button
 			}
-			const leftButton = document.createElement("button"); //Define 'left' button
-			leftButton.innerText = "Left"; //Define button text
-			leftButton.addEventListener("click", leftClick); //Monitor 'left' button click
-			document.body.appendChild(leftButton); //Let 'left' button appear on screen
-			const rightButton = document.createElement("button"); //Define 'right' button
-			rightButton.innerText = "Right"; //Define button text
-			rightButton.addEventListener("click", rightClick); //Monitor 'right' button click
-			document.body.appendChild(rightButton); //Let 'right' button appear on screen
+			const leftButton = document.getElementById("leftButton"); //Define 'left' button object
+			leftButton.addEventListener("mousedown", leftClick); //Monitor if 'left' button is pressed
+			leftButton.addEventListener("mouseup", function() {clearInterval(leftInterval);}); //If released then stop the timer
+			const rightButton = document.getElementById("rightButton"); //Define 'right' button object
+			rightButton.addEventListener("mousedown", rightClick); //The same to right button
+			rightButton.addEventListener("mouseup", function() {clearInterval(rightInterval);});
 			window.addEventListener("keydown", dbPanelKey); //Monitor keyboard press
 			//Refresh the ball movement every 20 ms
 			setInterval(function() {
