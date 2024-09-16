@@ -15,8 +15,8 @@
             	border-radius: 10px; /* Small rounded corner */
            		cursor: pointer; /* Mouse pointer style */
             	transition: background-color 0.3s ease; /* Transition effect of background */
-				width: 70px;
-				height: 40px;
+				width: 100px;
+				height: 50px;
 			}
 			/* Hover */
 			.custom-button:hover {
@@ -45,6 +45,16 @@
 			would be over. The game would restart after you press the button on the pop-out dialog.</p>
 		<p>Big thank to Nille Cheng and his book 'Learn to Create Web Games Using Javascript'(ISBN 978-7-115-46238-1), as the
 			concept of this game and part of the algorithm is base on his codes in the book.</p>
+		<label for="easy">Difficulty selection<br/></label>
+		<!--Checkboxes for three difficulty levels-->
+		<input type="checkbox" id="easy" onclick="clickCheckbox(this)"/>
+		<label for="easy">Easy<br /></label>
+		<input type="checkbox" id="hard" onclick="clickCheckbox(this)"/>
+		<label for="easy">Hard<br /></label>
+		<input type="checkbox" id="insane" onclick="clickCheckbox(this)"/>
+		<label for="easy">Insane<br /></label>
+		<input type="button" id="start" class="custom-button" value="Start!" onclick="start()"/><!--Start game button-->
+		<br />
 		<input type="button" id="leftButton" class="custom-button" value="Left"/><!--Left button-->
 		<!--Create a 400 by 400 px canvas for the game-->
 		<canvas id="canvas" width="400" height="400"></canvas>
@@ -52,12 +62,17 @@
 		<script type="text/javascript">
 			var canv = document.getElementById("canvas");
 			var ctx = canv.getContext("2d"); //Create canvas and pointer
+			var easy = document.getElementById("easy");
+			var hard = document.getElementById("hard");
+			var insane = document.getElementById("insane");//Three checkbox objects
 			//Define several variables for later use
 			var startX = 0;
 			var startY = 0;
 			var panelX = 0;
 			var flag = false;
 			var score = 0;
+			var intervalTime = 30;
+			var mainInterval;
 			var leftInterval;
 			var rightInterval;
 			//var testI = 0;
@@ -84,6 +99,29 @@
 						func.apply(context, args);
 					}
 				}
+			}
+
+			function clickCheckbox (checkbox) {
+				if(checkbox.checked) {
+					easy.checked = false;
+					hard.checked = false;
+					insane.checked = false;
+					checkbox.checked = true;
+				}
+				//Avoid multiple checkboxes from being selected at the same time
+			}
+
+			function readCheckbox () {
+				if(easy.checked) {
+					return 30;
+				}else if(hard.checked) {
+					return 20;
+				}else if(insane.checked) {
+					return 10;
+				}else {
+					return 30;
+				}
+				//Check which checkbox is being selected and return the matching interval
 			}
 
 			function prep() {
@@ -117,7 +155,6 @@
 					}
 				}
 			}
-			prep();
 			var ball = {
 				//Define items about the bouncing ball
 				//Including position and internal moving and collision detect functions
@@ -231,25 +268,38 @@
 			rightButton.addEventListener("mousedown", rightClick); //The same to right button
 			rightButton.addEventListener("mouseup", function() {clearInterval(rightInterval);});
 			window.addEventListener("keydown", dbPanelKey); //Monitor keyboard press
-			//Refresh the ball movement every 20 ms
-			setInterval(function() {
-				if (flag == true) {
-					//Perform init because game over last time, redefine the ball and panel position
-					prep();
-					ball.x = startX;
-					ball.y = startY;
-					panel.x = panelX;
-					flag = false;
-				} else {
-					ctx.clearRect(0, 0, 400, 400); //Clear the square area last time
-					ctx.font = "20px Arial"; //Select the font for score display
-					ctx.fillText("score:" + score, 10, 30); //Write the score on the canvas
-					ball.draw(); //Invoke the drawing function of the ball
-					panel.draw(); //Invoke the drawing function of the panel
-					ball.move(panel.x, panel.x + panel.xSize); //Invoke the move and collision detection function of the ball
-					ctx.strokeRect(0, 0, 400, 400); //Mark the square area of the canvas
-				}
-			}, 30);
+			//Refresh the ball movement after a set period of time
+			function start () {
+				clearInterval(mainInterval);
+				score = 0;
+				prep();
+				ball.x = startX;
+				ball.y = startY;
+				panel.x = panelX;
+				clearInterval(leftInterval);
+				clearInterval(rightInterval);
+				intervalTime = readCheckbox();//This interval is determined by the checkbox (easy=30ms, hard=20ms, insane=10ms, default=30ms)
+				mainInterval = setInterval(function() {
+					if (flag == true) {
+						//Perform init because game over last time, redefine the ball and panel position
+						prep();
+						ball.x = startX;
+						ball.y = startY;
+						panel.x = panelX;
+						flag = false;
+						clearInterval(leftInterval);
+						clearInterval(rightInterval);//If died last time, then reset the timer to prevent the panel from moving randomly
+					} else {
+						ctx.clearRect(0, 0, 400, 400); //Clear the square area last time
+						ctx.font = "20px Arial"; //Select the font for score display
+						ctx.fillText("score:" + score, 10, 30); //Write the score on the canvas
+						ball.draw(); //Invoke the drawing function of the ball
+						panel.draw(); //Invoke the drawing function of the panel
+						ball.move(panel.x, panel.x + panel.xSize); //Invoke the move and collision detection function of the ball
+						ctx.strokeRect(0, 0, 400, 400); //Mark the square area of the canvas
+					}
+				}, intervalTime);
+			}
 		</script>
 	</body>
 </html>

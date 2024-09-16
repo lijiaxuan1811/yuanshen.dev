@@ -15,8 +15,8 @@
             	border-radius: 10px; /* 小的圆角 */
            		cursor: pointer; /* 鼠标指针样式 */
             	transition: background-color 0.3s ease; /* 背景颜色的过渡效果 */
-				width: 70px;
-				height: 40px;
+				width: 100px;
+				height: 50px;
 			}
 			/* 鼠标悬停时的效果 */
 			.custom-button:hover {
@@ -38,9 +38,19 @@
 			<li class="navi"><a href="http://www.yuanshen.dev/en/index.html">English</a></li>
 		</ul>
 		<br />
-		<h2>弹球游戏 V2.0 <del>2024.09.11</del></h2>
+		<h2>弹球游戏 V2.2 <del>更新时间2024.09.12</del></h2>
 		<p>用纯JavaScript写的小小游戏，可以分别用键盘的“a”和“d”键控制挡板左右移动，也可以使用<del>（移动设备友好）</del>的按钮哦~<br />如果浏览器不支持或者屏蔽了JavaScript，游戏可（ken）能（ding）就不能运行了哦~<br />每次接住弹球可以得到5分，但是如果没接住的话，就寄喽~</p>
 		<p>感谢<del>（n年前买的x）</del>程晨的《JavaScript网页游戏制作轻松学》(ISBN 978-7-115-46238-1)，这里的算法和部分代码参考了书中的思路哦~</p>
+		<label for="easy">难度选择<br/></label>
+		<!--创建三个难度等级对应的复选框-->
+		<input type="checkbox" id="easy" onclick="clickCheckbox(this)"/>
+		<label for="easy">简单（EZ）<br /></label>
+		<input type="checkbox" id="hard" onclick="clickCheckbox(this)"/>
+		<label for="easy">困难（HD）<br /></label>
+		<input type="checkbox" id="insane" onclick="clickCheckbox(this)"/>
+		<label for="easy">疯狂（IN）<br /></label>
+		<input type="button" id="start" class="custom-button" value="开始游戏！" onclick="start()"/><!--进入游戏按钮-->
+		<br />
 		<input type="button" id="leftButton" class="custom-button" value="左"/><!--向左按钮-->
 		<!--创建400x400像素的画布-->
 		<canvas id="canvas" width="400" height="400"></canvas>
@@ -48,12 +58,17 @@
 		<script type="text/javascript">
 			var canv = document.getElementById("canvas");
 			var ctx = canv.getContext("2d"); //创建画布和画笔对象
+			var easy = document.getElementById("easy");
+			var hard = document.getElementById("hard");
+			var insane = document.getElementById("insane");//创建三个复选框对象
 			//声明一些杂七杂八的变量
 			var startX = 0;
 			var startY = 0;
 			var panelX = 0;
 			var flag = false;
 			var score = 0;
+			var intervalTime = 30;
+			var mainInterval;
 			var leftInterval;
 			var rightInterval;
 			//var testI = 0;
@@ -79,6 +94,29 @@
 						func.apply(context, args);
 					}
 				}
+			}
+			
+			function clickCheckbox (checkbox) {
+				if(checkbox.checked) {
+					easy.checked = false;
+					hard.checked = false;
+					insane.checked = false;
+					checkbox.checked = true;
+				}
+				//防止同时选择多个复选框
+			}
+
+			function readCheckbox () {
+				if(easy.checked) {
+					return 30;
+				}else if(hard.checked) {
+					return 20;
+				}else if(insane.checked) {
+					return 10;
+				}else {
+					return 30;
+				}
+				//判断选中了哪个复选框，返回对应的间隔时间
 			}
 
 			function prep() {
@@ -113,7 +151,6 @@
 					}
 				}
 			}
-			prep();
 			var ball = {
 				//声明弹球的基本属性
 				//包括初始坐标，下一步的移动速度和一些方法
@@ -228,25 +265,39 @@
 			rightButton.addEventListener("mousedown", rightClick);
 			rightButton.addEventListener("mouseup", function() {clearInterval(rightInterval);});
 			window.addEventListener("keydown", dbPanelKey); //检测是否有键盘按键按下
-			//每隔20毫秒刷新一次弹球位置（更改这个就可以显著改变游戏难度哦~）
-			setInterval(function() {
-				if (flag == true) {
-					//上一次寄了，所以重新生成小球和挡板的位置（也许可以但不能百分百避免游戏寄掉的死循环）
-					prep();
-					ball.x = startX;
-					ball.y = startY;
-					panel.x = panelX;
-					flag = false;
-				} else {
-					ctx.clearRect(0, 0, 400, 400); //清除画布，不要留下轨迹
-					ctx.font = "20px GenshinImpactZhLv1"; //选择积分显示字体
-					ctx.fillText("分数：" + score, 10, 30); //在画布上显示最新积分
-					ball.draw(); //调用方法绘制弹球
-					panel.draw(); //调用方法绘制挡板
-					ball.move(panel.x, panel.x + panel.xSize); //移动弹球，同时传入挡板最新位置，进行碰撞检测
-					ctx.strokeRect(0, 0, 400, 400); //用黑线标记画布边界hanges.
-				}
-			}, 30);
+			//每隔特定时间刷新一次弹球位置（更改这个时间就可以显著改变游戏难度哦~）
+			function start() {
+				//点击开始按钮之后就会来到这里～
+				clearInterval(mainInterval);
+				score = 0;
+				prep();
+				ball.x = startX;
+				ball.y = startY;
+				panel.x = panelX;
+				clearInterval(leftInterval);
+				clearInterval(rightInterval);
+				intervalTime = readCheckbox();//这个间隔时间是根据难度决定的哦～（EZ=30ms，HD=20ms，IN=10ms，不选=30ms）
+				mainInterval = setInterval(function() {
+					if (flag == true) {
+						//上一次寄了，所以重新生成小球和挡板的位置（也许可以但不能百分百避免游戏寄掉的死循环）
+						prep();
+						ball.x = startX;
+						ball.y = startY;
+						panel.x = panelX;
+						flag = false;
+						clearInterval(leftInterval);
+						clearInterval(rightInterval);//如果寄了就重置定时器，防止重开之后挡板不受控移动
+					} else {
+						ctx.clearRect(0, 0, 400, 400); //清除画布，不要留下轨迹
+						ctx.font = "20px GenshinImpactZhLv1"; //选择积分显示字体
+						ctx.fillText("分数：" + score, 10, 30); //在画布上显示最新积分
+						ball.draw(); //调用方法绘制弹球
+						panel.draw(); //调用方法绘制挡板
+						ball.move(panel.x, panel.x + panel.xSize); //移动弹球，同时传入挡板最新位置，进行碰撞检测
+						ctx.strokeRect(0, 0, 400, 400); //用黑线标记画布边界hanges.
+					}
+				}, intervalTime);
+			}
 		</script>
 	</body>
 </html>
