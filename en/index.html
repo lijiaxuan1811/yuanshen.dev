@@ -44,5 +44,19 @@
 				Have fun!
 			</div>
 		</div>
+		Your User Agent is:
+		<div id="userAgentDisplay"></div>
+		<script>
+			function getUserAgent() {
+			  // Get the user agent string
+			  var userAgent = navigator.userAgent;
+			  
+			  // Display the user agent in an element
+			  document.getElementById("userAgentDisplay").innerHTML = userAgent;
+			}
+		  
+			// Call the function on page load
+			window.onload = getUserAgent();
+		</script>
 	</body>
 </html>
