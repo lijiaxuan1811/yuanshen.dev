@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="GB2312"> <!-- 设置字符编码为 GB2312 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 使网页适应各种设备的宽度 -->
+    <title>YuanRetro-莫尔斯电码</title> <!-- 网页标题 -->
+    <link rel="stylesheet" href="./style.css"> <!-- 引入外部样式表 -->
+    <style>
+        /* 直接在这里定义的样式 */
+        #textInput {
+            font-family: GenshinImpactZhLv1; /* 设置输入框字体 */
+            font-size: 16px; /* 设置输入框字体大小 */
+        }
+        label, input, button {
+            display: inline-block; /* 设置元素为块级元素，允许设置宽度 */
+            vertical-align: middle; /* 垂直居中对齐 */
+            margin-bottom: 10px; /* 设置底部外边距 */
+        }
+
+        label {
+            width: 250px; /* 标签宽度 */
+        }
+
+        input {
+            width: 100px; /* 输入框宽度 */
+            margin-right: 40px; /* 和按钮的距离 */
+        }
+
+        button {
+            width: 80px; /* 按钮宽度 */
+        }
+
+        #error {
+            color: red; /* 错误提示颜色 */
+            margin-top: 10px; /* 错误提示的上边距 */
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航菜单 -->
+    <ul>
+        <li class="navi"><a href="http://www.yuanshen.dev/">主页</a></li>
+        <li class="navi"><a href="http://www.yuanshen.dev/music.html">音乐</a></li>
+        <li class="navi"><a href="http://www.yuanshen.dev/pinball.html">JS弹球</a></li>
+        <li class="navi"><a href="http://www.yuanshen.dev/morse.html">莫尔斯电码</a></li>
+        <li class="navi"><a href="http://www.yuanshen.dev/crtirgen.html">中国铁路行程信息提示生成器(CRTIRGen)</a></li>
+        <li class="navi"><a href="http://www.yuanshen.dev/about.html">关于</a></li>
+        <li class="navi"><a href="http://www.yuanshen.dev/en/index.html">English</a></li>
+    </ul>
+    <br />
+    
+    <h1>文字转莫尔斯电码</h1> <!-- 主标题 -->
+    
+    <!-- 输入区域 -->
+    <textarea id="textInput" placeholder="输入要转换的文本" rows="10" cols="30"></textarea>
+    <br />
+    
+    <label for="WPM">拍发速度（WPM，单词每分钟）：</label>
+    <input type="number" id="WPM" value="20" min="1"/> <!-- 默认速度为 20 WPM -->
+    <br />
+    
+    <label for="fq">电码音高（Hz，赫兹）：</label>
+    <input type="number" id="fq" value="600" min="1"/> <!-- 默认音高为 600 Hz -->
+    
+    <!-- 按钮 -->
+    <button class="custom-button" onclick="preparation()">播放</button> 
+    <button class="custom-button" onclick="pauseSound()">暂停</button> 
+    <button class="custom-button" onclick="resumeSound()">继续</button> 
+    <button class="custom-button" onclick="stopSound()">停止</button> 
+    <div id="error"></div> <!-- 用于显示错误信息的区域 -->
+
+    <script>
+        // 定义莫尔斯电码的映射
+        const morseCode = {
+            'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.',
+            'F': '..-.', 'G': '--.', 'H': '....', 'I': '..', 'J': '.---',
+            'K': '-.-', 'L': '.-..', 'M': '--', 'N': '-.', 'O': '---',
+            'P': '.--.', 'Q': '--.-', 'R': '.-.', 'S': '...', 'T': '-',
+            'U': '..-', 'V': '...-', 'W': '.--', 'X': '-..-', 'Y': '-.--',
+            'Z': '--..', '0': '-----', '1': '.----', '2': '..---', 
+            '3': '...--', '4': '....-', '5': '.....', '6': '-....', 
+            '7': '--...', '8': '---..', '9': '----.', '.': '.-.-.-',
+            ',': '--..--', '?': '..--..', '\'': '.----.', '!': '-.-.--',
+            '/': '-..-.', '(': '-.--.', ')': '-.--.-', '&': '.-...',
+            ':': '---...', ';': '-.-.-.', '=': '-...-', '+': '.-.-.',
+            '-': '-....-', '_': '..--.-', '"': '.-..-.', '$': '...-..-',
+            '@': '.--.-.'
+        };
+
+        let audioContext; // 用于音频上下文
+        let currentTimeouts = []; // 用于存储当前的定时器
+        let isPlaying = false; // 是否正在播放
+        let currentIndex = 0; // 当前音符索引
+        let words = []; // 存储要播放的单词
+        let dotDuration, dashDuration, elementGap, letterGap, wordGap; // 音符的时长和间隔
+        let currentFrequency = 600; // 当前音频频率
+
+        // 创建音频上下文
+        function createAudioContext() {
+            audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        }
+
+        // 将文本转换为莫尔斯电码
+        function textToMorse(text) {
+            return text.toUpperCase().split('').map(char => morseCode[char] || ' ').join(' ');
+        }
+
+        // 播放声音
+        function playSound(frequency, duration) {
+            const oscillator = audioContext.createOscillator(); // 创建一个振荡器
+            oscillator.type = 'sine'; // 设置音波形状为正弦波
+            oscillator.frequency.setValueAtTime(frequency, audioContext.currentTime); // 设置频率
+            oscillator.connect(audioContext.destination); // 连接到音频上下文的目标
+            oscillator.start(); // 开始播放
+            oscillator.stop(audioContext.currentTime + duration); // 停止播放
+        }
+
+        // 计算点的时长（单位为毫秒）
+        function getDotDuration(wpm) {
+            return 1200 / wpm; // 计算一个点的时长
+        }
+
+        // 播放莫尔斯电码
+        function playNextSymbol() {
+            // 如果暂停或已播放完毕，退出
+            if (!isPlaying || currentIndex >= words.length) {
+                return;
+            }
+
+            const symbol = words[currentIndex]; // 获取当前音符
+            if (symbol === '.') { // 播放点
+                playSound(currentFrequency, dotDuration / 1000);
+                currentIndex++; // 移动到下一个音符
+                setTimeout(playNextSymbol, dotDuration + elementGap); // 等待播放下一个音符
+            } else if (symbol === '-') { // 播放划
+                playSound(currentFrequency, dashDuration / 1000);
+                currentIndex++; // 移动到下一个音符
+                setTimeout(playNextSymbol, dashDuration + elementGap); // 等待播放下一个音符
+            } else if (symbol === ' ') { // 添加字母间的间隔
+                currentIndex++;
+                setTimeout(playNextSymbol, letterGap); // 等待播放下一个音符
+            } else if (symbol === '   ') { // 添加单词间的间隔
+                currentIndex++;
+                setTimeout(playNextSymbol, wordGap); // 等待播放下一个音符
+            }
+        }
+
+        // 播放莫尔斯电码
+        function playMorse(wpm, freq) {
+            dotDuration = getDotDuration(wpm); // 计算点的时长
+            dashDuration = 3 * dotDuration; // 划的时长为点的三倍
+            elementGap = dotDuration; // 元素间的间隔
+            letterGap = 3 * dotDuration; // 字母间的间隔
+            wordGap = 7 * dotDuration; // 单词间的间隔（7 个点的时长）
+
+            const text = document.getElementById('textInput').value.trim(); // 获取输入的文本
+            const morseText = text.split(' ').map(word => textToMorse(word)).join('   '); // 转换为莫尔斯代码
+            words = morseText.split(''); // 将莫尔斯代码拆分为单个字符
+            currentFrequency = freq; // 设置当前频率
+            currentIndex = 0; // 重置当前索引
+            isPlaying = true; // 标记为正在播放
+            playNextSymbol(); // 开始播放音符
+        }
+
+        // 验证用户输入
+        function validateInput(text) {
+            // 正则表达式：允许字母、数字和特定符号
+            const validChars = /^[A-Za-z0-9.,?'!()/&:;=+-_"$@ ]*$/;
+            return validChars.test(text); // 返回输入是否合法
+        }
+
+        // 准备播放音频
+        function preparation() {
+            const textInput = document.getElementById('textInput').value; // 获取用户输入的文本
+
+            // 验证用户输入
+            if (!validateInput(textInput)) {
+                document.getElementById('error').textContent = '输入包含无效字符，请使用字母、数字和以下特殊符号：.,?\'!()/&:;=+-_"$@';
+                return; // 如果输入无效，则返回
+            }
+
+            // 确保音频上下文在用户交互后创建
+            if (!audioContext || audioContext.state === 'closed') {
+                createAudioContext();
+            }
+
+            const WPM = Number(document.getElementById('WPM').value); // 获取用户设置的 WPM
+            const fq = Number(document.getElementById('fq').value); // 获取用户设置的音高
+            playMorse(WPM, fq); // 播放莫尔斯电码
+        }
+
+        // 暂停播放
+        function pauseSound() {
+            isPlaying = false; // 设置为暂停状态
+        }
+
+        // 继续播放
+        function resumeSound() {
+            if (!isPlaying) { // 只有在暂停状态下才继续播放
+                isPlaying = true; // 设置为播放状态
+                playNextSymbol(); // 开始播放下一个音符
+            }
+        }
+
+        // 停止播放
+        function stopSound() {
+            isPlaying = false; // 停止播放
+            currentIndex = 0; // 重置当前索引
+        }
+    </script>
+</body>
+</html>
