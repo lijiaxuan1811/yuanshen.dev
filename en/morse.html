@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
     <meta charset="GB2312"> <!-- Set character encoding to GB2312 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Make the webpage adapt to various device widths -->
@@ -8,32 +8,33 @@
     <style>
         /* Styles defined directly here */
         #textInput {
-            font-family: GenshinImpactZhLv1; /* Set the font for the input box */
-            font-size: 16px; /* Set the font size for the input box */
+            font-family: GenshinImpactZhLv1; /* Set input box font */
+            font-size: 16px; /* Set input box font size */
         }
         label, input, button {
-            display: inline-block; /* Set elements as block-level elements to allow width settings */
+            display: inline-block; /* Set elements to block-level, allowing width settings */
             vertical-align: middle; /* Vertically center align */
             margin-bottom: 10px; /* Set bottom margin */
         }
     
         label {
-            width: 250px; /* Width of the label */
+            width: 250px; /* Label width */
         }
     
         input {
-            width: 100px; /* Width of the input box */
+            width: 100px; /* Input box width */
             margin-right: 40px; /* Distance from the button */
         }
     
         button {
-            width: 80px; /* Width of the button */
+            width: 80px; /* Button width */
         }
     
         #error {
-            color: red; /* Color for error messages */
-            margin-top: 10px; /* Top margin for error messages */
+            color: red; /* Error message color */
+            margin-top: 10px; /* Top margin for error message */
         }
+    
     </style>
 </head>
 <body class="body">
@@ -55,12 +56,12 @@
     <textarea id="textInput" placeholder="Enter text to convert" rows="10" cols="30"></textarea>
     <br />
     
-    <label for="WPM">Sending Speed (WPM, Words Per Minute):</label>
-    <input type="number" id="WPM" value="20" min="1"/> <!-- Default speed set to 20 WPM -->
+    <label for="WPM">Sending speed (WPM, words per minute):</label>
+    <input type="number" id="WPM" value="20" min="1"/> <!-- Default speed is 20 WPM -->
     <br />
     
-    <label for="fq">Morse Code Frequency (Hz):</label>
-    <input type="number" id="fq" value="600" min="1"/> <!-- Default frequency set to 600 Hz -->
+    <label for="fq">Code pitch (Hz, Hertz):</label>
+    <input type="number" id="fq" value="600" min="1"/> <!-- Default pitch is 600 Hz -->
     
     <!-- Buttons -->
     <button class="custom-button" onclick="preparation()">Play</button> 
@@ -70,7 +71,7 @@
     <div id="error"></div> <!-- Area for displaying error messages -->
 
     <script>
-        // Define the Morse code mapping
+        // Define the mapping for Morse code
         const morseCode = {
             'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.',
             'F': '..-.', 'G': '--.', 'H': '....', 'I': '..', 'J': '.---',
@@ -88,11 +89,11 @@
         };
 
         let audioContext; // For audio context
-        let currentTimeouts = []; // For storing current timeouts
+        let currentTimeouts = []; // For storing current timers
         let isPlaying = false; // Whether it is currently playing
         let currentIndex = 0; // Current note index
         let words = []; // Store the words to be played
-        let dotDuration, dashDuration, elementGap, letterGap, wordGap; // Durations and gaps of sounds
+        let dotDuration, dashDuration, elementGap, letterGap, wordGap; // Durations and gaps for notes
         let currentFrequency = 600; // Current audio frequency
 
         // Create audio context
@@ -108,33 +109,33 @@
         // Play sound
         function playSound(frequency, duration) {
             const oscillator = audioContext.createOscillator(); // Create an oscillator
-            oscillator.type = 'sine'; // Set wave shape to sine
+            oscillator.type = 'sine'; // Set wave type to sine
             oscillator.frequency.setValueAtTime(frequency, audioContext.currentTime); // Set frequency
-            oscillator.connect(audioContext.destination); // Connect to the audio context destination
+            oscillator.connect(audioContext.destination); // Connect to the audio context's destination
             oscillator.start(); // Start playing
             oscillator.stop(audioContext.currentTime + duration); // Stop playing
         }
 
-        // Calculate duration of a dot (in milliseconds)
+        // Calculate the duration of a dot (in milliseconds)
         function getDotDuration(wpm) {
-            return 1200 / wpm; // Calculate duration of one dot
+            return 1200 / wpm; // Calculate duration of a dot
         }
 
         // Play Morse code
         function playNextSymbol() {
-            // If paused or finished playing, exit
+            // Exit if paused or finished playing
             if (!isPlaying || currentIndex >= words.length) {
                 return;
             }
 
-            const symbol = words[currentIndex]; // Get the current note
+            const symbol = words[currentIndex]; // Get current note
             if (symbol === '.') { // Play dot
                 playSound(currentFrequency, dotDuration / 1000);
-                currentIndex++; // Move to the next note
+                currentIndex++; // Move to next note
                 setTimeout(playNextSymbol, dotDuration + elementGap); // Wait to play the next note
             } else if (symbol === '-') { // Play dash
                 playSound(currentFrequency, dashDuration / 1000);
-                currentIndex++; // Move to the next note
+                currentIndex++; // Move to next note
                 setTimeout(playNextSymbol, dashDuration + elementGap); // Wait to play the next note
             } else if (symbol === ' ') { // Add gap between letters
                 currentIndex++;
@@ -147,13 +148,13 @@
 
         // Play Morse code
         function playMorse(wpm, freq) {
-            dotDuration = getDotDuration(wpm); // Calculate duration of a dot
-            dashDuration = 3 * dotDuration; // Duration of a dash is three times that of a dot
+            dotDuration = getDotDuration(wpm); // Calculate dot duration
+            dashDuration = 3 * dotDuration; // Dash duration is three times that of a dot
             elementGap = dotDuration; // Gap between elements
             letterGap = 3 * dotDuration; // Gap between letters
             wordGap = 7 * dotDuration; // Gap between words (7 times the duration of a dot)
 
-            const text = document.getElementById('textInput').value.trim(); // Get user input text
+            const text = document.getElementById('textInput').value.trim(); // Get input text
             const morseText = text.split(' ').map(word => textToMorse(word)).join('   '); // Convert to Morse code
             words = morseText.split(''); // Split Morse code into individual characters
             currentFrequency = freq; // Set current frequency
@@ -164,9 +165,55 @@
 
         // Validate user input
         function validateInput(text) {
-            // Regular expression: allows letters, numbers, and specific symbols
+            // Regular expression: allow letters, numbers, and specific symbols
             const validChars = /^[A-Za-z0-9.,?'!()/&:;=+-_"$@ ]*$/;
-            return validChars.test(text); // Return whether input is valid
+            return validChars.test(text); // Return whether the input is valid
         }
 
         // Prepare to play audio
+        function preparation() {
+            const textInput = document.getElementById('textInput').value; // Get user input text
+
+            // Validate user input
+            if (!validateInput(textInput)) {
+                document.getElementById('error').innerText = 'Please enter valid characters only!';
+                return; // Exit if input is invalid
+            } else {
+                document.getElementById('error').innerText = ''; // Clear error message
+            }
+
+            // Get WPM and frequency values
+            const wpm = parseInt(document.getElementById('WPM').value);
+            const freq = parseInt(document.getElementById('fq').value);
+
+            // Create audio context if not already created
+            if (!audioContext) {
+                createAudioContext(); // Create audio context
+            }
+
+            // Play Morse code
+            playMorse(wpm, freq);
+        }
+
+        // Pause playback
+        function pauseSound() {
+            isPlaying = false; // Mark as paused
+        }
+
+        // Resume playback
+        function resumeSound() {
+            if (!isPlaying) {
+                isPlaying = true; // Mark as playing
+                playNextSymbol(); // Resume playing
+            }
+        }
+
+        // Stop playback
+        function stopSound() {
+            isPlaying = false; // Mark as not playing
+            currentIndex = 0; // Reset current index
+            words = []; // Clear words
+        }
+    </script>
+</body>
+</html>
