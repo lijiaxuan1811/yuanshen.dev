@@ -1,77 +1,76 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-    <meta charset="GB2312"> <!-- ÉèÖÃ×Ö·û±àÂëÎª GB2312 -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ê¹ÍøÒ³ÊÊÓ¦¸÷ÖÖÉè±¸µÄ¿í¶È -->
-    <title>YuanRetro-Äª¶ûË¹µçÂë</title> <!-- ÍøÒ³±êÌâ -->
-    <link rel="stylesheet" href="./style.css"> <!-- ÒıÈëÍâ²¿ÑùÊ½±í -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YuanRetro-è«å°”æ–¯ç”µç </title>
+    <link rel="stylesheet" href="./style.css">
     <style>
-        /* Ö±½ÓÔÚÕâÀï¶¨ÒåµÄÑùÊ½ */
+        /* æ ·å¼è®¾ç½® */
         #textInput {
-            font-family: GenshinImpactZhLv1; /* ÉèÖÃÊäÈë¿ò×ÖÌå */
-            font-size: 16px; /* ÉèÖÃÊäÈë¿ò×ÖÌå´óĞ¡ */
+            font-family: GenshinImpactZhLv1; /* å­—ä½“ */
+            font-size: 16px; /* å­—ä½“å¤§å° */
         }
         label, input, button {
-            display: inline-block; /* ÉèÖÃÔªËØÎª¿é¼¶ÔªËØ£¬ÔÊĞíÉèÖÃ¿í¶È */
-            vertical-align: middle; /* ´¹Ö±¾ÓÖĞ¶ÔÆë */
-            margin-bottom: 10px; /* ÉèÖÃµ×²¿Íâ±ß¾à */
+            display: inline-block;
+            vertical-align: middle;
+            margin-bottom: 10px; /* å…ƒç´ ä¹‹é—´çš„é—´è· */
         }
-    
         label {
-            width: 250px; /* ±êÇ©¿í¶È */
+            width: 250px; /* æ ‡ç­¾å®½åº¦ */
         }
-    
         input {
-            width: 100px; /* ÊäÈë¿ò¿í¶È */
-            margin-right: 40px; /* ºÍ°´Å¥µÄ¾àÀë */
+            width: 100px;
+            margin-right: 40px; /* è¾“å…¥æ¡†å³è¾¹è· */
         }
-    
         button {
-            width: 80px; /* °´Å¥¿í¶È */
+            width: 80px;
         }
-    
         #error {
-            color: red; /* ´íÎóÌáÊ¾ÑÕÉ« */
-            margin-top: 10px; /* ´íÎóÌáÊ¾µÄÉÏ±ß¾à */
+            color: red;
+            margin-top: 10px; /* é”™è¯¯æç¤ºçš„æ ·å¼ */
         }
-    
     </style>
 </head>
 <body class="body">
-    <!-- µ¼º½²Ëµ¥ -->
+    <!-- å¯¼èˆªèœå• -->
     <ul>
-        <li class="navi"><a href="http://www.yuanshen.dev/">Ö÷Ò³</a></li>
-        <li class="navi"><a href="http://www.yuanshen.dev/music.html">ÒôÀÖ</a></li>
-        <li class="navi"><a href="http://www.yuanshen.dev/pinball.html">JSµ¯Çò</a></li>
-        <li class="navi"><a href="http://www.yuanshen.dev/morse.html">Äª¶ûË¹µçÂë</a></li>
-        <li class="navi"><a href="http://www.yuanshen.dev/crtirgen.html">ÖĞ¹úÌúÂ·ĞĞ³ÌĞÅÏ¢ÌáÊ¾Éú³ÉÆ÷(CRTIRGen)</a></li>
-        <li class="navi"><a href="http://www.yuanshen.dev/about.html">¹ØÓÚ</a></li>
+        <li class="navi"><a href="http://www.yuanshen.dev/">ä¸»é¡µ</a></li>
+        <li class="navi"><a href="http://www.yuanshen.dev/music.html">éŸ³ä¹</a></li>
+        <li class="navi"><a href="http://www.yuanshen.dev/pinball.html">JSå¼¹çƒ</a></li>
+        <li class="navi"><a href="http://www.yuanshen.dev/morse.html">è«å°”æ–¯ç”µç </a></li>
+        <li class="navi"><a href="http://www.yuanshen.dev/crtirgen.html">ä¸­å›½é“è·¯è¡Œç¨‹ä¿¡æ¯æç¤ºç”Ÿæˆå™¨(CRTIRGen)</a></li>
+        <li class="navi"><a href="http://www.yuanshen.dev/about.html">å…³äº</a></li>
         <li class="navi"><a href="http://www.yuanshen.dev/en/index.html">English</a></li>
     </ul>
     <br />
     
-    <h1>ÎÄ×Ö×ªÄª¶ûË¹µçÂë</h1> <!-- Ö÷±êÌâ -->
+    <h1>æ–‡å­—è½¬è«å°”æ–¯ç”µç </h1> <!-- æ ‡é¢˜ -->
     
-    <!-- ÊäÈëÇøÓò -->
-    <textarea id="textInput" placeholder="ÊäÈëÒª×ª»»µÄÎÄ±¾" rows="10" cols="30"></textarea>
+    <!-- ç”¨æˆ·è¾“å…¥æ¡†ï¼Œä¾›ç”¨æˆ·è¾“å…¥éœ€è¦è½¬æ¢çš„æ–‡æœ¬ -->
+    <textarea id="textInput" placeholder="è¾“å…¥è¦è½¬æ¢çš„æ–‡æœ¬" rows="10" cols="60"></textarea>
     <br />
     
-    <label for="WPM">ÅÄ·¢ËÙ¶È£¨WPM£¬µ¥´ÊÃ¿·ÖÖÓ£©£º</label>
-    <input type="number" id="WPM" value="20" min="1"/> <!-- Ä¬ÈÏËÙ¶ÈÎª 20 WPM -->
+    <!-- ç”¨æˆ·å¯ä»¥è®¾ç½®WPM(æ¯åˆ†é’Ÿå•è¯æ•°)ï¼Œå³æ‹å‘é€Ÿåº¦ -->
+    <label for="WPM">æ‹å‘é€Ÿåº¦ï¼ˆWPMï¼Œå•è¯æ¯åˆ†é’Ÿï¼‰ï¼š</label>
+    <input type="number" id="WPM" value="20" min="1"/> <!-- é»˜è®¤WPMè®¾ç½®ä¸º20 -->
     <br />
     
-    <label for="fq">µçÂëÒô¸ß£¨Hz£¬ºÕ×È£©£º</label>
-    <input type="number" id="fq" value="600" min="1"/> <!-- Ä¬ÈÏÒô¸ßÎª 600 Hz -->
+    <!-- ç”¨æˆ·å¯ä»¥è®¾ç½®ç”µç éŸ³é«˜ï¼ˆHzï¼Œèµ«å…¹ï¼‰ -->
+    <label for="fq">ç”µç éŸ³é«˜ï¼ˆHzï¼Œèµ«å…¹ï¼‰ï¼š</label>
+    <input type="number" id="fq" value="600" min="1"/> <!-- é»˜è®¤é¢‘ç‡600Hz -->
     
-    <!-- °´Å¥ -->
-    <button class="custom-button" onclick="preparation()">²¥·Å</button> 
-    <button class="custom-button" onclick="pauseSound()">ÔİÍ£</button> 
-    <button class="custom-button" onclick="resumeSound()">¼ÌĞø</button> 
-    <button class="custom-button" onclick="stopSound()">Í£Ö¹</button> 
-    <div id="error"></div> <!-- ÓÃÓÚÏÔÊ¾´íÎóĞÅÏ¢µÄÇøÓò -->
+    <!-- æ§åˆ¶æŒ‰é’® -->
+    <button class="custom-button" onclick="preparation()">æ’­æ”¾</button> <!-- æ’­æ”¾æŒ‰é’®ï¼Œç‚¹å‡»å¼€å§‹æ’­æ”¾è«å°”æ–¯ç”µç  -->
+    <button class="custom-button" onclick="pauseSound()">æš‚åœ</button> <!-- æš‚åœæŒ‰é’® -->
+    <button class="custom-button" onclick="resumeSound()">ç»§ç»­</button> <!-- ç»§ç»­æŒ‰é’® -->
+    <button class="custom-button" onclick="stopSound()">åœæ­¢</button> <!-- åœæ­¢æŒ‰é’® -->
+	<button class="custom-button" onclick="downloadMorse()">ä¸‹è½½ç”µç </button> <!-- ä¸‹è½½æŒ‰é’® -->
+    <div id="error"></div> <!-- æ˜¾ç¤ºé”™è¯¯ä¿¡æ¯çš„åŒºåŸŸ -->
+	<div><img src=./morsesheet.png style="width: 600px; height: auto;"></div> <!--ç”µç å¯¹ç…§è¡¨-->
 
     <script>
-        // ¶¨ÒåÄª¶ûË¹µçÂëµÄÓ³Éä
+        // è«å°”æ–¯ç”µç å­—å…¸ï¼Œå­—æ¯ã€æ•°å­—å’Œéƒ¨åˆ†æ ‡ç‚¹ç¬¦å·çš„å¯¹åº”è«å°”æ–¯ç”µç è¡¨ç¤º
         const morseCode = {
             'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.',
             'F': '..-.', 'G': '--.', 'H': '....', 'I': '..', 'J': '.---',
@@ -88,126 +87,154 @@
             '@': '.--.-.'
         };
 
-        let audioContext; // ÓÃÓÚÒôÆµÉÏÏÂÎÄ
-        let currentTimeouts = []; // ÓÃÓÚ´æ´¢µ±Ç°µÄ¶¨Ê±Æ÷
-        let isPlaying = false; // ÊÇ·ñÕıÔÚ²¥·Å
-        let currentIndex = 0; // µ±Ç°Òô·ûË÷Òı
-        let words = []; // ´æ´¢Òª²¥·ÅµÄµ¥´Ê
-        let dotDuration, dashDuration, elementGap, letterGap, wordGap; // Òô·ûµÄÊ±³¤ºÍ¼ä¸ô
-        let currentFrequency = 600; // µ±Ç°ÒôÆµÆµÂÊ
+        let audioContext; // ç”¨äºéŸ³é¢‘å¤„ç†çš„AudioContextå¯¹è±¡
+        let currentTimeouts = []; // ç”¨äºå­˜å‚¨æ‰€æœ‰ setTimeout å¼•ç”¨ï¼Œä»¥ä¾¿åœ¨éœ€è¦æ—¶æ¸…é™¤
+        let isPlaying = false; // è¡¨ç¤ºæ˜¯å¦æ­£åœ¨æ’­æ”¾
+        let currentIndex = 0; // å½“å‰æ’­æ”¾çš„è«å°”æ–¯ç¬¦å·çš„ç´¢å¼•
+        let words = []; // è½¬æ¢åçš„è«å°”æ–¯ç”µç åºåˆ—
+        let dotDuration, dashDuration, elementGap, letterGap, wordGap; // å„ç§é—´éš”å’Œæ—¶é•¿
+        let currentFrequency = 600; // å½“å‰éŸ³é¢‘é¢‘ç‡ï¼Œé»˜è®¤ä¸º600Hz
 
-        // ´´½¨ÒôÆµÉÏÏÂÎÄ
+        // åˆ›å»ºå¹¶åˆå§‹åŒ–AudioContext
         function createAudioContext() {
             audioContext = new (window.AudioContext || window.webkitAudioContext)();
         }
 
-        // ½«ÎÄ±¾×ª»»ÎªÄª¶ûË¹µçÂë
+        // å°†æ–‡æœ¬è½¬æ¢ä¸ºè«å°”æ–¯ç”µç ï¼Œè¿”å›ç”±.å’Œ-ç»„æˆçš„å­—ç¬¦ä¸²
         function textToMorse(text) {
             return text.toUpperCase().split('').map(char => morseCode[char] || ' ').join(' ');
         }
 
-        // ²¥·ÅÉùÒô
+        // æ’­æ”¾æŒ‡å®šé¢‘ç‡å’Œæ—¶é•¿çš„å£°éŸ³
         function playSound(frequency, duration) {
-            const oscillator = audioContext.createOscillator(); // ´´½¨Ò»¸öÕñµ´Æ÷
-            oscillator.type = 'sine'; // ÉèÖÃÒô²¨ĞÎ×´ÎªÕıÏÒ²¨
-            oscillator.frequency.setValueAtTime(frequency, audioContext.currentTime); // ÉèÖÃÆµÂÊ
-            oscillator.connect(audioContext.destination); // Á¬½Óµ½ÒôÆµÉÏÏÂÎÄµÄÄ¿±ê
-            oscillator.start(); // ¿ªÊ¼²¥·Å
-            oscillator.stop(audioContext.currentTime + duration); // Í£Ö¹²¥·Å
+            const oscillator = audioContext.createOscillator(); // åˆ›å»ºä¸€ä¸ªå£°éŸ³å‘ç”Ÿå™¨
+            oscillator.type = 'sine'; // è®¾ç½®å£°éŸ³ç±»å‹ä¸ºæ­£å¼¦æ³¢
+            oscillator.frequency.setValueAtTime(frequency, audioContext.currentTime); // è®¾ç½®é¢‘ç‡
+            oscillator.connect(audioContext.destination); // å°†å£°éŸ³è¾“å‡ºåˆ°éŸ³é¢‘è¾“å‡ºè®¾å¤‡
+            oscillator.start(); // å¼€å§‹æ’­æ”¾
+            oscillator.stop(audioContext.currentTime + duration); // åœ¨æŒ‡å®šçš„æ—¶é•¿ååœæ­¢
         }
 
-        // ¼ÆËãµãµÄÊ±³¤£¨µ¥Î»ÎªºÁÃë£©
+        // æ ¹æ®WPMï¼ˆæ¯åˆ†é’Ÿå•è¯æ•°ï¼‰è®¡ç®—æ¯ä¸ªç‚¹çš„æ—¶é•¿
         function getDotDuration(wpm) {
-            return 1200 / wpm; // ¼ÆËãÒ»¸öµãµÄÊ±³¤
+            return 1200 / wpm; // 1200ms/WPMç­‰äºä¸€ä¸ªç‚¹çš„æ—¶é•¿
         }
 
-        // ²¥·ÅÄª¶ûË¹µçÂë
+        // æ¸…é™¤æ‰€æœ‰å·²è®¾ç½®çš„å®šæ—¶å™¨
+        function clearTimeouts() {
+            currentTimeouts.forEach(timeout => clearTimeout(timeout)); // é€ä¸€æ¸…é™¤æ‰€æœ‰setTimeout
+            currentTimeouts = []; // æ¸…ç©ºå®šæ—¶å™¨æ•°ç»„
+        }
+
+        // æ’­æ”¾ä¸‹ä¸€ä¸ªè«å°”æ–¯ç”µç ç¬¦å·
         function playNextSymbol() {
-            // Èç¹ûÔİÍ£»òÒÑ²¥·ÅÍê±Ï£¬ÍË³ö
+            // å¦‚æœå·²ç»åœæ­¢æ’­æ”¾æˆ–æ’­æ”¾åˆ°æœ«å°¾ï¼Œé€€å‡ºå‡½æ•°
             if (!isPlaying || currentIndex >= words.length) {
                 return;
             }
 
-            const symbol = words[currentIndex]; // »ñÈ¡µ±Ç°Òô·û
-            if (symbol === '.') { // ²¥·Åµã
-                playSound(currentFrequency, dotDuration / 1000);
-                currentIndex++; // ÒÆ¶¯µ½ÏÂÒ»¸öÒô·û
-                setTimeout(playNextSymbol, dotDuration + elementGap); // µÈ´ı²¥·ÅÏÂÒ»¸öÒô·û
-            } else if (symbol === '-') { // ²¥·Å»®
-                playSound(currentFrequency, dashDuration / 1000);
-                currentIndex++; // ÒÆ¶¯µ½ÏÂÒ»¸öÒô·û
-                setTimeout(playNextSymbol, dashDuration + elementGap); // µÈ´ı²¥·ÅÏÂÒ»¸öÒô·û
-            } else if (symbol === ' ') { // Ìí¼Ó×ÖÄ¸¼äµÄ¼ä¸ô
-                currentIndex++;
-                setTimeout(playNextSymbol, letterGap); // µÈ´ı²¥·ÅÏÂÒ»¸öÒô·û
-            } else if (symbol === '   ') { // Ìí¼Óµ¥´Ê¼äµÄ¼ä¸ô
-                currentIndex++;
-                setTimeout(playNextSymbol, wordGap); // µÈ´ı²¥·ÅÏÂÒ»¸öÒô·û
+            const symbol = words[currentIndex]; // è·å–å½“å‰è¦æ’­æ”¾çš„ç¬¦å·
+            let timeoutDuration = 0; // å®šæ—¶å™¨çš„æ—¶é•¿
+
+            if (symbol === '.') {
+                // æ’­æ”¾ç‚¹
+                playSound(currentFrequency, dotDuration / 1000); // å°†ç‚¹çš„æ—¶é•¿è½¬æ¢ä¸ºç§’
+                timeoutDuration = dotDuration + elementGap; // ç‚¹åé¢è·Ÿç€å…ƒç´ é—´éš”
+            } else if (symbol === '-') {
+                // æ’­æ”¾åˆ’
+                playSound(currentFrequency, dashDuration / 1000); // åˆ’çš„æ—¶é•¿æ˜¯ç‚¹çš„ä¸‰å€
+                timeoutDuration = dashDuration + elementGap;
+            } else if (symbol === ' ') {
+                // å­—ç¬¦é—´é—´éš”
+                timeoutDuration = letterGap;
+            } else if (symbol === '   ') {
+                // å•è¯é—´é—´éš”
+                timeoutDuration = wordGap;
             }
+
+            currentIndex++; // æ’­æ”¾ä¸‹ä¸€ä¸ªç¬¦å·
+            const timeoutId = setTimeout(playNextSymbol, timeoutDuration); // è®¾ç½®ä¸‹ä¸€ä¸ªç¬¦å·çš„æ’­æ”¾
+            currentTimeouts.push(timeoutId); // ä¿å­˜å®šæ—¶å™¨çš„å¼•ç”¨ï¼Œä¾¿äºæ¸…é™¤
         }
 
-        // ²¥·ÅÄª¶ûË¹µçÂë
+        // å‡†å¤‡å¹¶å¼€å§‹æ’­æ”¾è«å°”æ–¯ç”µç 
         function playMorse(wpm, freq) {
-            dotDuration = getDotDuration(wpm); // ¼ÆËãµãµÄÊ±³¤
-            dashDuration = 3 * dotDuration; // »®µÄÊ±³¤ÎªµãµÄÈı±¶
-            elementGap = dotDuration; // ÔªËØ¼äµÄ¼ä¸ô
-            letterGap = 3 * dotDuration; // ×ÖÄ¸¼äµÄ¼ä¸ô
-            wordGap = 7 * dotDuration; // µ¥´Ê¼äµÄ¼ä¸ô£¨7 ¸öµãµÄÊ±³¤£©
+            // è®¡ç®—å„ç§æ—¶é•¿ï¼šç‚¹ã€åˆ’ã€å…ƒç´ é—´éš”ã€å­—æ¯é—´éš”ã€å•è¯é—´éš”
+            dotDuration = getDotDuration(wpm);
+            dashDuration = 3 * dotDuration;
+            elementGap = dotDuration;
+            letterGap = 3 * dotDuration;
+            wordGap = 7 * dotDuration;
 
-            const text = document.getElementById('textInput').value.trim(); // »ñÈ¡ÊäÈëµÄÎÄ±¾
-            const morseText = text.split(' ').map(word => textToMorse(word)).join('   '); // ×ª»»ÎªÄª¶ûË¹´úÂë
-            words = morseText.split(''); // ½«Äª¶ûË¹´úÂë²ğ·ÖÎªµ¥¸ö×Ö·û
-            currentFrequency = freq; // ÉèÖÃµ±Ç°ÆµÂÊ
-            currentIndex = 0; // ÖØÖÃµ±Ç°Ë÷Òı
-            isPlaying = true; // ±ê¼ÇÎªÕıÔÚ²¥·Å
-            playNextSymbol(); // ¿ªÊ¼²¥·ÅÒô·û
+            // è·å–è¾“å…¥æ¡†çš„æ–‡æœ¬å¹¶è½¬æ¢ä¸ºè«å°”æ–¯ç”µç 
+            const text = document.getElementById('textInput').value.trim();
+            const morseText = text.split(' ').map(word => textToMorse(word)).join('   ');
+            words = morseText.split(''); // å°†è½¬æ¢åçš„è«å°”æ–¯ç”µç æ‹†åˆ†ä¸ºå­—ç¬¦æ•°ç»„
+            currentFrequency = freq; // è®¾ç½®å½“å‰é¢‘ç‡
+            currentIndex = 0; // ä»ç¬¬ä¸€ä¸ªç¬¦å·å¼€å§‹æ’­æ”¾
+            isPlaying = true; // è®¾ç½®æ’­æ”¾çŠ¶æ€
+            clearTimeouts(); // æ¸…é™¤ä¹‹å‰çš„å®šæ—¶å™¨ï¼Œé˜²æ­¢å¤šæ¬¡ç‚¹å‡»æ—¶æ’­æ”¾å†²çª
+            playNextSymbol(); // å¼€å§‹æ’­æ”¾ç¬¬ä¸€ä¸ªç¬¦å·
         }
 
-        // ÑéÖ¤ÓÃ»§ÊäÈë
+        // éªŒè¯è¾“å…¥å†…å®¹æ˜¯å¦åˆæ³•ï¼ˆåªå…è®¸å­—æ¯ã€æ•°å­—å’Œéƒ¨åˆ†æ ‡ç‚¹ç¬¦å·ï¼‰
         function validateInput(text) {
-            // ÕıÔò±í´ïÊ½£ºÔÊĞí×ÖÄ¸¡¢Êı×ÖºÍÌØ¶¨·ûºÅ
-            const validChars = /^[A-Za-z0-9.,?'!()/&:;=+-_"$@ ]*$/;
-            return validChars.test(text); // ·µ»ØÊäÈëÊÇ·ñºÏ·¨
+            const validChars = /^[A-Za-z0-9.,?'!()/&:;=+-_"$@ ]*$/; // å…è®¸çš„å­—ç¬¦é›†
+            return validChars.test(text); // è¿”å›æ˜¯å¦åŒ¹é…
         }
 
-        // ×¼±¸²¥·ÅÒôÆµ
+        // å‡†å¤‡æ’­æ”¾è¿‡ç¨‹
         function preparation() {
-            const textInput = document.getElementById('textInput').value; // »ñÈ¡ÓÃ»§ÊäÈëµÄÎÄ±¾
+            const textInput = document.getElementById('textInput').value; // è·å–ç”¨æˆ·è¾“å…¥
 
-            // ÑéÖ¤ÓÃ»§ÊäÈë
+            // éªŒè¯è¾“å…¥æ˜¯å¦åˆæ³•
             if (!validateInput(textInput)) {
-                document.getElementById('error').textContent = 'ÊäÈë°üº¬ÎŞĞ§×Ö·û£¬ÇëÊ¹ÓÃ×ÖÄ¸¡¢Êı×ÖºÍÒÔÏÂÌØÊâ·ûºÅ£º.,?\'!()/&:;=+-_"$@';
-                return; // Èç¹ûÊäÈëÎŞĞ§£¬Ôò·µ»Ø
-            }
+                document.getElementById('error').textContent = 'è¾“å…¥åŒ…å«æ— æ•ˆå­—ç¬¦ï¼Œè¯·ä½¿ç”¨å­—æ¯ã€æ•°å­—å’Œä»¥ä¸‹ç‰¹æ®Šç¬¦å·ï¼š.,?\'!()/&:;=+-_"$@';
+                return;
+            }else {
+				document.getElementById('error').textContent = '';//æ¸…ç©ºé”™è¯¯ä¿¡æ¯
+			}
 
-            // È·±£ÒôÆµÉÏÏÂÎÄÔÚÓÃ»§½»»¥ºó´´½¨
+            // å¦‚æœéŸ³é¢‘ä¸Šä¸‹æ–‡ä¸å­˜åœ¨æˆ–å·²å…³é—­ï¼Œé‡æ–°åˆ›å»ºä¸€ä¸ª
             if (!audioContext || audioContext.state === 'closed') {
                 createAudioContext();
             }
 
-            const WPM = Number(document.getElementById('WPM').value); // »ñÈ¡ÓÃ»§ÉèÖÃµÄ WPM
-            const fq = Number(document.getElementById('fq').value); // »ñÈ¡ÓÃ»§ÉèÖÃµÄÒô¸ß
-            playMorse(WPM, fq); // ²¥·ÅÄª¶ûË¹µçÂë
+            const WPM = Number(document.getElementById('WPM').value); // è·å–ç”¨æˆ·è®¾ç½®çš„WPM
+            const fq = Number(document.getElementById('fq').value); // è·å–ç”¨æˆ·è®¾ç½®çš„é¢‘ç‡
+            playMorse(WPM, fq); // å¼€å§‹æ’­æ”¾è«å°”æ–¯ç”µç 
         }
 
-        // ÔİÍ£²¥·Å
+        // æš‚åœæ’­æ”¾
         function pauseSound() {
-            isPlaying = false; // ÉèÖÃÎªÔİÍ£×´Ì¬
+            isPlaying = false; // è®¾ç½®æ’­æ”¾çŠ¶æ€ä¸ºæš‚åœ
         }
 
-        // ¼ÌĞø²¥·Å
+        // ç»§ç»­æ’­æ”¾
         function resumeSound() {
-            if (!isPlaying) { // Ö»ÓĞÔÚÔİÍ£×´Ì¬ÏÂ²Å¼ÌĞø²¥·Å
-                isPlaying = true; // ÉèÖÃÎª²¥·Å×´Ì¬
-                playNextSymbol(); // ¿ªÊ¼²¥·ÅÏÂÒ»¸öÒô·û
+            if (!isPlaying) { // å¦‚æœå½“å‰æœªæ’­æ”¾ï¼Œæ‰ç»§ç»­
+                isPlaying = true;
+                playNextSymbol(); // ä»å½“å‰ç¬¦å·ç»§ç»­æ’­æ”¾
             }
         }
 
-        // Í£Ö¹²¥·Å
+        // åœæ­¢æ’­æ”¾
         function stopSound() {
-            isPlaying = false; // Í£Ö¹²¥·Å
-            currentIndex = 0; // ÖØÖÃµ±Ç°Ë÷Òı
+            isPlaying = false; // åœæ­¢æ’­æ”¾
+            currentIndex = 0; // é‡ç½®æ’­æ”¾ç´¢å¼•
+            clearTimeouts(); // åœæ­¢æ’­æ”¾æ—¶æ¸…é™¤æ‰€æœ‰å®šæ—¶å™¨
         }
+		
+		function downloadMorse() {
+			//ä¸‹è½½è«å°”æ–¯ä»£ç åˆ°æ–‡æœ¬æ–‡ä»¶
+		    const text = document.getElementById('textInput').value.trim();
+		    const morseText = text.split(' ').map(word => textToMorse(word)).join(' ');
+		    const blob = new Blob([morseText], { type: 'text/plain' });
+		    const link = document.createElement('a');
+		    link.href = URL.createObjectURL(blob);
+		    link.download = 'morse_code.txt';
+		    link.click();
+		}
     </script>
 </body>
 </html>

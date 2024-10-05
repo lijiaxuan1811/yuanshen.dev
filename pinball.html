@@ -1,69 +1,69 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="GB2312">
+		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>YuanRetro-JSµ¯Çò</title>
+		<title>YuanRetro-JSå¼¹çƒ</title>
 		<link rel="stylesheet" href="./style.css">
 		<style>	
-			/* »ù´¡°´Å¥ÑùÊ½ */
+			/* åŸºç¡€æŒ‰é’®æ ·å¼ */
 			.custom-button {
-  				background-color: #4CAF50; /* ±âÆ½µÄÂÌÉ«±³¾° */
-        		border: none; /* ÎŞ±ß¿ò */
-        		color: white; /* ×ÖÌåÑÕÉ«°×É« */
-        		padding: 12px 24px; /* ÄÚ±ß¾à */
-       			font-size: 16px; /* ×ÖÌå´óĞ¡ */
-        		border-radius: 10px; /* Ğ¡µÄÔ²½Ç */
-         		cursor: pointer; /* Êó±êÖ¸ÕëÑùÊ½ */
-        		transition: background-color 0.3s ease; /* ±³¾°ÑÕÉ«µÄ¹ı¶ÉĞ§¹û */
+  				background-color: #4CAF50; /* æ‰å¹³çš„ç»¿è‰²èƒŒæ™¯ */
+        		border: none; /* æ— è¾¹æ¡† */
+        		color: white; /* å­—ä½“é¢œè‰²ç™½è‰² */
+        		padding: 12px 24px; /* å†…è¾¹è· */
+       			font-size: 16px; /* å­—ä½“å¤§å° */
+        		border-radius: 10px; /* å°çš„åœ†è§’ */
+         		cursor: pointer; /* é¼ æ ‡æŒ‡é’ˆæ ·å¼ */
+        		transition: background-color 0.3s ease; /* èƒŒæ™¯é¢œè‰²çš„è¿‡æ¸¡æ•ˆæœ */
   				width: 100px;
   				height: 50px;
 			}
-			/* Êó±êĞüÍ£Ê±µÄĞ§¹û */
+			/* é¼ æ ‡æ‚¬åœæ—¶çš„æ•ˆæœ */
 			.custom-button:hover {
-  				background-color: #45a049; /* ¸üÉîµÄÂÌÉ« */
+  				background-color: #45a049; /* æ›´æ·±çš„ç»¿è‰² */
 			}
-			/* Êó±ê°´ÏÂÊ±µÄĞ§¹û */
+			/* é¼ æ ‡æŒ‰ä¸‹æ—¶çš„æ•ˆæœ */
 			.custom-button:active {
-        		background-color: #2E7D32; /* °´ÏÂÊ±¸üÉîµÄÂÌÉ« */
+        		background-color: #2E7D32; /* æŒ‰ä¸‹æ—¶æ›´æ·±çš„ç»¿è‰² */
     		}
 		</style>
 	</head>
 	<body class="body">
 		<ul>
-			<li class="navi"><a href="http://www.yuanshen.dev/">Ö÷Ò³</a></li>
-			<li class="navi"><a href="http://www.yuanshen.dev/music.html">ÒôÀÖ</a></li>
-			<li class="navi"><a href="http://www.yuanshen.dev/pinball.html">JSµ¯Çò</a></li>
-			<li class="navi"><a href="http://www.yuanshen.dev/morse.html">Äª¶ûË¹µçÂë</a></li>
-			<li class="navi"><a href="http://www.yuanshen.dev/crtirgen.html">ÖĞ¹úÌúÂ·ĞĞ³ÌĞÅÏ¢ÌáÊ¾Éú³ÉÆ÷(CRTIRGen)</a></li>
-			<li class="navi"><a href="http://www.yuanshen.dev/about.html">¹ØÓÚ</a></li>
+			<li class="navi"><a href="http://www.yuanshen.dev/">ä¸»é¡µ</a></li>
+			<li class="navi"><a href="http://www.yuanshen.dev/music.html">éŸ³ä¹</a></li>
+			<li class="navi"><a href="http://www.yuanshen.dev/pinball.html">JSå¼¹çƒ</a></li>
+			<li class="navi"><a href="http://www.yuanshen.dev/morse.html">è«å°”æ–¯ç”µç </a></li>
+			<li class="navi"><a href="http://www.yuanshen.dev/crtirgen.html">ä¸­å›½é“è·¯è¡Œç¨‹ä¿¡æ¯æç¤ºç”Ÿæˆå™¨(CRTIRGen)</a></li>
+			<li class="navi"><a href="http://www.yuanshen.dev/about.html">å…³äº</a></li>
 			<li class="navi"><a href="http://www.yuanshen.dev/en/index.html">English</a></li>
 		</ul>
 		<br />
-		<h2>µ¯ÇòÓÎÏ· V2.2 <del>¸üĞÂÊ±¼ä2024.09.12</del></h2>
-		<p>ÓÃ´¿JavaScriptĞ´µÄĞ¡Ğ¡ÓÎÏ·£¬¿ÉÒÔ·Ö±ğÓÃ¼üÅÌµÄ¡°a¡±ºÍ¡°d¡±¼ü¿ØÖÆµ²°å×óÓÒÒÆ¶¯£¬Ò²¿ÉÒÔÊ¹ÓÃ<del>£¨ÒÆ¶¯Éè±¸ÓÑºÃ£©</del>µÄ°´Å¥Å¶~<br />Èç¹ûä¯ÀÀÆ÷²»Ö§³Ö»òÕßÆÁ±ÎÁËJavaScript£¬ÓÎÏ·¿É£¨ken£©ÄÜ£¨ding£©¾Í²»ÄÜÔËĞĞÁËÅ¶~<br />Ã¿´Î½Ó×¡µ¯Çò¿ÉÒÔµÃµ½5·Ö£¬µ«ÊÇÈç¹ûÃ»½Ó×¡µÄ»°£¬¾Í¼Äà¶~</p>
-		<p>¸ĞĞ»<del>£¨nÄêÇ°ÂòµÄx£©</del>³Ì³¿µÄ¡¶JavaScriptÍøÒ³ÓÎÏ·ÖÆ×÷ÇáËÉÑ§¡·(ISBN 978-7-115-46238-1)£¬ÕâÀïµÄËã·¨ºÍ²¿·Ö´úÂë²Î¿¼ÁËÊéÖĞµÄË¼Â·Å¶~</p>
-		<label for="easy">ÄÑ¶ÈÑ¡Ôñ<br/></label>
-		<!--´´½¨Èı¸öÄÑ¶ÈµÈ¼¶¶ÔÓ¦µÄ¸´Ñ¡¿ò-->
+		<h2>å¼¹çƒæ¸¸æˆ V2.2 <del>æ›´æ–°æ—¶é—´2024.09.12</del></h2>
+		<p>ç”¨çº¯JavaScriptå†™çš„å°å°æ¸¸æˆï¼Œå¯ä»¥åˆ†åˆ«ç”¨é”®ç›˜çš„â€œaâ€å’Œâ€œdâ€é”®æ§åˆ¶æŒ¡æ¿å·¦å³ç§»åŠ¨ï¼Œä¹Ÿå¯ä»¥ä½¿ç”¨<del>ï¼ˆç§»åŠ¨è®¾å¤‡å‹å¥½ï¼‰</del>çš„æŒ‰é’®å“¦~<br />å¦‚æœæµè§ˆå™¨ä¸æ”¯æŒæˆ–è€…å±è”½äº†JavaScriptï¼Œæ¸¸æˆå¯ï¼ˆkenï¼‰èƒ½ï¼ˆdingï¼‰å°±ä¸èƒ½è¿è¡Œäº†å“¦~<br />æ¯æ¬¡æ¥ä½å¼¹çƒå¯ä»¥å¾—åˆ°5åˆ†ï¼Œä½†æ˜¯å¦‚æœæ²¡æ¥ä½çš„è¯ï¼Œå°±å¯„å–½~</p>
+		<p>æ„Ÿè°¢<del>ï¼ˆnå¹´å‰ä¹°çš„xï¼‰</del>ç¨‹æ™¨çš„ã€ŠJavaScriptç½‘é¡µæ¸¸æˆåˆ¶ä½œè½»æ¾å­¦ã€‹(ISBN 978-7-115-46238-1)ï¼Œè¿™é‡Œçš„ç®—æ³•å’Œéƒ¨åˆ†ä»£ç å‚è€ƒäº†ä¹¦ä¸­çš„æ€è·¯å“¦~</p>
+		<label for="easy">éš¾åº¦é€‰æ‹©<br/></label>
+		<!--åˆ›å»ºä¸‰ä¸ªéš¾åº¦ç­‰çº§å¯¹åº”çš„å¤é€‰æ¡†-->
 		<input type="checkbox" id="easy" onclick="clickCheckbox(this)"/>
-		<label for="easy">¼òµ¥£¨EZ£©<br /></label>
+		<label for="easy">ç®€å•ï¼ˆEZï¼‰<br /></label>
 		<input type="checkbox" id="hard" onclick="clickCheckbox(this)"/>
-		<label for="easy">À§ÄÑ£¨HD£©<br /></label>
+		<label for="easy">å›°éš¾ï¼ˆHDï¼‰<br /></label>
 		<input type="checkbox" id="insane" onclick="clickCheckbox(this)"/>
-		<label for="easy">·è¿ñ£¨IN£©<br /></label>
-		<input type="button" id="start" class="custom-button" value="¿ªÊ¼ÓÎÏ·£¡" onclick="start()"/><!--½øÈëÓÎÏ·°´Å¥-->
+		<label for="easy">ç–¯ç‹‚ï¼ˆINï¼‰<br /></label>
+		<input type="button" id="start" class="custom-button" value="å¼€å§‹æ¸¸æˆï¼" onclick="start()"/><!--è¿›å…¥æ¸¸æˆæŒ‰é’®-->
 		<br />
-		<input type="button" id="leftButton" class="custom-button" value="×ó"/><!--Ïò×ó°´Å¥-->
-		<!--´´½¨400x400ÏñËØµÄ»­²¼-->
+		<input type="button" id="leftButton" class="custom-button" value="å·¦"/><!--å‘å·¦æŒ‰é’®-->
+		<!--åˆ›å»º400x400åƒç´ çš„ç”»å¸ƒ-->
 		<canvas id="canvas" width="400" height="400"></canvas>
-		<input type="button" id="rightButton" class="custom-button" value="ÓÒ"/><!--ÏòÓÒ°´Å¥-->
+		<input type="button" id="rightButton" class="custom-button" value="å³"/><!--å‘å³æŒ‰é’®-->
 		<script type="text/javascript">
 			var canv = document.getElementById("canvas");
-			var ctx = canv.getContext("2d"); //´´½¨»­²¼ºÍ»­±Ê¶ÔÏó
+			var ctx = canv.getContext("2d"); //åˆ›å»ºç”»å¸ƒå’Œç”»ç¬”å¯¹è±¡
 			var easy = document.getElementById("easy");
 			var hard = document.getElementById("hard");
-			var insane = document.getElementById("insane");//´´½¨Èı¸ö¸´Ñ¡¿ò¶ÔÏó
-			//ÉùÃ÷Ò»Ğ©ÔÓÆßÔÓ°ËµÄ±äÁ¿
+			var insane = document.getElementById("insane");//åˆ›å»ºä¸‰ä¸ªå¤é€‰æ¡†å¯¹è±¡
+			//å£°æ˜ä¸€äº›æ‚ä¸ƒæ‚å…«çš„å˜é‡
 			var startX = 0;
 			var startY = 0;
 			var panelX = 0;
@@ -75,10 +75,10 @@
 			var rightInterval;
 			//var testI = 0;
 			function debounce(func, wait, imme) {
-				//·ÀÖ¹¼üÅÌ°´ÏÂÄ³¸ö°´¼üÖ®ºóÁ¬Ğø114.5(x)´ÎµÄÖØ¸´Çé¿ö
-				//²ÎÊıfuncÊÇ´«ÈëµÄĞèÒªÍ¨¹ı°´¼üÖ´ĞĞµÄ·½·¨£¬waitÊÇÈç¹ûÁ¬ĞøÖ´ĞĞÔòÃ¿´ÎÖ´ĞĞµÄ¼ä¸ôÊ±¼ä£¨ºÁÃë£©
-				//²¼¶ûÀàĞÍ²ÎÊıimmeÈç¹û±»ÉèÖÃÎª¡°true¡±ÔòÈ¡ÏûµÈ´ıÊ±¼ä£¨ÄÇÄãÎªÉ¶»¹ÒªÓÃÕâ¸ö·½·¨x£©
-				//²Î£¨chao£©¿¼£¨de£©ÒÔÏÂÌû×ÓÖĞµÄ´úÂë£¬×÷ÕßÎªPeter Mortensen
+				//é˜²æ­¢é”®ç›˜æŒ‰ä¸‹æŸä¸ªæŒ‰é”®ä¹‹åè¿ç»­114.5(x)æ¬¡çš„é‡å¤æƒ…å†µ
+				//å‚æ•°funcæ˜¯ä¼ å…¥çš„éœ€è¦é€šè¿‡æŒ‰é”®æ‰§è¡Œçš„æ–¹æ³•ï¼Œwaitæ˜¯å¦‚æœè¿ç»­æ‰§è¡Œåˆ™æ¯æ¬¡æ‰§è¡Œçš„é—´éš”æ—¶é—´ï¼ˆæ¯«ç§’ï¼‰
+				//å¸ƒå°”ç±»å‹å‚æ•°immeå¦‚æœè¢«è®¾ç½®ä¸ºâ€œtrueâ€åˆ™å–æ¶ˆç­‰å¾…æ—¶é—´ï¼ˆé‚£ä½ ä¸ºå•¥è¿˜è¦ç”¨è¿™ä¸ªæ–¹æ³•xï¼‰
+				//å‚ï¼ˆchaoï¼‰è€ƒï¼ˆdeï¼‰ä»¥ä¸‹å¸–å­ä¸­çš„ä»£ç ï¼Œä½œè€…ä¸ºPeter Mortensen
 				//https://www.stackoverflow.com/questions/24004791/what-is-the-debounce-function-in-javascript/24004942#24004942
 				var timeout;
 				return function() {
@@ -105,7 +105,7 @@
 					insane.checked = false;
 					checkbox.checked = true;
 				}
-				//·ÀÖ¹Í¬Ê±Ñ¡Ôñ¶à¸ö¸´Ñ¡¿ò
+				//é˜²æ­¢åŒæ—¶é€‰æ‹©å¤šä¸ªå¤é€‰æ¡†
 			}
 
 			function readCheckbox () {
@@ -118,16 +118,16 @@
 				}else {
 					return 30;
 				}
-				//ÅĞ¶ÏÑ¡ÖĞÁËÄÄ¸ö¸´Ñ¡¿ò£¬·µ»Ø¶ÔÓ¦µÄ¼ä¸ôÊ±¼ä
+				//åˆ¤æ–­é€‰ä¸­äº†å“ªä¸ªå¤é€‰æ¡†ï¼Œè¿”å›å¯¹åº”çš„é—´éš”æ—¶é—´
 			}
 
 			function prep() {
-				//Ëæ»úÉú³Éµ¯ÇòºÍµ²°åµÄ³õÊ¼Î»ÖÃ×ø±ê
-				//Ö»ÓĞÉú³ÉµÄÊıÔÚÄ³Ò»¸ö·¶Î§ÄÚ²ÅÌø³öËÀÑ­»·£¨¿´ÆğÀ´ºÜÎ£ÏÕµÄÑù×Ó£¬²»¹ıÊµ¼ÊÉÏ¼¸ºõ²»»á³¬¹ı¼¸ºÁÃëx£©
-				//È·ÊµÓĞÓÃÊıÑ§ÔËËãµÄÓÅ»¯·½·¨£¬µ«ÊÇÊµÔÚ²»£¨lan£©Ïë£¨de£©¸Ä´úÂëÁË
-				//10 px<startX<390 px: ±ÜÃâÇò¿¨½ø×óÓÒ±ß¿ò
-				//10 px<startY<380 px: ±ÜÃâÇò¿¨½øÉÏÏÂ±ß¿ò»òÕßÒ»¿ª¾Ö¾Ígg£¨µ±È»»¹ÊÇÓĞ¿ÉÄÜµÄ£©
-				//0 px<panelX<350 px: ±ÜÃâµ²°å¿¨½ø×óÓÒ±ß¿ò
+				//éšæœºç”Ÿæˆå¼¹çƒå’ŒæŒ¡æ¿çš„åˆå§‹ä½ç½®åæ ‡
+				//åªæœ‰ç”Ÿæˆçš„æ•°åœ¨æŸä¸€ä¸ªèŒƒå›´å†…æ‰è·³å‡ºæ­»å¾ªç¯ï¼ˆçœ‹èµ·æ¥å¾ˆå±é™©çš„æ ·å­ï¼Œä¸è¿‡å®é™…ä¸Šå‡ ä¹ä¸ä¼šè¶…è¿‡å‡ æ¯«ç§’xï¼‰
+				//ç¡®å®æœ‰ç”¨æ•°å­¦è¿ç®—çš„ä¼˜åŒ–æ–¹æ³•ï¼Œä½†æ˜¯å®åœ¨ä¸ï¼ˆlanï¼‰æƒ³ï¼ˆdeï¼‰æ”¹ä»£ç äº†
+				//10 px<startX<390 px: é¿å…çƒå¡è¿›å·¦å³è¾¹æ¡†
+				//10 px<startY<380 px: é¿å…çƒå¡è¿›ä¸Šä¸‹è¾¹æ¡†æˆ–è€…ä¸€å¼€å±€å°±ggï¼ˆå½“ç„¶è¿˜æ˜¯æœ‰å¯èƒ½çš„ï¼‰
+				//0 px<panelX<350 px: é¿å…æŒ¡æ¿å¡è¿›å·¦å³è¾¹æ¡†
 				while (true) {
 					startX = Math.floor(Math.random() * 1000);
 					if (startX > 10 && startX < 390) {
@@ -154,41 +154,41 @@
 				}
 			}
 			var ball = {
-				//ÉùÃ÷µ¯ÇòµÄ»ù±¾ÊôĞÔ
-				//°üÀ¨³õÊ¼×ø±ê£¬ÏÂÒ»²½µÄÒÆ¶¯ËÙ¶ÈºÍÒ»Ğ©·½·¨
+				//å£°æ˜å¼¹çƒçš„åŸºæœ¬å±æ€§
+				//åŒ…æ‹¬åˆå§‹åæ ‡ï¼Œä¸‹ä¸€æ­¥çš„ç§»åŠ¨é€Ÿåº¦å’Œä¸€äº›æ–¹æ³•
 				x: startX,
 				y: startY,
-				//ÒÆ¶¯ËÙ¶È£¬Õı¸º·Ö±ğ´ú±í²»Í¬·½Ïò
+				//ç§»åŠ¨é€Ÿåº¦ï¼Œæ­£è´Ÿåˆ†åˆ«ä»£è¡¨ä¸åŒæ–¹å‘
 				xSpeed: -2,
 				ySpeed: -2,
 				draw: function() {
 					ctx.fillStyle = "Red";
 					ctx.beginPath();
-					ctx.arc(this.x, this.y, 10, 0, Math.PI * 2, false); //ÔÚ»­²¼ÉÏ»­³öµ¯Çò
+					ctx.arc(this.x, this.y, 10, 0, Math.PI * 2, false); //åœ¨ç”»å¸ƒä¸Šç”»å‡ºå¼¹çƒ
 					ctx.fill();
 				},
 				move: function(panelSt, panelEn) {
 					if (this.x + this.xSpeed < 10 || this.x + this.xSpeed > 390) {
-						this.xSpeed = -this.xSpeed; //Åö×óÓÒ±Ú£¬·´µ¯
+						this.xSpeed = -this.xSpeed; //ç¢°å·¦å³å£ï¼Œåå¼¹
 					} else {
-						this.x += this.xSpeed; //¼ÌĞøÒÆ¶¯
+						this.x += this.xSpeed; //ç»§ç»­ç§»åŠ¨
 					}
 					if (this.y + this.ySpeed < 10 || this.y + this.ySpeed > 390) {
-						this.ySpeed = -this.ySpeed; //Åö¶¥£¬·´µ¯
+						this.ySpeed = -this.ySpeed; //ç¢°é¡¶ï¼Œåå¼¹
 					} else if (this.y + this.ySpeed >= 380 && this.y + this.ySpeed <= 390) {
-						//Åöµ×£¬¼ì²âÊÇ·ñ±»½Ó×¡ÁË
+						//ç¢°åº•ï¼Œæ£€æµ‹æ˜¯å¦è¢«æ¥ä½äº†
 						if (this.x > panelSt - 10 && this.x < panelEn + 10) {
 							this.ySpeed = -this.ySpeed;
 							score += 5;
-							//½Ó×¡ÁË£¬µ¯Æğ²¢ÇÒ¼ÓÎå·Ö
+							//æ¥ä½äº†ï¼Œå¼¹èµ·å¹¶ä¸”åŠ äº”åˆ†
 						} else {
 							//this.y += this.ySpeed;
-							window.alert("Íêà¶£¬¼ÄÁË!");
+							window.alert("å®Œå–½ï¼Œå¯„äº†!");
 							//this.x = 0;
 							//this.y = 0;
 							score = 0;
 							flag = true;
-							//Ã»½Ó×¡£¬»ı·ÖÇåÁã²¢ÇÒ³õÊ¼»¯Ò»Ğ©¶«Î÷
+							//æ²¡æ¥ä½ï¼Œç§¯åˆ†æ¸…é›¶å¹¶ä¸”åˆå§‹åŒ–ä¸€äº›ä¸œè¥¿
 						}
 					} else {
 						this.y += this.ySpeed; //Continue moving
@@ -196,8 +196,8 @@
 				}
 			};
 			var panel = {
-				//ÉùÃ÷µ²°åµÄ»ù±¾ÊôĞÔ
-				//±ÈÈçÎ»ÖÃ»¹ÓĞ¼üÅÌ¿ØÖÆµÄ·½·¨
+				//å£°æ˜æŒ¡æ¿çš„åŸºæœ¬å±æ€§
+				//æ¯”å¦‚ä½ç½®è¿˜æœ‰é”®ç›˜æ§åˆ¶çš„æ–¹æ³•
 				x: panelX,
 				y: 390,
 				xSize: 50,
@@ -210,26 +210,26 @@
 
 			function keyPanel(event) {
 				if (event.keyCode == 65) {
-					//¡®a¡¯±»°´ÏÂÁË£¬Ïò×óÒÆ¶¯
+					//â€˜aâ€™è¢«æŒ‰ä¸‹äº†ï¼Œå‘å·¦ç§»åŠ¨
 					//console.log("Left!",testI);
 					//testI++;
 					panel.x -= 8;
 					if (panel.x < 0) {
-						panel.x = 0; //ÔÙÒÆ¶¯¾Í³ö×ó±ß½çà¶£¬ËùÒÔÒÆ¶¯µ½×ó±ß½ç¾ÍºÃ
+						panel.x = 0; //å†ç§»åŠ¨å°±å‡ºå·¦è¾¹ç•Œå–½ï¼Œæ‰€ä»¥ç§»åŠ¨åˆ°å·¦è¾¹ç•Œå°±å¥½
 					}
 				}
 				if (event.keyCode == 68) {
-					//¡®d¡¯±»°´ÏÂÁË£¬ÏòÓÒÒÆ¶¯
+					//â€˜dâ€™è¢«æŒ‰ä¸‹äº†ï¼Œå‘å³ç§»åŠ¨
 					//console.log("Right!",testI);
 					//testI++;
 					panel.x += 8;
 					if (panel.x > 400 - panel.xSize) {
-						panel.x = 400 - panel.xSize; //ÔÙÒÆ¶¯¾Í³öÓÒ±ß½çà¶£¬ËùÒÔÒÆ¶¯µ½ÓÒ±ß½ç¾ÍºÃ
-						//×¢ÒâÅ¶£¬µ²°åµÄ¶¨Î»µãÔÚ×óÉÏ½ÇÚÀ
+						panel.x = 400 - panel.xSize; //å†ç§»åŠ¨å°±å‡ºå³è¾¹ç•Œå–½ï¼Œæ‰€ä»¥ç§»åŠ¨åˆ°å³è¾¹ç•Œå°±å¥½
+						//æ³¨æ„å“¦ï¼ŒæŒ¡æ¿çš„å®šä½ç‚¹åœ¨å·¦ä¸Šè§’è¯¶
 					}
 				}
 			}
-			//µ÷ÓÃdebounceº¯Êı
+			//è°ƒç”¨debounceå‡½æ•°
 			var dbPanelKey = debounce(keyPanel, 20);
 
 			function leftClick() {
@@ -237,14 +237,14 @@
 				if (panel.x < 0) {
 					panel.x = 0;
 				}
-				//Èç¹ûÏò×ó°´Å¥°´ÏÂÁË¾ÍÏò×óÒÆ¶¯£¨Ò»¿ªÊ¼ÏÈÖ´ĞĞÒ»´ÎÒÔ·À°´ÏÂĞ¡ÓÚ100ºÁÃë£©
+				//å¦‚æœå‘å·¦æŒ‰é’®æŒ‰ä¸‹äº†å°±å‘å·¦ç§»åŠ¨ï¼ˆä¸€å¼€å§‹å…ˆæ‰§è¡Œä¸€æ¬¡ä»¥é˜²æŒ‰ä¸‹å°äº100æ¯«ç§’ï¼‰
 				leftInterval = setInterval(function() {
 					panel.x -= 15;
 					if (panel.x < 0) {
 						panel.x = 0;
 					}
 				}, 100);
-				//³¤°´¾ÍÃ¿100ºÁÃëÖØ¸´Ò»´Î
+				//é•¿æŒ‰å°±æ¯100æ¯«ç§’é‡å¤ä¸€æ¬¡
 			}
 
 			function rightClick() {
@@ -258,18 +258,18 @@
 						panel.x = 400 - panel.xSize;
 					}
 				}, 100);
-				//Í¬Àí£¬ÏòÓÒÒÆ¶¯²¢ÖØ¸´
+				//åŒç†ï¼Œå‘å³ç§»åŠ¨å¹¶é‡å¤
 			}
-			const leftButton = document.getElementById("leftButton"); //´´½¨Ïò×ó°´Å¥¶ÔÏó
-			leftButton.addEventListener("mousedown", leftClick); //Èç¹ûÊó±ê°´ÏÂÄÇÃ´Ö´ĞĞ·½·¨ÒÆ¶¯µ²°å
-			leftButton.addEventListener("mouseup", function() {clearInterval(leftInterval);}); //Èç¹ûÊó±êËÉ¿ªÄÇÃ´Í£Ö¹¼ÆÊ±Æ÷·ÀÖ¹¹íĞó£¨
-			const rightButton = document.getElementById("rightButton"); //ÏòÓÒ°´Å¥Í¬Àí
+			const leftButton = document.getElementById("leftButton"); //åˆ›å»ºå‘å·¦æŒ‰é’®å¯¹è±¡
+			leftButton.addEventListener("mousedown", leftClick); //å¦‚æœé¼ æ ‡æŒ‰ä¸‹é‚£ä¹ˆæ‰§è¡Œæ–¹æ³•ç§»åŠ¨æŒ¡æ¿
+			leftButton.addEventListener("mouseup", function() {clearInterval(leftInterval);}); //å¦‚æœé¼ æ ‡æ¾å¼€é‚£ä¹ˆåœæ­¢è®¡æ—¶å™¨é˜²æ­¢é¬¼ç•œï¼ˆ
+			const rightButton = document.getElementById("rightButton"); //å‘å³æŒ‰é’®åŒç†
 			rightButton.addEventListener("mousedown", rightClick);
 			rightButton.addEventListener("mouseup", function() {clearInterval(rightInterval);});
-			window.addEventListener("keydown", dbPanelKey); //¼ì²âÊÇ·ñÓĞ¼üÅÌ°´¼ü°´ÏÂ
-			//Ã¿¸ôÌØ¶¨Ê±¼äË¢ĞÂÒ»´Îµ¯ÇòÎ»ÖÃ£¨¸ü¸ÄÕâ¸öÊ±¼ä¾Í¿ÉÒÔÏÔÖø¸Ä±äÓÎÏ·ÄÑ¶ÈÅ¶~£©
+			window.addEventListener("keydown", dbPanelKey); //æ£€æµ‹æ˜¯å¦æœ‰é”®ç›˜æŒ‰é”®æŒ‰ä¸‹
+			//æ¯éš”ç‰¹å®šæ—¶é—´åˆ·æ–°ä¸€æ¬¡å¼¹çƒä½ç½®ï¼ˆæ›´æ”¹è¿™ä¸ªæ—¶é—´å°±å¯ä»¥æ˜¾è‘—æ”¹å˜æ¸¸æˆéš¾åº¦å“¦~ï¼‰
 			function start() {
-				//µã»÷¿ªÊ¼°´Å¥Ö®ºó¾Í»áÀ´µ½ÕâÀï¡«
+				//ç‚¹å‡»å¼€å§‹æŒ‰é’®ä¹‹åå°±ä¼šæ¥åˆ°è¿™é‡Œï½
 				clearInterval(mainInterval);
 				score = 0;
 				prep();
@@ -278,25 +278,25 @@
 				panel.x = panelX;
 				clearInterval(leftInterval);
 				clearInterval(rightInterval);
-				intervalTime = readCheckbox();//Õâ¸ö¼ä¸ôÊ±¼äÊÇ¸ù¾İÄÑ¶È¾ö¶¨µÄÅ¶¡«£¨EZ=30ms£¬HD=20ms£¬IN=10ms£¬²»Ñ¡=30ms£©
+				intervalTime = readCheckbox();//è¿™ä¸ªé—´éš”æ—¶é—´æ˜¯æ ¹æ®éš¾åº¦å†³å®šçš„å“¦ï½ï¼ˆEZ=30msï¼ŒHD=20msï¼ŒIN=10msï¼Œä¸é€‰=30msï¼‰
 				mainInterval = setInterval(function() {
 					if (flag == true) {
-						//ÉÏÒ»´Î¼ÄÁË£¬ËùÒÔÖØĞÂÉú³ÉĞ¡ÇòºÍµ²°åµÄÎ»ÖÃ£¨Ò²Ğí¿ÉÒÔµ«²»ÄÜ°Ù·Ö°Ù±ÜÃâÓÎÏ·¼ÄµôµÄËÀÑ­»·£©
+						//ä¸Šä¸€æ¬¡å¯„äº†ï¼Œæ‰€ä»¥é‡æ–°ç”Ÿæˆå°çƒå’ŒæŒ¡æ¿çš„ä½ç½®ï¼ˆä¹Ÿè®¸å¯ä»¥ä½†ä¸èƒ½ç™¾åˆ†ç™¾é¿å…æ¸¸æˆå¯„æ‰çš„æ­»å¾ªç¯ï¼‰
 						prep();
 						ball.x = startX;
 						ball.y = startY;
 						panel.x = panelX;
 						flag = false;
 						clearInterval(leftInterval);
-						clearInterval(rightInterval);//Èç¹û¼ÄÁË¾ÍÖØÖÃ¶¨Ê±Æ÷£¬·ÀÖ¹ÖØ¿ªÖ®ºóµ²°å²»ÊÜ¿ØÒÆ¶¯
+						clearInterval(rightInterval);//å¦‚æœå¯„äº†å°±é‡ç½®å®šæ—¶å™¨ï¼Œé˜²æ­¢é‡å¼€ä¹‹åæŒ¡æ¿ä¸å—æ§ç§»åŠ¨
 					} else {
-						ctx.clearRect(0, 0, 400, 400); //Çå³ı»­²¼£¬²»ÒªÁôÏÂ¹ì¼£
-						ctx.font = "20px GenshinImpactZhLv1"; //Ñ¡Ôñ»ı·ÖÏÔÊ¾×ÖÌå
-						ctx.fillText("·ÖÊı£º" + score, 10, 30); //ÔÚ»­²¼ÉÏÏÔÊ¾×îĞÂ»ı·Ö
-						ball.draw(); //µ÷ÓÃ·½·¨»æÖÆµ¯Çò
-						panel.draw(); //µ÷ÓÃ·½·¨»æÖÆµ²°å
-						ball.move(panel.x, panel.x + panel.xSize); //ÒÆ¶¯µ¯Çò£¬Í¬Ê±´«Èëµ²°å×îĞÂÎ»ÖÃ£¬½øĞĞÅö×²¼ì²â
-						ctx.strokeRect(0, 0, 400, 400); //ÓÃºÚÏß±ê¼Ç»­²¼±ß½çhanges.
+						ctx.clearRect(0, 0, 400, 400); //æ¸…é™¤ç”»å¸ƒï¼Œä¸è¦ç•™ä¸‹è½¨è¿¹
+						ctx.font = "20px GenshinImpactZhLv1"; //é€‰æ‹©ç§¯åˆ†æ˜¾ç¤ºå­—ä½“
+						ctx.fillText("åˆ†æ•°ï¼š" + score, 10, 30); //åœ¨ç”»å¸ƒä¸Šæ˜¾ç¤ºæœ€æ–°ç§¯åˆ†
+						ball.draw(); //è°ƒç”¨æ–¹æ³•ç»˜åˆ¶å¼¹çƒ
+						panel.draw(); //è°ƒç”¨æ–¹æ³•ç»˜åˆ¶æŒ¡æ¿
+						ball.move(panel.x, panel.x + panel.xSize); //ç§»åŠ¨å¼¹çƒï¼ŒåŒæ—¶ä¼ å…¥æŒ¡æ¿æœ€æ–°ä½ç½®ï¼Œè¿›è¡Œç¢°æ’æ£€æµ‹
+						ctx.strokeRect(0, 0, 400, 400); //ç”¨é»‘çº¿æ ‡è®°ç”»å¸ƒè¾¹ç•Œhanges.
 					}
 				}, intervalTime);
 			}

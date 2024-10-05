@@ -1,77 +1,76 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-    <meta charset="GB2312"> <!-- Set character encoding to GB2312 -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Make the webpage adapt to various device widths -->
-    <title>YuanRetro - Morse Code</title> <!-- Webpage title -->
-    <link rel="stylesheet" href="./style.css"> <!-- Link to external stylesheet -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YuanRetro-Morse Code</title>
+    <link rel="stylesheet" href="./style.css">
     <style>
-        /* Styles defined directly here */
+        /* Style settings */
         #textInput {
-            font-family: GenshinImpactZhLv1; /* Set input box font */
-            font-size: 16px; /* Set input box font size */
+            font-family: GenshinImpactZhLv1; /* Font */
+            font-size: 16px; /* Font size */
         }
         label, input, button {
-            display: inline-block; /* Set elements to block-level, allowing width settings */
-            vertical-align: middle; /* Vertically center align */
-            margin-bottom: 10px; /* Set bottom margin */
+            display: inline-block;
+            vertical-align: middle;
+            margin-bottom: 10px; /* Spacing between elements */
         }
-    
         label {
             width: 250px; /* Label width */
         }
-    
         input {
-            width: 100px; /* Input box width */
-            margin-right: 40px; /* Distance from the button */
+            width: 100px;
+            margin-right: 40px; /* Right margin for input box */
         }
-    
         button {
-            width: 80px; /* Button width */
+            width: 80px;
         }
-    
         #error {
-            color: red; /* Error message color */
-            margin-top: 10px; /* Top margin for error message */
+            color: red;
+            margin-top: 10px; /* Style for error messages */
         }
-    
     </style>
 </head>
 <body class="body">
     <!-- Navigation menu -->
     <ul>
-        <li class="navi"><a href="http://www.yuanshen.dev/en/index.html">Main</a></li>
-        <li class="navi"><a href="http://www.yuanshen.dev/en/music.html">Music</a></li>
-        <li class="navi"><a href="http://www.yuanshen.dev/en/pinball.html">JS Pinball Game</a></li>
-        <li class="navi"><a href="http://www.yuanshen.dev/en/morse.html">Morse Code</a></li>
-        <li class="navi"><a href="http://www.yuanshen.dev/en/crtirgen.html">中国铁路行程信息提示生成器(CRTIRGen)</a></li>
-        <li class="navi"><a href="http://www.yuanshen.dev/en/about.html">About</a></li>
-        <li class="navi"><a href="http://www.yuanshen.dev/">简体中文</a></li>
+    	<li class="navi"><a href="http://www.yuanshen.dev/en/index.html">Main</a></li>
+    	<li class="navi"><a href="http://www.yuanshen.dev/en/music.html">Music</a></li>
+    	<li class="navi"><a href="http://www.yuanshen.dev/en/pinball.html">JS Pinball Game</a></li>
+    	<li class="navi"><a href="http://www.yuanshen.dev/en/morse.html">Morse Code</a></li>
+    	<li class="navi"><a href="http://www.yuanshen.dev/en/crtirgen.html">涓浗閾佽矾琛岀▼淇℃伅鎻愮ず鐢熸垚鍣�(CRTIRGen)</a></li>
+    	<li class="navi"><a href="http://www.yuanshen.dev/en/about.html">About</a></li>
+    	<li class="navi"><a href="http://www.yuanshen.dev/">绠�浣撲腑鏂�</a></li>
     </ul>
     <br />
     
-    <h1>Text to Morse Code</h1> <!-- Main title -->
+    <h1>Text to Morse Code</h1> <!-- Title -->
     
-    <!-- Input area -->
-    <textarea id="textInput" placeholder="Enter text to convert" rows="10" cols="30"></textarea>
+    <!-- User input area for entering text to be converted -->
+    <textarea id="textInput" placeholder="Please input the text" rows="10" cols="60"></textarea>
     <br />
     
-    <label for="WPM">Sending speed (WPM, words per minute):</label>
-    <input type="number" id="WPM" value="20" min="1"/> <!-- Default speed is 20 WPM -->
+    <!-- User can set WPM (words per minute) for the sending speed -->
+    <label for="WPM">Speed (WPM, Words per minute):</label>
+    <input type="number" id="WPM" value="20" min="1"/> <!-- Default WPM set to 20 -->
     <br />
     
-    <label for="fq">Code pitch (Hz, Hertz):</label>
-    <input type="number" id="fq" value="600" min="1"/> <!-- Default pitch is 600 Hz -->
+    <!-- User can set pitch frequency (Hz) -->
+    <label for="fq">Pitch (Hz, Hertz):</label>
+    <input type="number" id="fq" value="600" min="1"/> <!-- Default frequency 600Hz -->
     
-    <!-- Buttons -->
-    <button class="custom-button" onclick="preparation()">Play</button> 
-    <button class="custom-button" onclick="pauseSound()">Pause</button> 
-    <button class="custom-button" onclick="resumeSound()">Resume</button> 
-    <button class="custom-button" onclick="stopSound()">Stop</button> 
-    <div id="error"></div> <!-- Area for displaying error messages -->
+    <!-- Control buttons -->
+    <button class="custom-button" onclick="preparation()">Play</button> <!-- Play button to start sending Morse code -->
+    <button class="custom-button" onclick="pauseSound()">Pause</button> <!-- Pause button -->
+    <button class="custom-button" onclick="resumeSound()">Resume</button> <!-- Resume button -->
+    <button class="custom-button" onclick="stopSound()">Stop</button> <!-- Stop button -->
+	<button class="custom-button" onclick="downloadMorse()">Download Morse Code</button> <!-- Download button -->
+    <div id="error"></div> <!-- Area to display error messages -->
+	<div><img src=../morsesheet.png style="width: 600px; height: auto;"></div> <!-- Morse code reference sheet -->
 
     <script>
-        // Define the mapping for Morse code
+        // Morse code dictionary mapping letters, numbers, and some punctuation to Morse code representations
         const morseCode = {
             'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.',
             'F': '..-.', 'G': '--.', 'H': '....', 'I': '..', 'J': '.---',
@@ -88,131 +87,149 @@
             '@': '.--.-.'
         };
 
-        let audioContext; // For audio context
-        let currentTimeouts = []; // For storing current timers
-        let isPlaying = false; // Whether it is currently playing
-        let currentIndex = 0; // Current note index
-        let words = []; // Store the words to be played
-        let dotDuration, dashDuration, elementGap, letterGap, wordGap; // Durations and gaps for notes
-        let currentFrequency = 600; // Current audio frequency
+        let audioContext; // AudioContext object for audio processing
+        let currentTimeouts = []; // Array to store all setTimeout references for clearing later
+        let isPlaying = false; // Indicates whether it is currently playing
+        let currentIndex = 0; // Index of the current Morse symbol being played
+        let words = []; // Converted Morse code sequence
+        let dotDuration, dashDuration, elementGap, letterGap, wordGap; // Various intervals and durations
+        let currentFrequency = 600; // Current audio frequency, default is 600Hz
 
-        // Create audio context
+        // Create and initialize AudioContext
         function createAudioContext() {
             audioContext = new (window.AudioContext || window.webkitAudioContext)();
         }
 
-        // Convert text to Morse code
+        // Convert text to Morse code, returning a string composed of . and -
         function textToMorse(text) {
-            return text.toUpperCase().split('').map(char => morseCode[char] || ' ').join(' ');
+            return text.toUpperCase().split('').map(char => morseCode[char] || ' ').join(' '); // Map each character to Morse code
         }
 
-        // Play sound
+        // Play sound with specified frequency and duration
         function playSound(frequency, duration) {
-            const oscillator = audioContext.createOscillator(); // Create an oscillator
-            oscillator.type = 'sine'; // Set wave type to sine
+            const oscillator = audioContext.createOscillator(); // Create a sound generator
+            oscillator.type = 'sine'; // Set sound type to sine wave
             oscillator.frequency.setValueAtTime(frequency, audioContext.currentTime); // Set frequency
-            oscillator.connect(audioContext.destination); // Connect to the audio context's destination
+            oscillator.connect(audioContext.destination); // Output sound to audio output device
             oscillator.start(); // Start playing
-            oscillator.stop(audioContext.currentTime + duration); // Stop playing
+            oscillator.stop(audioContext.currentTime + duration); // Stop after specified duration
         }
 
-        // Calculate the duration of a dot (in milliseconds)
+        // Calculate the duration of each dot based on WPM (words per minute)
         function getDotDuration(wpm) {
-            return 1200 / wpm; // Calculate duration of a dot
+            return 1200 / wpm; // 1200ms/WPM equals the duration of a dot
         }
 
-        // Play Morse code
+        // Clear all set timeouts
+        function clearTimeouts() {
+            currentTimeouts.forEach(timeout => clearTimeout(timeout)); // Clear all setTimeouts one by one
+            currentTimeouts = []; // Clear the timeout array
+        }
+
+        // Play the next Morse code symbol
         function playNextSymbol() {
-            // Exit if paused or finished playing
+            // Exit the function if playback has stopped or reached the end
             if (!isPlaying || currentIndex >= words.length) {
                 return;
             }
 
-            const symbol = words[currentIndex]; // Get current note
-            if (symbol === '.') { // Play dot
-                playSound(currentFrequency, dotDuration / 1000);
-                currentIndex++; // Move to next note
-                setTimeout(playNextSymbol, dotDuration + elementGap); // Wait to play the next note
-            } else if (symbol === '-') { // Play dash
-                playSound(currentFrequency, dashDuration / 1000);
-                currentIndex++; // Move to next note
-                setTimeout(playNextSymbol, dashDuration + elementGap); // Wait to play the next note
-            } else if (symbol === ' ') { // Add gap between letters
-                currentIndex++;
-                setTimeout(playNextSymbol, letterGap); // Wait to play the next note
-            } else if (symbol === '   ') { // Add gap between words
-                currentIndex++;
-                setTimeout(playNextSymbol, wordGap); // Wait to play the next note
+            const symbol = words[currentIndex]; // Get the current symbol to be played
+            let timeoutDuration = 0; // Duration for the timeout
+
+            if (symbol === '.') {
+                // Play dot
+                playSound(currentFrequency, dotDuration / 1000); // Convert dot duration to seconds
+                timeoutDuration = dotDuration + elementGap; // Dot followed by element gap
+            } else if (symbol === '-') {
+                // Play dash
+                playSound(currentFrequency, dashDuration / 1000); // Dash duration is three times that of a dot
+                timeoutDuration = dashDuration + elementGap;
+            } else if (symbol === ' ') {
+                // Letter gap
+                timeoutDuration = letterGap;
+            } else if (symbol === '   ') {
+                // Word gap
+                timeoutDuration = wordGap;
             }
+
+            currentIndex++; // Play the next symbol
+            const timeoutId = setTimeout(playNextSymbol, timeoutDuration); // Set the next symbol to play
+            currentTimeouts.push(timeoutId); // Save timeout reference for clearing
         }
 
-        // Play Morse code
+        // Prepare and start playing Morse code
         function playMorse(wpm, freq) {
-            dotDuration = getDotDuration(wpm); // Calculate dot duration
-            dashDuration = 3 * dotDuration; // Dash duration is three times that of a dot
-            elementGap = dotDuration; // Gap between elements
-            letterGap = 3 * dotDuration; // Gap between letters
-            wordGap = 7 * dotDuration; // Gap between words (7 times the duration of a dot)
+            // Calculate various durations: dot, dash, element gap, letter gap, word gap
+            dotDuration = getDotDuration(wpm);
+            dashDuration = 3 * dotDuration;
+            elementGap = dotDuration;
+            letterGap = 3 * dotDuration;
+            wordGap = 7 * dotDuration;
 
-            const text = document.getElementById('textInput').value.trim(); // Get input text
-            const morseText = text.split(' ').map(word => textToMorse(word)).join('   '); // Convert to Morse code
-            words = morseText.split(''); // Split Morse code into individual characters
-            currentFrequency = freq; // Set current frequency
-            currentIndex = 0; // Reset current index
-            isPlaying = true; // Mark as playing
-            playNextSymbol(); // Start playing notes
+            // Get the text from the input box and convert to Morse code
+            const text = document.getElementById('textInput').value.trim();
+            const morseText = text.split(' ').map(word => textToMorse(word)).join('   '); // Convert text to Morse code with spaces between words
+            words = morseText.split(''); // Split Morse text into individual symbols
+            currentIndex = 0; // Reset the index
+            isPlaying = true; // Set playing state to true
+
+            // Start playing the Morse code
+            playNextSymbol(); // Begin playing the Morse code
         }
 
-        // Validate user input
-        function validateInput(text) {
-            // Regular expression: allow letters, numbers, and specific symbols
-            const validChars = /^[A-Za-z0-9.,?'!()/&:;=+-_"$@ ]*$/;
-            return validChars.test(text); // Return whether the input is valid
-        }
-
-        // Prepare to play audio
+        // Prepare the Morse code and handle user input
         function preparation() {
-            const textInput = document.getElementById('textInput').value; // Get user input text
-
-            // Validate user input
-            if (!validateInput(textInput)) {
-                document.getElementById('error').innerText = 'Please enter valid characters only!';
+            const inputText = document.getElementById('textInput').value.trim(); // Get user input
+            const errorMessage = document.getElementById('error'); // Get error message area
+            errorMessage.textContent = ''; // Clear previous error message
+            if (!validateInput(inputText)) {
+                errorMessage.textContent = 'Only A-Z, 0-9, and some punctuation (.,?\'!()/&:;=+-_"$@) are allowed!'; // Set error message
                 return; // Exit if input is invalid
-            } else {
-                document.getElementById('error').innerText = ''; // Clear error message
             }
-
-            // Get WPM and frequency values
-            const wpm = parseInt(document.getElementById('WPM').value);
-            const freq = parseInt(document.getElementById('fq').value);
-
-            // Create audio context if not already created
+            clearTimeouts(); // Clear any existing timeouts
             if (!audioContext) {
-                createAudioContext(); // Create audio context
+                createAudioContext(); // Create audio context if it doesn't exist
             }
-
-            // Play Morse code
-            playMorse(wpm, freq);
+            const wpm = document.getElementById('WPM').value; // Get user-defined WPM
+            currentFrequency = document.getElementById('fq').value; // Get user-defined frequency
+            playMorse(wpm, currentFrequency); // Start playing Morse code
         }
 
-        // Pause playback
+        // Pause the playback
         function pauseSound() {
-            isPlaying = false; // Mark as paused
+            isPlaying = false; // Set playing state to false
         }
 
         // Resume playback
         function resumeSound() {
-            if (!isPlaying) {
-                isPlaying = true; // Mark as playing
-                playNextSymbol(); // Resume playing
+            if (!isPlaying && currentIndex < words.length) {
+                isPlaying = true; // Set playing state to true
+                playNextSymbol(); // Resume playing from current index
             }
         }
 
         // Stop playback
         function stopSound() {
-            isPlaying = false; // Mark as not playing
-            currentIndex = 0; // Reset current index
-            words = []; // Clear words
+            clearTimeouts(); // Clear all timeouts
+            isPlaying = false; // Set playing state to false
+            currentIndex = 0; // Reset index
+        }
+
+        // Validate user input
+        function validateInput(inputText) {
+            const allowedChars = /^[A-Za-z0-9.,?!'()&:;=-_\/\"$@ ]*$/; // Regular expression to allow only specific characters
+            return allowedChars.test(inputText); // Return true if input is valid
+        }
+
+        // Download Morse code as a text file
+        function downloadMorse() {
+            const text = document.getElementById('textInput').value.trim(); // Get input text
+            const morseText = textToMorse(text); // Convert to Morse code
+            const blob = new Blob([morseText], { type: 'text/plain' }); // Create a blob for the Morse code
+            const link = document.createElement('a'); // Create a link element
+            link.href = window.URL.createObjectURL(blob); // Set the link to the blob URL
+            link.download = 'morse_code.txt'; // Set the default file name for download
+            link.click(); // Trigger the download
         }
     </script>
 </body>

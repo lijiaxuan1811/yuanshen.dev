@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="GB2312">
+		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>YuanRetro-Trip Information Reminders Generator</title>
 		<link rel="stylesheet" href="./style.css">
@@ -12,9 +12,9 @@
 			<li class="navi"><a href="http://www.yuanshen.dev/en/music.html">Music</a></li>
 			<li class="navi"><a href="http://www.yuanshen.dev/en/pinball.html">JS Pinball Game</a></li>
 			<li class="navi"><a href="http://www.yuanshen.dev/en/morse.html">Morse Code</a></li>
-			<li class="navi"><a href="http://www.yuanshen.dev/en/crtirgen.html">ÖĞ¹úÌúÂ·ĞĞ³ÌĞÅÏ¢ÌáÊ¾Éú³ÉÆ÷(CRTIRGen)</a></li>
+			<li class="navi"><a href="http://www.yuanshen.dev/en/crtirgen.html">ä¸­å›½é“è·¯è¡Œç¨‹ä¿¡æ¯æç¤ºç”Ÿæˆå™¨(CRTIRGen)</a></li>
 			<li class="navi"><a href="http://www.yuanshen.dev/en/about.html">About</a></li>
-			<li class="navi"><a href="http://www.yuanshen.dev/">¼òÌåÖĞÎÄ</a></li>
+			<li class="navi"><a href="http://www.yuanshen.dev/">ç®€ä½“ä¸­æ–‡</a></li>
 		</ul>
 		<br />
 		<h2>China Railway Trip Information Reminders Generator V1.2-2024.07.23</h2>
@@ -28,7 +28,7 @@
 			<label for="date2">Print Date:</label>
 			<input type="date" id="date2" min="0000-01-01" max="9999-12-31" />
 			<label for="time2">Print Time:</label>
-			<input type="time" id="time2" step="1" /><br /><!--Ìí¼Óstep="1"Ê¹ÃëÊıÑ¡¿ò³öÏÖ-->
+			<input type="time" id="time2" step="1" /><br /><!--æ·»åŠ step="1"ä½¿ç§’æ•°é€‰æ¡†å‡ºç°-->
 			<label for="depStation">Departure Station:</label>
 			<input type="text" id="depStation" size="10" />
 			<label for="depStation">Station</label>
@@ -36,7 +36,7 @@
 			<input type="text" id="depPy" size="14" /><br />
 			<label for="trainTypeDrop">Train Number:</label>
 			<select id="trainTypeDrop">
-				<option value="normal">Local(No Prefix)</option><!--"Normal"Í¨¹ıÅĞ¶ÏÓï¾ä×ªÎªÎŞÇ°×º£¬ÆäËûµÄÖ±½ÓÊ¹ÓÃvalueÖĞµÄÖµ×÷Îª³µ´ÎºÅÇ°×º-->
+				<option value="normal">Local(No Prefix)</option><!--"Normal"é€šè¿‡åˆ¤æ–­è¯­å¥è½¬ä¸ºæ— å‰ç¼€ï¼Œå…¶ä»–çš„ç›´æ¥ä½¿ç”¨valueä¸­çš„å€¼ä½œä¸ºè½¦æ¬¡å·å‰ç¼€-->
 				<option value="K">Rapid(K)</option>
 				<option value="T">Express(T)</option>
 				<option value="Z">Limited Express(Z)</option>
@@ -63,15 +63,15 @@
 			<label for="fare">Yuan</label>
 			<label for="ticketCheck">Ticket Check (Leave blank if none):</label>
 			<input type="text" id="ticketCheck" size="12" /><br />
-			<label for="TMIS">Station TMIS</label><!--TMISÎªÃ¿¸öÌúÂ·³µÕ¾µÄÎ¨Ò»ÎåÎ»Êı±àºÅ-->
+			<label for="TMIS">Station TMIS</label><!--TMISä¸ºæ¯ä¸ªé“è·¯è½¦ç«™çš„å”¯ä¸€äº”ä½æ•°ç¼–å·-->
 			<input type="text" id="TMIS" size="8" /><br />
 			<label for="machineType">Printer Type:</label>
 			<input type="text" id="machineType" size="5" /><br />
-			<label for="machineNo">Printer ID:</label><!--Æ¾ÌõÎ²²¿µÄ¡°³öµ¥¡±10Î»ÊıºÅÂë¼´ÎªTMIS£¨5Î»Êı£©+»úÆ÷ÀàĞÍ£¨2Î»Êı£©+»úÆ÷±àºÅ£¨3Î»Êı£©-->
+			<label for="machineNo">Printer ID:</label><!--å‡­æ¡å°¾éƒ¨çš„â€œå‡ºå•â€10ä½æ•°å·ç å³ä¸ºTMISï¼ˆ5ä½æ•°ï¼‰+æœºå™¨ç±»å‹ï¼ˆ2ä½æ•°ï¼‰+æœºå™¨ç¼–å·ï¼ˆ3ä½æ•°ï¼‰-->
 			<input type="text" id="machineNo" size="5" />
-			<label for="orderNo">Order Number:</label><!--Ò»°ãÎªE¿ªÍ·-->
+			<label for="orderNo">Order Number:</label><!--ä¸€èˆ¬ä¸ºEå¼€å¤´-->
 			<input type="text" id="orderNo" size="10" /><br />
-			<label for="ticketNo">E-ticket Number:</label><!--Ç°14Î»ÊıÎªTMIS£¨5Î»Êı£©+»úÆ÷ÀàĞÍ£¨2Î»Êı£©+»úÆ÷±àºÅ£¨3Î»Êı£©+½áËãÈÕÆÚ£¨MMDD£¬4Î»Êı£©£»×îºó4Î»ÊıÎªÄê·İ£»Á½²¿·ÖÖĞ¼äµÄ7Î»ÊıÎ´Öª-->
+			<label for="ticketNo">E-ticket Number:</label><!--å‰14ä½æ•°ä¸ºTMISï¼ˆ5ä½æ•°ï¼‰+æœºå™¨ç±»å‹ï¼ˆ2ä½æ•°ï¼‰+æœºå™¨ç¼–å·ï¼ˆ3ä½æ•°ï¼‰+ç»“ç®—æ—¥æœŸï¼ˆMMDDï¼Œ4ä½æ•°ï¼‰ï¼›æœ€å4ä½æ•°ä¸ºå¹´ä»½ï¼›ä¸¤éƒ¨åˆ†ä¸­é—´çš„7ä½æ•°æœªçŸ¥-->
 			<input type="text" id="ticketNo" size="30" /><br />
 			<label for="name">Name:</label>
 			<input type="text" id="name" size="8" />
@@ -81,44 +81,44 @@
 			<input type="text" id="idTypeChn" size="12" />
 			<label for="idNo">ID Code (Put '*' on proper locations):</label>
 			<input type="text" id="idNo" size="18" />
-			<input type="button" value="È·ÈÏ" id="submit1" />
+			<input type="button" value="ç¡®è®¤" id="submit1" />
 		</form>
 		<canvas id="canvas" width="800" height="1400"></canvas>
 		<script type="text/javascript">
-			var canv = document.getElementById("canvas");//ÉùÃ÷»­²¼¶ÔÏó
-			var ctx = canv.getContext("2d");//ÉùÃ÷»­±Ê¶ÔÏó
+			var canv = document.getElementById("canvas");//å£°æ˜ç”»å¸ƒå¯¹è±¡
+			var ctx = canv.getContext("2d");//å£°æ˜ç”»ç¬”å¯¹è±¡
 			var img1 = new Image();
-			var img2 = new Image();//ÉùÃ÷ÖĞ¹úÌúÂ·logoºÍ¶şÎ¬ÂëµÄÍ¼Æ¬¶ÔÏó
+			var img2 = new Image();//å£°æ˜ä¸­å›½é“è·¯logoå’ŒäºŒç»´ç çš„å›¾ç‰‡å¯¹è±¡
 			img1.src = "../img1.gif";
 			img2.src = "../img2.gif";
-			var date1, time1, date2, time2, trainTypeDrop, trainNo;//ÉùÃ÷±íµ¥ÖĞÈô¸ÉÏîÄ¿µÄ¶ÔÏó±äÁ¿
-			var button = document.getElementById("submit1");//ÉùÃ÷Ìá½»°´Å¥¶ÔÏó
+			var date1, time1, date2, time2, trainTypeDrop, trainNo;//å£°æ˜è¡¨å•ä¸­è‹¥å¹²é¡¹ç›®çš„å¯¹è±¡å˜é‡
+			var button = document.getElementById("submit1");//å£°æ˜æäº¤æŒ‰é’®å¯¹è±¡
 			var depTime = "", depYear = "", depStation = "", depPy = "", arrStation = "", arrPy = "",
 			prtDate = "", prtTime = "", trainNumber = "", machineType = "", machineNo = "",code1 = "",
 			seatNumber = "", seatType = "", fare = "", ticketCheck = "", orderNo = "", ticketNo = "",
-			name = "", idTypeEng = "", idTypeChn = "", idNo = "", TMIS = "";//ÉùÃ÷ËùÓĞ×Ö·û´®±äÁ¿
-			var depMonth = 0, depDay = 0, pointer = 0, pointer1 = 0, temp = 0, temp1 = "", temp2 = 0, temp3 = 0;//ÉùÃ÷Êı×Ö¡¢ÁÙÊ±±äÁ¿
+			name = "", idTypeEng = "", idTypeChn = "", idNo = "", TMIS = "";//å£°æ˜æ‰€æœ‰å­—ç¬¦ä¸²å˜é‡
+			var depMonth = 0, depDay = 0, pointer = 0, pointer1 = 0, temp = 0, temp1 = "", temp2 = 0, temp3 = 0;//å£°æ˜æ•°å­—ã€ä¸´æ—¶å˜é‡
 
 			function readForm() {
-				//±¾º¯Êı´ÓÊäÈë±íµ¥ÖĞ¶ÁÈ¡ËùÓĞÊäÈëµÄÊı¾İ
+				//æœ¬å‡½æ•°ä»è¾“å…¥è¡¨å•ä¸­è¯»å–æ‰€æœ‰è¾“å…¥çš„æ•°æ®
 				date1 = document.getElementById("date1");
 				time1 = document.getElementById("time1");
 				date2 = document.getElementById("date2");
-				time2 = document.getElementById("time2");//ÈÕÆÚÊ±¼äÑ¡¿ò
-				trainTypeDrop = document.getElementById("trainTypeDrop");//³µ´ÎÀàĞÍÏÂÀ­¿ò¶ÔÏó
+				time2 = document.getElementById("time2");//æ—¥æœŸæ—¶é—´é€‰æ¡†
+				trainTypeDrop = document.getElementById("trainTypeDrop");//è½¦æ¬¡ç±»å‹ä¸‹æ‹‰æ¡†å¯¹è±¡
 				trainNo = document.getElementById("trainNo");
-				temp1 = trainTypeDrop.options[trainTypeDrop.selectedIndex].value;//»ñÈ¡ÏÂÀ­¿òËùÓĞÑ¡ÔñÏîÖĞ±»Ñ¡ÖĞÏîµÄÖµ
+				temp1 = trainTypeDrop.options[trainTypeDrop.selectedIndex].value;//è·å–ä¸‹æ‹‰æ¡†æ‰€æœ‰é€‰æ‹©é¡¹ä¸­è¢«é€‰ä¸­é¡¹çš„å€¼
 				if (temp1 == "normal") {
-					trainNumber = trainNo.value;//Èç¹ûÀàĞÍÎªÆÕ¿Í£¬Ôò²»¼ÓÈÎºÎÇ°×º
+					trainNumber = trainNo.value;//å¦‚æœç±»å‹ä¸ºæ™®å®¢ï¼Œåˆ™ä¸åŠ ä»»ä½•å‰ç¼€
 				} else {
-					trainNumber = temp1 + trainNo.value;//·ñÔò£¬Ê¹ÓÃ¸ÃÏîµÄÖµ×÷Îª³µ´ÎºÅÇ°×º
+					trainNumber = temp1 + trainNo.value;//å¦åˆ™ï¼Œä½¿ç”¨è¯¥é¡¹çš„å€¼ä½œä¸ºè½¦æ¬¡å·å‰ç¼€
 				}
 				depTime = time1.value;
-				depYear = date1.value.substr(0, 4);//·Ö±ğ½ØÈ¡¿ª³µÄêÔÂÈÕ
+				depYear = date1.value.substr(0, 4);//åˆ†åˆ«æˆªå–å¼€è½¦å¹´æœˆæ—¥
 				depMonth = Number(date1.value.substr(5, 2));
-				depDay = Number(date1.value.substr(8, 2));//½«¿ª³µÔÂÈÕ×ª»»ÎªÊı×ÖÀàĞÍ£¬±ÜÃâÒ»Î»ÊıÇ°µ¼0
+				depDay = Number(date1.value.substr(8, 2));//å°†å¼€è½¦æœˆæ—¥è½¬æ¢ä¸ºæ•°å­—ç±»å‹ï¼Œé¿å…ä¸€ä½æ•°å‰å¯¼0
 				prtDate = date2.value;
-				prtTime = time2.value;//³öÆ±ÈÕÆÚÊ±¼ä¸ñÊ½¿ÉÖ±½ÓÊ¹ÓÃ£¬ÎŞĞè×ª»»
+				prtTime = time2.value;//å‡ºç¥¨æ—¥æœŸæ—¶é—´æ ¼å¼å¯ç›´æ¥ä½¿ç”¨ï¼Œæ— éœ€è½¬æ¢
 				depStation = document.getElementById("depStation").value;
 				depPy = document.getElementById("depPy").value;
 				arrStation = document.getElementById("arrStation").value;
@@ -135,167 +135,167 @@
 				name = document.getElementById("name").value;
 				idTypeEng = document.getElementById("idTypeEng").value;
 				idTypeChn = document.getElementById("idTypeChn").value;
-				idNo = document.getElementById("idNo").value;//»ñÈ¡ÊäÈë¿òµÄÊäÈëÖµ£¨Ö±½ÓÊ¹ÓÃdocument.getElementById·½·¨£¬¼õÉÙĞèÒªÉùÃ÷µÄ¶ÔÏóÊıÁ¿£©
+				idNo = document.getElementById("idNo").value;//è·å–è¾“å…¥æ¡†çš„è¾“å…¥å€¼ï¼ˆç›´æ¥ä½¿ç”¨document.getElementByIdæ–¹æ³•ï¼Œå‡å°‘éœ€è¦å£°æ˜çš„å¯¹è±¡æ•°é‡ï¼‰
 			}
 
 			function init() {
-				//´¥·¢°´Å¥»òÕß¼üÅÌÊÂ¼şÖ®ºó£¬Ê×ÏÈµ÷ÓÃ±¾º¯Êı£¬¶ÁÈ¡ÊäÈëÖµ²¢Ìî³ä¹Ì¶¨ÄÚÈİ
-				readForm();//µ÷ÓÃº¯Êı¶ÁÈ¡±íµ¥
-				ctx.clearRect(0, 0, canv.width, canv.height);//Çå³ı»­²¼ÉÏµÄËùÓĞÔªËØ
-				//ÉèÖÃ»­²¼µ×É«°×É«
+				//è§¦å‘æŒ‰é’®æˆ–è€…é”®ç›˜äº‹ä»¶ä¹‹åï¼Œé¦–å…ˆè°ƒç”¨æœ¬å‡½æ•°ï¼Œè¯»å–è¾“å…¥å€¼å¹¶å¡«å……å›ºå®šå†…å®¹
+				readForm();//è°ƒç”¨å‡½æ•°è¯»å–è¡¨å•
+				ctx.clearRect(0, 0, canv.width, canv.height);//æ¸…é™¤ç”»å¸ƒä¸Šçš„æ‰€æœ‰å…ƒç´ 
+				//è®¾ç½®ç”»å¸ƒåº•è‰²ç™½è‰²
 				ctx.fillStyle = "#FFFFFF";
-				ctx.fillRect(0, 0, canv.width, canv.height);//Ìî³ä»­²¼µ×É«
-				//ÉèÖÃÎÄ×ÖÑÕÉ«ºÚÉ«
+				ctx.fillRect(0, 0, canv.width, canv.height);//å¡«å……ç”»å¸ƒåº•è‰²
+				//è®¾ç½®æ–‡å­—é¢œè‰²é»‘è‰²
 				ctx.fillStyle = "#000000";
 				pointer = 0;
-				pointer1 = 0;//Çå¿ÕÎÄ×Öx×ø±êÖ¸Õë
-				ctx.drawImage(img1, 50, 90, 45, 45);//Ìî³äÖĞ¹úÌúÂ·logo
-				ctx.drawImage(img2, 470, 850, 300, 300);//Ìî³ä¶şÎ¬Âë
-				ctx.font = "35px ºÚÌå";
-				ctx.fillText("ÖĞ¹úÌúÂ·", 100, 130);
+				pointer1 = 0;//æ¸…ç©ºæ–‡å­—xåæ ‡æŒ‡é’ˆ
+				ctx.drawImage(img1, 50, 90, 45, 45);//å¡«å……ä¸­å›½é“è·¯logo
+				ctx.drawImage(img2, 470, 850, 300, 300);//å¡«å……äºŒç»´ç 
+				ctx.font = "35px é»‘ä½“";
+				ctx.fillText("ä¸­å›½é“è·¯", 100, 130);
 				ctx.font = "Bold 30px Times New Roman";
 				ctx.fillText("China Railway", 250, 130);
-				ctx.font = "50px ËÎÌå";
-				ctx.fillText("ĞĞ³ÌĞÅÏ¢ÌáÊ¾", 260, 195);
+				ctx.font = "50px å®‹ä½“";
+				ctx.fillText("è¡Œç¨‹ä¿¡æ¯æç¤º", 260, 195);
 				ctx.font = "37px Times New Roman";
 				ctx.fillText("Trip Information Reminders", 190, 240);
-				ctx.setLineDash([15, 3]);//ÉèÖÃÖ±ÏßÀàĞÍÎªĞéÏß£¬Ã¿¶Î15ÏñËØ£¬¼ä¸ô3ÏñËØ
-				ctx.lineDashOffset = -0;//ÉèÖÃĞéÏßÆğÊ¼¶ËÆ«ÒÆÎª0ÏñËØ
-				ctx.beginPath();//¿ªÊ¼»æÖÆĞéÏß
-				ctx.moveTo(40, 260);//ÉèÖÃÆğµãÎª(40,260)
-				ctx.lineTo(775, 260);//ÉèÖÃÖÕµãÎª(775,260)
-				ctx.stroke();//»æÖÆµÚÒ»ÌõĞéÏß
-				ctx.moveTo(40, 800);//ÉèÖÃÆğµãÎª(40,800)
-				ctx.lineTo(775, 800);//ÉèÖÃÖÕµãÎª(775,800)
-				ctx.stroke();//»æÖÆµÚ¶şÌõĞéÏß
-				ctx.moveTo(40, 1200);//ÉèÖÃÆğµãÎª(40,1200)
-				ctx.lineTo(775, 1200);//ÉèÖÃÖÕµãÎª(775,1200)
-				ctx.stroke();//»æÖÆµÚÈıÌõĞéÏß
-				ctx.closePath();//½áÊø»æÖÆĞéÏß
-				ctx.font = "30px ËÎÌå";
-				ctx.fillText("ÏŞ³Ëµ±ÈÕµ±´Î³µ", 40, 570);
-				ctx.fillText("Ôª", 750, 775);
-				ctx.fillText("ÎÂÜ°ÌáÊ¾", 180, 860);
-				ctx.fillText("1.´ËÆ¾Ìõ²»¿É×÷Îª³Ë³µÆ¾Ö¤Ê¹ÓÃ", 40, 900);
-				ctx.fillText("£¬ÇëÄú³Ö¹ºÆ±Ö¤¼ş½øÕ¾¼ìÆ±³Ë³µ", 40, 940);
-				ctx.fillText("¡£", 40, 980);
-				ctx.fillText("2.Îª·½±ãÄúÔÚÍøÉÏ°ìÀíĞĞ³Ì±ä¸ü", 40, 1020);
-				ctx.fillText("ÊÖĞø£¬½¨ÒéÔÚĞĞ³Ì½áÊøºó°´ĞèÁì", 40, 1060);
-				ctx.fillText("È¡±¨ÏúÆ¾Ö¤¡£", 40, 1100);
-				ctx.fillText("3.»¶Ó­É¨Âë²éÔÄ³Ë³µĞëÖª¡¢ÏÂÔØ", 40, 1140);
-				ctx.fillText("ÌúÂ·12306APP¡£", 40, 1180);
-				ctx.font = "35px ËÎÌå";
-				ctx.fillText("Çë°´ĞĞ³ÌĞÅÏ¢ÌáÊ¾³Ë³µ£¬×£ÄúÂÃÍ¾Óä¿ì£¡", 100, 1250);
-				ctx.font = "30px ËÎÌå";
-				ctx.fillText("³öµ¥£º", 145, 1300);
-				cusGen();//µ÷ÓÃº¯ÊıÌî³ä¿É±äÄÚÈİ
+				ctx.setLineDash([15, 3]);//è®¾ç½®ç›´çº¿ç±»å‹ä¸ºè™šçº¿ï¼Œæ¯æ®µ15åƒç´ ï¼Œé—´éš”3åƒç´ 
+				ctx.lineDashOffset = -0;//è®¾ç½®è™šçº¿èµ·å§‹ç«¯åç§»ä¸º0åƒç´ 
+				ctx.beginPath();//å¼€å§‹ç»˜åˆ¶è™šçº¿
+				ctx.moveTo(40, 260);//è®¾ç½®èµ·ç‚¹ä¸º(40,260)
+				ctx.lineTo(775, 260);//è®¾ç½®ç»ˆç‚¹ä¸º(775,260)
+				ctx.stroke();//ç»˜åˆ¶ç¬¬ä¸€æ¡è™šçº¿
+				ctx.moveTo(40, 800);//è®¾ç½®èµ·ç‚¹ä¸º(40,800)
+				ctx.lineTo(775, 800);//è®¾ç½®ç»ˆç‚¹ä¸º(775,800)
+				ctx.stroke();//ç»˜åˆ¶ç¬¬äºŒæ¡è™šçº¿
+				ctx.moveTo(40, 1200);//è®¾ç½®èµ·ç‚¹ä¸º(40,1200)
+				ctx.lineTo(775, 1200);//è®¾ç½®ç»ˆç‚¹ä¸º(775,1200)
+				ctx.stroke();//ç»˜åˆ¶ç¬¬ä¸‰æ¡è™šçº¿
+				ctx.closePath();//ç»“æŸç»˜åˆ¶è™šçº¿
+				ctx.font = "30px å®‹ä½“";
+				ctx.fillText("é™ä¹˜å½“æ—¥å½“æ¬¡è½¦", 40, 570);
+				ctx.fillText("å…ƒ", 750, 775);
+				ctx.fillText("æ¸©é¦¨æç¤º", 180, 860);
+				ctx.fillText("1.æ­¤å‡­æ¡ä¸å¯ä½œä¸ºä¹˜è½¦å‡­è¯ä½¿ç”¨", 40, 900);
+				ctx.fillText("ï¼Œè¯·æ‚¨æŒè´­ç¥¨è¯ä»¶è¿›ç«™æ£€ç¥¨ä¹˜è½¦", 40, 940);
+				ctx.fillText("ã€‚", 40, 980);
+				ctx.fillText("2.ä¸ºæ–¹ä¾¿æ‚¨åœ¨ç½‘ä¸ŠåŠç†è¡Œç¨‹å˜æ›´", 40, 1020);
+				ctx.fillText("æ‰‹ç»­ï¼Œå»ºè®®åœ¨è¡Œç¨‹ç»“æŸåæŒ‰éœ€é¢†", 40, 1060);
+				ctx.fillText("å–æŠ¥é”€å‡­è¯ã€‚", 40, 1100);
+				ctx.fillText("3.æ¬¢è¿æ‰«ç æŸ¥é˜…ä¹˜è½¦é¡»çŸ¥ã€ä¸‹è½½", 40, 1140);
+				ctx.fillText("é“è·¯12306APPã€‚", 40, 1180);
+				ctx.font = "35px å®‹ä½“";
+				ctx.fillText("è¯·æŒ‰è¡Œç¨‹ä¿¡æ¯æç¤ºä¹˜è½¦ï¼Œç¥æ‚¨æ—…é€”æ„‰å¿«ï¼", 100, 1250);
+				ctx.font = "30px å®‹ä½“";
+				ctx.fillText("å‡ºå•ï¼š", 145, 1300);
+				cusGen();//è°ƒç”¨å‡½æ•°å¡«å……å¯å˜å†…å®¹
 			}
 
 			function pyLocation(lastPointer, turn) {
-				//±¾º¯ÊıÓÃÓÚ¼ÆËãÊ¼·¢µ½´ïÕ¾Æ´ÒôºÍ³µ´ÎºÅµÄx×ø±êÎ»ÖÃ£¬ÒÔ±ã¸üºÃÓëÆäËûÔªËØ¶ÔÆë
+				//æœ¬å‡½æ•°ç”¨äºè®¡ç®—å§‹å‘åˆ°è¾¾ç«™æ‹¼éŸ³å’Œè½¦æ¬¡å·çš„xåæ ‡ä½ç½®ï¼Œä»¥ä¾¿æ›´å¥½ä¸å…¶ä»–å…ƒç´ å¯¹é½
 				if (turn == 1) {
-					//¼ÆËãÊ¼·¢Õ¾Æ´ÒôÎ»ÖÃ
+					//è®¡ç®—å§‹å‘ç«™æ‹¼éŸ³ä½ç½®
 					return (((lastPointer - 60) / 2) + 90) - depPy.length / 2 * 13 - 5;
 				} else if (turn == 2) {
-					//¼ÆËã³µ´ÎºÅÎ»ÖÃ
+					//è®¡ç®—è½¦æ¬¡å·ä½ç½®
 					return (lastPointer - (125 / 2)) - trainNumber.length / 2 * 13 - 5;
 				} else if (turn == 3) {
-					//¼ÆËãµ½´ïÕ¾Æ´ÒôÎ»ÖÃ
+					//è®¡ç®—åˆ°è¾¾ç«™æ‹¼éŸ³ä½ç½®
 					return ((lastPointer + 30 - temp) / 2 + temp) - depPy.length / 2 * 13 - 5;
 				}
 			}
 
 			function cusGen() {
-				//±¾º¯ÊıÓÃÓÚÌî³ä¿É±äÎÄ×Ö
-				ctx.font = "30px ËÎÌå";
-				ctx.fillText("¿ª³µÊ±¼ä£º", pointer += 40, 325);
+				//æœ¬å‡½æ•°ç”¨äºå¡«å……å¯å˜æ–‡å­—
+				ctx.font = "30px å®‹ä½“";
+				ctx.fillText("å¼€è½¦æ—¶é—´ï¼š", pointer += 40, 325);
 				ctx.fillText(depYear, pointer += 150, 325);
-				ctx.fillText("Äê", pointer += 60, 325);
-				ctx.font = "60px ËÎÌå";
+				ctx.fillText("å¹´", pointer += 60, 325);
+				ctx.font = "60px å®‹ä½“";
 				if (depMonth != 0 && depDay != 0) {
-					//±¾ÅĞ¶ÏÓï¾äÎª¼«ÆäÔçÆÚËùĞ´£¬ºóÆÚ½«½øĞĞ½øÒ»²½ÓÅ»¯
-					//fillText()·½·¨¿ÉÒÔ´«ÈëµÚÈı¸ö²ÎÊı£¬ÓÃÓÚÏŞÖÆ±¾´ÎÌî³äµÄÎÄ×ÖµÄ×î´ó¿í¶È£¬Òò´Ë¿ÉÒÔ×ö³öÎÄ×ÖÏ¸³¤Ğ§¹û
+					//æœ¬åˆ¤æ–­è¯­å¥ä¸ºæå…¶æ—©æœŸæ‰€å†™ï¼ŒåæœŸå°†è¿›è¡Œè¿›ä¸€æ­¥ä¼˜åŒ–
+					//fillText()æ–¹æ³•å¯ä»¥ä¼ å…¥ç¬¬ä¸‰ä¸ªå‚æ•°ï¼Œç”¨äºé™åˆ¶æœ¬æ¬¡å¡«å……çš„æ–‡å­—çš„æœ€å¤§å®½åº¦ï¼Œå› æ­¤å¯ä»¥åšå‡ºæ–‡å­—ç»†é•¿æ•ˆæœ
 					if (depMonth >= 0 && depMonth < 10) {
-						//ÔÂ·İÎªÒ»Î»Êı
+						//æœˆä»½ä¸ºä¸€ä½æ•°
 						ctx.fillText(depMonth, pointer += 35, 320, 15);
-						ctx.font = "30px ËÎÌå";
-						ctx.fillText("ÔÂ", pointer += 15, 325);//Ö¸ÕëÒÆ¶¯15px
+						ctx.font = "30px å®‹ä½“";
+						ctx.fillText("æœˆ", pointer += 15, 325);//æŒ‡é’ˆç§»åŠ¨15px
 					} else if (depMonth >= 10) {
-						//ÔÂ·İÎªÁ½Î»Êı
+						//æœˆä»½ä¸ºä¸¤ä½æ•°
 						ctx.fillText(depMonth, pointer += 35, 320, 35);
-						ctx.font = "30px ËÎÌå";
-						ctx.fillText("ÔÂ", pointer += 35, 325);//Ö¸ÕëÒÆ¶¯35px
+						ctx.font = "30px å®‹ä½“";
+						ctx.fillText("æœˆ", pointer += 35, 325);//æŒ‡é’ˆç§»åŠ¨35px
 					}
 					if (depDay >= 0 && depDay < 10) {
-						//ÈÕÆÚÎªÒ»Î»Êı
-						ctx.font = "60px ËÎÌå";
+						//æ—¥æœŸä¸ºä¸€ä½æ•°
+						ctx.font = "60px å®‹ä½“";
 						ctx.fillText(depDay, pointer += 35, 320, 15);
-						ctx.font = "30px ËÎÌå";
-						ctx.fillText("ÈÕ", pointer += 15, 325);//Ö¸ÕëÒÆ¶¯15px
+						ctx.font = "30px å®‹ä½“";
+						ctx.fillText("æ—¥", pointer += 15, 325);//æŒ‡é’ˆç§»åŠ¨15px
 					} else if (depDay >= 10) {
-						//ÈÕÆÚÎªÁ½Î»Êı
-						ctx.font = "60px ËÎÌå";
+						//æ—¥æœŸä¸ºä¸¤ä½æ•°
+						ctx.font = "60px å®‹ä½“";
 						ctx.fillText(depDay, pointer += 35, 320, 35);
-						ctx.font = "30px ËÎÌå";
-						ctx.fillText("ÈÕ", pointer += 35, 325);//Ö¸ÕëÒÆ¶¯35px
+						ctx.font = "30px å®‹ä½“";
+						ctx.fillText("æ—¥", pointer += 35, 325);//æŒ‡é’ˆç§»åŠ¨35px
 					}
-					ctx.font = "60px ËÎÌå";
-					ctx.fillText(depTime, pointer += 85, 320, 95);//Ìî³ä¿ª³µÊ±¼ä
+					ctx.font = "60px å®‹ä½“";
+					ctx.fillText(depTime, pointer += 85, 320, 95);//å¡«å……å¼€è½¦æ—¶é—´
 				} else {
-					//Èç¹ûÃ»ÓĞ´«ÈëµÄÈÕÆÚ²ÎÊı£¬ÄÇÃ´Ö»ÏÔÊ¾Õ¼Î»·û£¨ÄêÔÂÈÕ£©
-					ctx.font = "30px ËÎÌå";
-					ctx.fillText("ÔÂ", 320, 325);
-					ctx.fillText("ÈÕ", 390, 325);
-					ctx.font = "60px ËÎÌå";
+					//å¦‚æœæ²¡æœ‰ä¼ å…¥çš„æ—¥æœŸå‚æ•°ï¼Œé‚£ä¹ˆåªæ˜¾ç¤ºå ä½ç¬¦ï¼ˆå¹´æœˆæ—¥ï¼‰
+					ctx.font = "30px å®‹ä½“";
+					ctx.fillText("æœˆ", 320, 325);
+					ctx.fillText("æ—¥", 390, 325);
+					ctx.font = "60px å®‹ä½“";
 					ctx.fillText(depTime, 475, 320, 95);
 				}
-				ctx.font = "45px ËÎÌå";
-				ctx.fillText(depStation, pointer1 += 90, 390);//Ìî³ä³ö·¢Õ¾ÖĞÎÄ
-				ctx.font = "30px ËÎÌå";
-				pointer1 += depStation.length * 45;//Ö¸ÕëÒÆ¶¯Õ¾Ãû³¤¶È*45px
-				ctx.fillText("Õ¾", pointer1, 390);
+				ctx.font = "45px å®‹ä½“";
+				ctx.fillText(depStation, pointer1 += 90, 390);//å¡«å……å‡ºå‘ç«™ä¸­æ–‡
+				ctx.font = "30px å®‹ä½“";
+				pointer1 += depStation.length * 45;//æŒ‡é’ˆç§»åŠ¨ç«™åé•¿åº¦*45px
+				ctx.fillText("ç«™", pointer1, 390);
 				ctx.font = "30px Times New Roman";
-				ctx.fillText(depPy, pyLocation(pointer1, 1), 430);//Ìî³ä³ö·¢Õ¾Æ´Òô£¬µ÷ÓÃº¯ÊıÈ·¶¨Î»ÖÃ
+				ctx.fillText(depPy, pyLocation(pointer1, 1), 430);//å¡«å……å‡ºå‘ç«™æ‹¼éŸ³ï¼Œè°ƒç”¨å‡½æ•°ç¡®å®šä½ç½®
 				pointer1 += 30;
-				ctx.setLineDash([]);//ÖØĞÂÉèÖÃ»æÖÆÀàĞÍÎªÖ±Ïß
-				ctx.beginPath();//¿ªÊ¼»æÖÆÖ±Ïß
-				ctx.moveTo(pointer1 += 80, 400);//ÆğµãÎª(Ö¸ÕëÎ»ÖÃ+80px,400)
-				ctx.lineTo(pointer1 += 125, 400);//ÖÕµãÎª(Ö¸ÕëÎ»ÖÃ+125px,400) »æÖÆ³¤¶È45px
-				ctx.stroke();//½áÊø»æÖÆ
+				ctx.setLineDash([]);//é‡æ–°è®¾ç½®ç»˜åˆ¶ç±»å‹ä¸ºç›´çº¿
+				ctx.beginPath();//å¼€å§‹ç»˜åˆ¶ç›´çº¿
+				ctx.moveTo(pointer1 += 80, 400);//èµ·ç‚¹ä¸º(æŒ‡é’ˆä½ç½®+80px,400)
+				ctx.lineTo(pointer1 += 125, 400);//ç»ˆç‚¹ä¸º(æŒ‡é’ˆä½ç½®+125px,400) ç»˜åˆ¶é•¿åº¦45px
+				ctx.stroke();//ç»“æŸç»˜åˆ¶
 				ctx.fillText(trainNumber, pyLocation(pointer1, 2), 390);
-				ctx.font = "45px ËÎÌå";
-				ctx.fillText(arrStation, pointer1 += 80, 390);//Ìî³äµ½´ïÕ¾ÖĞÎÄ
-				temp = pointer1;//½«ÏÖÔÚµÄÖ¸ÕëÎ»ÖÃ±£´æÎªtemp£¬ÒÔ±ãÔËËãµ½´ïÕ¾Æ´ÒôÎ»ÖÃ
-				ctx.font = "30px ËÎÌå";
-				pointer1 += arrStation.length * 45;//Ö¸ÕëÒÆ¶¯Õ¾Ãû³¤¶È*45px
-				ctx.fillText("Õ¾", pointer1, 390);
+				ctx.font = "45px å®‹ä½“";
+				ctx.fillText(arrStation, pointer1 += 80, 390);//å¡«å……åˆ°è¾¾ç«™ä¸­æ–‡
+				temp = pointer1;//å°†ç°åœ¨çš„æŒ‡é’ˆä½ç½®ä¿å­˜ä¸ºtempï¼Œä»¥ä¾¿è¿ç®—åˆ°è¾¾ç«™æ‹¼éŸ³ä½ç½®
+				ctx.font = "30px å®‹ä½“";
+				pointer1 += arrStation.length * 45;//æŒ‡é’ˆç§»åŠ¨ç«™åé•¿åº¦*45px
+				ctx.fillText("ç«™", pointer1, 390);
 				ctx.font = "30px Times New Roman";
-				ctx.fillText(arrPy, pyLocation(pointer1, 3), 430);//Ìî³äµ½´ïÕ¾Æ´Òô£¬µ÷ÓÃº¯ÊıÈ·¶¨Î»ÖÃ
-				ctx.font = "60px ËÎÌå";
-				temp2 = 750 - 23 * ticketCheck.length + 30;//È·¶¨¼ìÆ±¿ÚĞÅÏ¢Ìî³äx×ø±ê
-				ctx.fillText(ticketCheck, temp2, 530, 23 * ticketCheck.length);//Ìî³ä¼ìÆ±¿ÚĞÅÏ¢£¬ÏŞÖÆÃ¿¸ö×Ö·û¿í¶ÈÆ½¾ùÎª23px
-				ctx.fillText(seatNumber, 40, 530, 23 * seatNumber.length);//Ìî³ä×ùÎ»ºÅĞÅÏ¢£¬ÏŞÖÆÃ¿¸ö×Ö·û¿í¶ÈÆ½¾ùÎª23px
-				temp3 = 750 - 23 * fare.length;//È·¶¨Æ±¼ÛĞÅÏ¢Ìî³äx×ø±ê
-				ctx.fillText(fare, temp3, 775, 23 * fare.length);//Ìî³äÆ±¼ÛĞÅÏ¢£¬ÏŞÖÆÃ¿¸ö×Ö·û¿í¶ÈÆ½¾ùÎª23px
-				ctx.font = "30px ËÎÌå";
-				if (ticketCheck != "") ctx.fillText("¼ìÆ±¿Ú£º", temp2 - 110, 530);//Èç¹û¼ìÆ±¿ÚĞÅÏ¢²»Îª¿Õ£¬ÄÇÃ´Ìî³ä¡°¼ìÆ±¿Ú¡±Èı¸öºº×Ö
-				ctx.fillText("Æ±¼Û£º", temp3 - 80, 775);//Ìî³ä¡°Æ±¼Û¡±¶ş×Ö£¬x×ø±êÎªÆ±¼ÛĞÅÏ¢Ìî³äx×ø±ê-80px
-				ctx.fillText(seatType, 40 + 23 * seatNumber.length + 10, 530);//Ìî³ä×øÏ¯Àà±ğ£¬x×ø±êÎª×ùÎ»ºÅÎ²²¿+10px
-				ctx.fillText(name, 40, 610);//Ìî³äĞÕÃû
-				ctx.fillText(idNo + " " + idTypeEng + " " + idTypeChn, 40, 650);//Ìî³äÉí·İÖ¤¼şºÅÂë+ÀàĞÍ´úÂë+ÀàĞÍÖĞÎÄ
-				code1 = TMIS.concat(machineType, machineNo);//Æ´½Ó³µÕ¾TMIS+³öÆ±»úÆ÷ÀàĞÍ+»úÆ÷ºÅ
-				ctx.fillText("µç×ÓÆ±ºÅ£º" + ticketNo, 40, 690);//Ìî³äµç×ÓÆ±ºÅ
-				ctx.fillText("¶© µ¥ ºÅ£º" + orderNo, 40, 775);//Ìî³ä¶©µ¥ºÅ
-				ctx.fillText(code1 + " " + prtDate + " " + prtTime, 235, 1300);//Ìî³äcode1(³µÕ¾TMIS+³öÆ±»úÆ÷ÀàĞÍ+»úÆ÷ºÅ)ºÍ´òÓ¡ÈÕÆÚÊ±¼ä
+				ctx.fillText(arrPy, pyLocation(pointer1, 3), 430);//å¡«å……åˆ°è¾¾ç«™æ‹¼éŸ³ï¼Œè°ƒç”¨å‡½æ•°ç¡®å®šä½ç½®
+				ctx.font = "60px å®‹ä½“";
+				temp2 = 750 - 23 * ticketCheck.length + 30;//ç¡®å®šæ£€ç¥¨å£ä¿¡æ¯å¡«å……xåæ ‡
+				ctx.fillText(ticketCheck, temp2, 530, 23 * ticketCheck.length);//å¡«å……æ£€ç¥¨å£ä¿¡æ¯ï¼Œé™åˆ¶æ¯ä¸ªå­—ç¬¦å®½åº¦å¹³å‡ä¸º23px
+				ctx.fillText(seatNumber, 40, 530, 23 * seatNumber.length);//å¡«å……åº§ä½å·ä¿¡æ¯ï¼Œé™åˆ¶æ¯ä¸ªå­—ç¬¦å®½åº¦å¹³å‡ä¸º23px
+				temp3 = 750 - 23 * fare.length;//ç¡®å®šç¥¨ä»·ä¿¡æ¯å¡«å……xåæ ‡
+				ctx.fillText(fare, temp3, 775, 23 * fare.length);//å¡«å……ç¥¨ä»·ä¿¡æ¯ï¼Œé™åˆ¶æ¯ä¸ªå­—ç¬¦å®½åº¦å¹³å‡ä¸º23px
+				ctx.font = "30px å®‹ä½“";
+				if (ticketCheck != "") ctx.fillText("æ£€ç¥¨å£ï¼š", temp2 - 110, 530);//å¦‚æœæ£€ç¥¨å£ä¿¡æ¯ä¸ä¸ºç©ºï¼Œé‚£ä¹ˆå¡«å……â€œæ£€ç¥¨å£â€ä¸‰ä¸ªæ±‰å­—
+				ctx.fillText("ç¥¨ä»·ï¼š", temp3 - 80, 775);//å¡«å……â€œç¥¨ä»·â€äºŒå­—ï¼Œxåæ ‡ä¸ºç¥¨ä»·ä¿¡æ¯å¡«å……xåæ ‡-80px
+				ctx.fillText(seatType, 40 + 23 * seatNumber.length + 10, 530);//å¡«å……åå¸­ç±»åˆ«ï¼Œxåæ ‡ä¸ºåº§ä½å·å°¾éƒ¨+10px
+				ctx.fillText(name, 40, 610);//å¡«å……å§“å
+				ctx.fillText(idNo + " " + idTypeEng + " " + idTypeChn, 40, 650);//å¡«å……èº«ä»½è¯ä»¶å·ç +ç±»å‹ä»£ç +ç±»å‹ä¸­æ–‡
+				code1 = TMIS.concat(machineType, machineNo);//æ‹¼æ¥è½¦ç«™TMIS+å‡ºç¥¨æœºå™¨ç±»å‹+æœºå™¨å·
+				ctx.fillText("ç”µå­ç¥¨å·ï¼š" + ticketNo, 40, 690);//å¡«å……ç”µå­ç¥¨å·
+				ctx.fillText("è®¢ å• å·ï¼š" + orderNo, 40, 775);//å¡«å……è®¢å•å·
+				ctx.fillText(code1 + " " + prtDate + " " + prtTime, 235, 1300);//å¡«å……code1(è½¦ç«™TMIS+å‡ºç¥¨æœºå™¨ç±»å‹+æœºå™¨å·)å’Œæ‰“å°æ—¥æœŸæ—¶é—´
 			}
 			button.addEventListener("click", function() {
-				//µ¥»÷°´Å¥Ö´ĞĞ³õÊ¼»¯º¯Êı
+				//å•å‡»æŒ‰é’®æ‰§è¡Œåˆå§‹åŒ–å‡½æ•°
 				init();
 			});
 			document.onkeydown = function(event) {
-				//°´ÏÂ»Ø³µ¼üÓëµ¥»÷°´Å¥Ğ§¹ûÏàÍ¬
+				//æŒ‰ä¸‹å›è½¦é”®ä¸å•å‡»æŒ‰é’®æ•ˆæœç›¸åŒ
 				if (event.keyCode == 13) {
-					//¼üÂë13Îª»Ø³µ¼ü
+					//é”®ç 13ä¸ºå›è½¦é”®
 					init();
 				}
 			}
