@@ -1,3 +1,4 @@
+/* 默认的导航栏样式 */
 @font-face {
   font-family: "GenshinImpactZhLv1";
   font-weight: normal;
@@ -11,32 +12,32 @@
 }
 
 .navi {
-  background-color: #799625; /* 背景色 */
-  padding: 10px 20px; /* 内边距 */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* 阴影效果 */
+  background-color: #799625;
+  padding: 10px 20px;
 }
 
 .navi ul {
-  list-style-type: none; /* 移除默认的项目符号 */
+  list-style-type: none;
   padding: 0;
   margin: 0;
-  display: flex; /* 使用 Flexbox 布局 */
+  display: flex;
+  flex-wrap: wrap; /* 在小屏幕时允许项目换行 */
 }
 
 .nav-item {
-  margin-right: 25px; /* 设置每个导航项之间的间距 */
+  margin-right: 25px;
 }
 
 .nav-item a {
-  text-decoration: none; /* 去掉链接的下划线 */
-  color: white; /* 设置链接文本颜色 */
-  padding: 8px 16px; /* 添加内边距，增加可点击区域 */
-  transition: background-color 0.3s, color 0.3s; /* 添加过渡效果 */
+  text-decoration: none;
+  color: white;
+  padding: 8px 16px;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .nav-item a:hover {
-  background-color: rgba(255, 255, 255, 0.2); /* 悬停时的背景颜色 */
-  color: #ffcc00; /* 悬停时的文本颜色 */
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #ffcc00;
 }
 
 /* clearfix for the navi */
@@ -44,4 +45,26 @@
   content: "";
   display: block;
   clear: both;
+}
+
+/* 响应式布局：针对屏幕宽度小于1090px的设备（如手机） */
+@media (max-width: 1090px) {
+  .navi {
+    padding: 5px 10px; /* 减少导航栏内边距 */
+  }
+
+  .navi ul {
+    flex-direction: column; /* 导航项垂直排列 */
+    align-items: center; /* 居中对齐 */
+  }
+
+  .nav-item {
+    margin-right: 0;
+    margin-bottom: 25px; /* 增加导航项之间的垂直间距 */
+  }
+
+  .nav-item a {
+    font-size: 16px; /* 调整字体大小 */
+    padding: 10px 20px; /* 增加点击区域 */
+  }
 }

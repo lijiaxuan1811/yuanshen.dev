@@ -12,31 +12,30 @@
 
 .navi {
   background-color: #799625; /*Background color for navigation menu*/
-  padding: 10px 20px; /* 内边距 */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* 阴影效果 */
+  padding: 10px 20px; /* Inner padding */
 }
 
 .navi ul {
-  list-style-type: none; /* 移除默认的项目符号 */
+  list-style-type: none; /* Get rid of the bullet */
   padding: 0;
   margin: 0;
-  display: flex; /* 使用 Flexbox 布局 */
+  display: flex; /* Use flexbox arrangement */
 }
 
 .nav-item {
-  margin-right: 25px; /* 设置每个导航项之间的间距 */
+  margin-right: 25px; /* Margin between each item */
 }
 
 .nav-item a {
-  text-decoration: none; /* 去掉链接的下划线 */
-  color: white; /* 设置链接文本颜色 */
-  padding: 8px 16px; /* 添加内边距，增加可点击区域 */
-  transition: background-color 0.3s, color 0.3s; /* 添加过渡效果 */
+  text-decoration: none; /* Get rid of the underline */
+  color: white; /* Link text color */
+  padding: 8px 16px; /* Inner padding */
+  transition: background-color 0.3s, color 0.3s; /* Transistion  effect */
 }
 
 .nav-item a:hover {
-  background-color: rgba(255, 255, 255, 0.2); /* 悬停时的背景颜色 */
-  color: #ffcc00; /* 悬停时的文本颜色 */
+  background-color: rgba(255, 255, 255, 0.2); /* Background color on hover */
+  color: #ffcc00; /* Text color on hover */
 }
 
 /* clearfix for the navi */
@@ -44,4 +43,26 @@
   content: "";
   display: block;
   clear: both;
+}
+
+/* If the width is less than 1240 pixels */
+@media (max-width: 1240px) {
+  .navi {
+    padding: 5px 10px; /* Reduce inner padding */
+  }
+
+  .navi ul {
+    flex-direction: column; /* Vertical navigation bar */
+    align-items: center; /* Center allign */
+  }
+
+  .nav-item {
+    margin-right: 0; /* No horizontal margin */
+    margin-bottom: 25px; /* Increase the vertical margin  */
+  }
+
+  .nav-item a {
+    font-size: 16px; /* Adjust the font size */
+    padding: 10px 20px; /* Increase the clickable area */
+  }
 }
