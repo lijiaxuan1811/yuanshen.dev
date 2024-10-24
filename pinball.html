@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,17 +32,17 @@
 	<body class="body">
 		<nav class="navi">
 			<ul>
-				<li class="nav-item"><a href="http://www.yuanshen.dev/">主页</a></li>
-				<li class="nav-item"><a href="http://www.yuanshen.dev/music.html">音乐</a></li>
-				<li class="nav-item"><a href="http://www.yuanshen.dev/pinball.html">JS弹球</a></li>
-				<li class="nav-item"><a href="http://www.yuanshen.dev/morse.html">莫尔斯电码</a></li>
-				<li class="nav-item"><a href="http://www.yuanshen.dev/crtirgen.html">中国铁路行程信息提示生成器(CRTIRGen)</a></li>
-				<li class="nav-item"><a href="http://www.yuanshen.dev/about.html">关于</a></li>
-				<li class="nav-item"><a href="http://www.yuanshen.dev/en/pinball.html">English</a></li>
+				<li class="nav-item"><a href="https://www.yuanshen.dev/">主页</a></li>
+				<li class="nav-item"><a href="https://www.yuanshen.dev/music.html">音乐</a></li>
+				<li class="nav-item"><a href="https://www.yuanshen.dev/pinball.html">JS弹球</a></li>
+				<li class="nav-item"><a href="https://www.yuanshen.dev/morse.html">莫尔斯电码</a></li>
+				<li class="nav-item"><a href="https://www.yuanshen.dev/crtirgen.html">中国铁路行程信息提示生成器(CRTIRGen)</a></li>
+				<li class="nav-item"><a href="https://www.yuanshen.dev/about.html">关于</a></li>
+				<li class="nav-item"><a href="https://www.yuanshen.dev/en/pinball.html">English</a></li>
 			</ul>
 		</nav>
 		<br />
-		<h2>弹球游戏 V2.2 <del>更新时间2024.09.12</del></h2>
+		<h2>弹球游戏 V2.3 <del>更新时间2024.10.24</del></h2>
 		<p>用纯JavaScript写的小小游戏，可以分别用键盘的“a”和“d”键控制挡板左右移动，也可以使用<del>（移动设备友好）</del>的按钮哦~<br />如果浏览器不支持或者屏蔽了JavaScript，游戏可（ken）能（ding）就不能运行了哦~<br />每次接住弹球可以得到5分，但是如果没接住的话，就寄喽~</p>
 		<p>感谢<del>（n年前买的x）</del>程晨的《JavaScript网页游戏制作轻松学》(ISBN 978-7-115-46238-1)，这里的算法和部分代码参考了书中的思路哦~</p>
 		<label for="easy">难度选择<br/></label>
@@ -50,9 +50,9 @@
 		<input type="checkbox" id="easy" onclick="clickCheckbox(this)"/>
 		<label for="easy">简单（EZ）<br /></label>
 		<input type="checkbox" id="hard" onclick="clickCheckbox(this)"/>
-		<label for="easy">困难（HD）<br /></label>
+		<label for="hard">困难（HD）<br /></label>
 		<input type="checkbox" id="insane" onclick="clickCheckbox(this)"/>
-		<label for="easy">疯狂（IN）<br /></label>
+		<label for="insane">疯狂（IN）<br /></label>
 		<input type="button" id="start" class="custom-button" value="开始游戏！" onclick="start()"/><!--进入游戏按钮-->
 		<br />
 		<input type="button" id="leftButton" class="custom-button" value="左"/><!--向左按钮-->

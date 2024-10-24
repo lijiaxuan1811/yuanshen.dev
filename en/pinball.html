@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-US">
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,31 +32,31 @@
 	<body class="body">
 		<nav class="navi">
 			<ul>
-				<li class="nav-item"><a href="http://www.yuanshen.dev/en/index.html">Main</a></li>
-				<li class="nav-item"><a href="http://www.yuanshen.dev/en/music.html">Music</a></li>
-				<li class="nav-item"><a href="http://www.yuanshen.dev/en/pinball.html">JS Pinball Game</a></li>
-				<li class="nav-item"><a href="http://www.yuanshen.dev/en/morse.html">Morse Code</a></li>
-				<li class="nav-item"><a href="http://www.yuanshen.dev/en/crtirgen.html">中国铁路行程信息提示生成器(CRTIRGen)</a></li>
-				<li class="nav-item"><a href="http://www.yuanshen.dev/en/about.html">About</a></li>
-				<li class="nav-item"><a href="http://www.yuanshen.dev/pinball.html">简体中文</a></li>
+				<li class="nav-item"><a href="https://www.yuanshen.dev/en/index.html">Main</a></li>
+				<li class="nav-item"><a href="https://www.yuanshen.dev/en/music.html">Music</a></li>
+				<li class="nav-item"><a href="https://www.yuanshen.dev/en/pinball.html">JS Pinball Game</a></li>
+				<li class="nav-item"><a href="https://www.yuanshen.dev/en/morse.html">Morse Code</a></li>
+				<li class="nav-item"><a href="https://www.yuanshen.dev/en/crtirgen.html">中国铁路行程信息提示生成器(CRTIRGen)</a></li>
+				<li class="nav-item"><a href="https://www.yuanshen.dev/en/about.html">About</a></li>
+				<li class="nav-item"><a href="https://www.yuanshen.dev/pinball.html">简体中文</a></li>
 			</ul>
 		</nav>
 		<br />
-		<h2>Pinball game V2.2... Updated 2024.09.12</h2>
+		<h2>Pinball game V2.3... Updated 2024.10.24</h2>
 		<p>This is a small pinball game using plain javascript. You can control the panel using 'a' and 'd' keys for
 			left and right or click the buttons. This game might not work if your browser do not support Javascript. You
 			earn 5 points each time you catch the ball using the panel, but if you fail to catch the ball, the game
 			would be over. The game would restart after you press the button on the pop-out dialog.</p>
-		<p>Big thank to Nille Cheng and his book 'Learn to Create Web Games Using Javascript'(ISBN 978-7-115-46238-1), as the
+		<p>Big thanks to Nille Cheng and his book 'Learn to Create Web Games Using Javascript'(ISBN 978-7-115-46238-1), as the
 			concept of this game and part of the algorithm is base on his codes in the book.</p>
 		<label for="easy">Difficulty selection<br/></label>
 		<!--Checkboxes for three difficulty levels-->
 		<input type="checkbox" id="easy" onclick="clickCheckbox(this)"/>
 		<label for="easy">Easy<br /></label>
 		<input type="checkbox" id="hard" onclick="clickCheckbox(this)"/>
-		<label for="easy">Hard<br /></label>
+		<label for="hard">Hard<br /></label>
 		<input type="checkbox" id="insane" onclick="clickCheckbox(this)"/>
-		<label for="easy">Insane<br /></label>
+		<label for="insane">Insane<br /></label>
 		<input type="button" id="start" class="custom-button" value="Start!" onclick="start()"/><!--Start game button-->
 		<br />
 		<input type="button" id="leftButton" class="custom-button" value="Left"/><!--Left button-->

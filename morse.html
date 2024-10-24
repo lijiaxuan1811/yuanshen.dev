@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +8,7 @@
     <style>
         /* 样式设置 */
         #textInput {
-            font-family: GenshinImpactZhLv1; /* 字体 */
+            font-family: GenshinImpactZhLv1, sans-serif; /* 字体 */
             font-size: 16px; /* 字体大小 */
         }
         label, input, button {
@@ -36,13 +36,13 @@
     <!-- 导航菜单 -->
     <nav class="navi">
         <ul>
-            <li class="nav-item"><a href="http://www.yuanshen.dev/">主页</a></li>
-            <li class="nav-item"><a href="http://www.yuanshen.dev/music.html">音乐</a></li>
-            <li class="nav-item"><a href="http://www.yuanshen.dev/pinball.html">JS弹球</a></li>
-            <li class="nav-item"><a href="http://www.yuanshen.dev/morse.html">莫尔斯电码</a></li>
-            <li class="nav-item"><a href="http://www.yuanshen.dev/crtirgen.html">中国铁路行程信息提示生成器(CRTIRGen)</a></li>
-            <li class="nav-item"><a href="http://www.yuanshen.dev/about.html">关于</a></li>
-            <li class="nav-item"><a href="http://www.yuanshen.dev/en/morse.html">English</a></li>
+            <li class="nav-item"><a href="https://www.yuanshen.dev/">主页</a></li>
+            <li class="nav-item"><a href="https://www.yuanshen.dev/music.html">音乐</a></li>
+            <li class="nav-item"><a href="https://www.yuanshen.dev/pinball.html">JS弹球</a></li>
+            <li class="nav-item"><a href="https://www.yuanshen.dev/morse.html">莫尔斯电码</a></li>
+            <li class="nav-item"><a href="https://www.yuanshen.dev/crtirgen.html">中国铁路行程信息提示生成器(CRTIRGen)</a></li>
+            <li class="nav-item"><a href="https://www.yuanshen.dev/about.html">关于</a></li>
+            <li class="nav-item"><a href="https://www.yuanshen.dev/en/morse.html">English</a></li>
         </ul>
     </nav>
     <br />
@@ -69,7 +69,7 @@
     <button class="custom-button" onclick="stopSound()">停止</button> <!-- 停止按钮 -->
 	<button class="custom-button" onclick="downloadMorse()">下载电码</button> <!-- 下载按钮 -->
     <div id="error"></div> <!-- 显示错误信息的区域 -->
-	<div><img src=./morsesheet.png style="width: 600px; height: auto;"></div> <!--电码对照表-->
+	<div><img src=./morsesheet.png style="width: 600px; height: auto;" alt="莫尔斯电码对照表"></div> <!--电码对照表-->
 
     <script src="./morse.js"></script>
 </body>
