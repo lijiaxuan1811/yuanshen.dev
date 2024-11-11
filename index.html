@@ -1,65 +1,81 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>YuanRetro-主页</title>
-		<link rel="stylesheet" href="./style.css">
-		<style>
-			.column1 {
-				float: left;
-				margin-left: 10px;
-			}
-			
-			.column2 {
-				float: left;
-				margin-top: 50px;
-				margin-left: 100px;
-			}
-			
-			.row:after {
-				content: "";
-				display: table;
-				clear: both;
-			}
-		</style>
-	</head>
-	<body class="body">
-		<nav class="navi">
-			<ul>
-				<li class="nav-item"><a href="https://www.yuanshen.dev/">主页</a></li>
-				<li class="nav-item"><a href="https://www.yuanshen.dev/music.html">音乐</a></li>
-				<li class="nav-item"><a href="https://www.yuanshen.dev/pinball.html">JS弹球</a></li>
-				<li class="nav-item"><a href="https://www.yuanshen.dev/morse.html">莫尔斯电码</a></li>
-				<li class="nav-item"><a href="https://www.yuanshen.dev/crtirgen.html">中国铁路行程信息提示生成器(CRTIRGen)</a></li>
-				<li class="nav-item"><a href="https://www.yuanshen.dev/about.html">关于</a></li>
-				<li class="nav-item"><a href="https://www.yuanshen.dev/en/index.html">English</a></li>
-			</ul>
-		</nav>
-		<br />
-		<h2>欢迎来到YuanRetro，一个<del>乱乱糟糟</del>的电脑小站</h2>
-		<div class="row">
-			<div class="column1">
-				<img src="./nahida.bmp" width="200" height="200" alt="《原神》里面可爱的纳西妲">
-			</div>
-			<div class="column2">
-				本站（尽量）做到对较老的浏览器和较慢的网速较为友好
-				<br />
-				尽情探索吧！
-			</div>
-		</div>
-		你的浏览器User Agent是：
-		<div id="userAgentDisplay"></div>
-		<script>
-			function getUserAgent() {
-			  	//获取浏览器User Agent，在前面的分隔符标签中显示
-			  	document.getElementById("userAgentDisplay").innerHTML = navigator.userAgent;
-			}
-		  
-			//页面加载时调用这个方法
-			window.onload = function() {
-				getUserAgent();
-			}
-		</script>
-	</body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YuanRetro-主页</title>
+    <link rel="stylesheet" href="./style.css">
+    <style>
+        .column1 {
+            float: left;
+            margin-left: 10px;
+        }
+
+        .column2 {
+            float: left;
+            margin-top: 50px;
+            margin-left: 100px;
+        }
+
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        .visitormap {
+            display: flex;
+            justify-content: flex-start;
+        }
+
+    </style>
+</head>
+<body class="body">
+<nav class="navi">
+    <ul>
+        <li class="nav-item"><a href="https://www.yuanshen.dev/">主页</a></li>
+        <li class="nav-item"><a href="https://www.yuanshen.dev/music.html">音乐</a></li>
+        <li class="nav-item"><a href="https://www.yuanshen.dev/pinball.html">JS弹球</a></li>
+        <li class="nav-item"><a href="https://www.yuanshen.dev/morse.html">莫尔斯电码</a></li>
+        <li class="nav-item"><a href="https://www.yuanshen.dev/crtirgen.html">中国铁路行程信息提示生成器(CRTIRGen)</a>
+        </li>
+        <li class="nav-item"><a href="https://www.yuanshen.dev/about.html">关于</a></li>
+        <li class="nav-item"><a href="https://www.yuanshen.dev/en/index.html">English</a></li>
+    </ul>
+</nav>
+<br/>
+<h2>欢迎来到YuanRetro，一个
+    <del>乱乱糟糟</del>
+    的电脑小站
+</h2>
+<div class="row">
+    <div class="column1">
+        <img src="./nahida.bmp" width="200" height="200" alt="《原神》里面可爱的纳西妲">
+    </div>
+    <div class="column2">
+        本站（尽量）做到对较老的浏览器和较慢的网速较为友好
+        <br/>
+        尽情探索吧！
+    </div>
+</div>
+你的浏览器User Agent是：
+<div id="userAgentDisplay"></div>
+<script>
+    function getUserAgent() {
+        //获取浏览器User Agent，在前面的分隔符标签中显示
+        document.getElementById("userAgentDisplay").innerHTML = navigator.userAgent;
+    }
+
+    //页面加载时调用这个方法
+    window.onload = function () {
+        getUserAgent();
+    }
+</script>
+访问者地图（RevolverMaps）：
+<div class="visitormap">
+    <script type="text/javascript"
+            src="//rf.revolvermaps.com/0/0/8.js?i=567dcibcfp6&amp;m=1&amp;c=54ff00&amp;cr1=ff0000&amp;f=arial&amp;l=33&amp;s=300"
+            async="async"></script>
+</div>
+</body>
 </html>
