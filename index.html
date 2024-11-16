@@ -17,17 +17,17 @@
             margin-left: 100px;
         }
 
+        .row {
+            display: inline-block;
+            border: 2px dashed #a6a8a6;
+            border-radius: 10px;
+        }
+
         .row:after {
             content: "";
             display: table;
             clear: both;
         }
-
-        .visitormap {
-            display: flex;
-            justify-content: flex-start;
-        }
-
     </style>
 </head>
 <body class="body">
@@ -44,11 +44,11 @@
     </ul>
 </nav>
 <br/>
-<h2>欢迎来到YuanRetro，一个
-    <del>乱乱糟糟</del>
-    的电脑小站
-</h2>
-<div class="row">
+<div class="row textbox">
+    <h2>欢迎来到YuanRetro，一个
+        <del>乱乱糟糟</del>
+        的电脑小站
+    </h2>
     <div class="column1">
         <img src="./nahida.bmp" width="200" height="200" alt="《原神》里面可爱的纳西妲">
     </div>
@@ -58,6 +58,7 @@
         尽情探索吧！
     </div>
 </div>
+<br />
 你的浏览器User Agent是：
 <div id="userAgentDisplay"></div>
 <script>
@@ -71,11 +72,5 @@
         getUserAgent();
     }
 </script>
-访问者地图（RevolverMaps）：
-<div class="visitormap">
-    <script type="text/javascript"
-            src="//rf.revolvermaps.com/0/0/8.js?i=567dcibcfp6&amp;m=1&amp;c=54ff00&amp;cr1=ff0000&amp;f=arial&amp;l=33&amp;s=300"
-            async="async"></script>
-</div>
 </body>
 </html>

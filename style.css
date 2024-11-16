@@ -12,8 +12,9 @@
 }
 
 .navi {
-  background-color: #799625;
-  padding: 10px 20px;
+  background-color: #8AA32D;
+  padding: 20px 40px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4);
 }
 
 .navi ul {
@@ -40,11 +41,11 @@
   color: #ffcc00;
 }
 
-/* clearfix for the navi */
-.navi ul::after {
-  content: "";
-  display: block;
-  clear: both;
+.textbox {
+  display: inline-block;
+  border: 2px dashed #a6a8a6;
+  border-radius: 10px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4);
 }
 
 /* 响应式布局：针对屏幕宽度小于1090px的设备（如手机） */
