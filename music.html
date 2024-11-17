@@ -1,41 +1,72 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>YuanRetro-音乐</title>
-		<link rel="stylesheet" href="./style.css">
-	</head>
-	<body class="body">
-		<nav class="navi">
-			<ul>
-				<li class="nav-item"><a href="https://www.yuanshen.dev/">主页</a></li>
-				<li class="nav-item"><a href="https://www.yuanshen.dev/music.html">音乐</a></li>
-				<li class="nav-item"><a href="https://www.yuanshen.dev/pinball.html">JS弹球</a></li>
-				<li class="nav-item"><a href="https://www.yuanshen.dev/morse.html">莫尔斯电码</a></li>
-				<li class="nav-item"><a href="https://www.yuanshen.dev/crtirgen.html">中国铁路行程信息提示生成器(CRTIRGen)</a></li>
-				<li class="nav-item"><a href="https://www.yuanshen.dev/about.html">关于</a></li>
-				<li class="nav-item"><a href="https://www.yuanshen.dev/en/music.html">English</a></li>
-			</ul>
-		</nav>
-		<br />
-		<p>
-			<del>以下的音乐均未经授权，仅供测试使用，请勿用于商业用途~</del>
-			<br />
-			如果你的<del>古董</del>浏览器不支持HTML5音频元素的话，可以试试直接用出现的超链接下载音频文件哦~
-			<br />
-			<a href="./GenshinTheme.mp3">1.<del>原神启动-</del>Genshin Impact Main Theme-HOYO-MIX/陈致逸 (mp3格式)</a>
-			<br />
-			<audio src="./GenshinTheme.mp3" controls>你的浏览器似乎不支持HTML5音频标签诶~试试这个链接吧~</audio>
-			<br />
-			<a href="./Liyue.mp3">2.璃月 Liyue-HOYO-MIX/陈致逸 (mp3格式)</a>
-			<br />
-			<audio src="./Liyue.mp3" controls>你的浏览器似乎不支持HTML5音频标签诶~试试这个链接吧~</audio>
-			<br />
-			<a href="./th07_02.mp3">3.无何有之乡～ Deep Mountain-Team Shanghai Alice/ZUN (mp3格式)</a>
-			<br />
-			<audio src="./th07_02.mp3" controls>你的浏览器似乎不支持HTML5音频标签诶~试试这个链接吧~</audio>
-			<br />
-		</p>
-	</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>YuanRetro-音乐</title>
+        <link rel="stylesheet" href="./style.css">
+    </head>
+    <body class="body">
+        <nav class="navi">
+            <ul>
+                <li class="nav-item"><a href="https://www.yuanshen.dev/">主页</a></li>
+                <li class="nav-item"><a href="https://www.yuanshen.dev/music.html">音乐</a></li>
+                <li class="nav-item"><a href="https://www.yuanshen.dev/pinball.html">JS弹球</a></li>
+                <li class="nav-item"><a href="https://www.yuanshen.dev/morse.html">莫尔斯电码</a></li>
+                <li class="nav-item"><a
+                        href="https://www.yuanshen.dev/crtirgen.html">中国铁路行程信息提示生成器(CRTIRGen)</a>
+                </li>
+                <li class="nav-item"><a href="https://www.yuanshen.dev/about.html">关于</a></li>
+                <li class="nav-item"><a href="https://www.yuanshen.dev/en/music.html">English</a></li>
+            </ul>
+        </nav>
+        <br/>
+        <p>
+            <del>以下的音乐均未经授权，仅供测试使用，请勿用于商业用途~</del>
+            <br/>
+            如果你的
+            <del>古董</del>
+            浏览器不支持HTML5音频元素的话，可以试试直接用出现的超链接下载音频文件哦~
+            <br/>
+            <a href="./GenshinTheme.mp3">1.
+                <del>原神启动-</del>
+                Genshin Impact Main Theme-HOYO-MIX/陈致逸 (mp3格式)</a>
+            <br/>
+            <audio src="./GenshinTheme.mp3" controls>你的浏览器似乎不支持HTML5音频标签诶~试试这个链接吧~</audio>
+            <br/>
+            <a href="./Liyue.mp3">2.璃月 Liyue-HOYO-MIX/陈致逸 (mp3格式)</a>
+            <br/>
+            <audio src="./Liyue.mp3" controls>你的浏览器似乎不支持HTML5音频标签诶~试试这个链接吧~</audio>
+            <br/>
+            <a href="./th07_02.mp3">3.无何有之乡～ Deep Mountain-Team Shanghai Alice/ZUN (mp3格式)</a>
+            <br/>
+            <audio src="./th07_02.mp3" controls>你的浏览器似乎不支持HTML5音频标签诶~试试这个链接吧~</audio>
+            <br/>
+        </p>
+        <footer class="site-footer">
+            <div class="footer-content">
+                <div class="social-links"><a href="https://www.yuanshen.dev/">www.yuanshen.dev</a>|<a
+                        href="https://www.lijiaxuan.xyz/">www.lijiaxuan.xyz</a> &copy; lijiaxuan 2020-2024
+                </div>
+                你的浏览器User Agent是：
+                <div id="userAgentDisplay"></div>
+                <script>
+                    function getUserAgent() {
+                        //获取浏览器User Agent，在前面的分隔符标签中显示
+                        document.getElementById("userAgentDisplay").innerHTML = navigator.userAgent;
+                    }
+
+                    //页面加载时调用这个方法
+                    window.onload = function () {
+                        getUserAgent();
+                    }
+                </script>
+            </div>
+            <div class="social-links">
+                <a href="https://x.com/lijiaxuan2008" target="_blank">Twitter (X)</a>
+                <a href="https://github.com/lijiaxuan1811" target="_blank">GitHub</a>
+                <a href="mailto:lijiaxuan1811@163.com" target="_blank">E-mail</a>
+            </div>
+        </footer>
+    </body>
 </html>

@@ -1,39 +1,65 @@
 <!DOCTYPE html>
 <html lang="en-US">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>YuanRetro-About</title>
-		<link rel="stylesheet" href="../style.css">
-	</head>
-	<body class="body">
-		<nav class="navi">
-			<ul>
-				<li class="nav-item"><a href="https://www.yuanshen.dev/en/index.html">Main</a></li>
-				<li class="nav-item"><a href="https://www.yuanshen.dev/en/music.html">Music</a></li>
-				<li class="nav-item"><a href="https://www.yuanshen.dev/en/pinball.html">JS Pinball Game</a></li>
-				<li class="nav-item"><a href="https://www.yuanshen.dev/en/morse.html">Morse Code</a></li>
-				<li class="nav-item"><a href="https://www.yuanshen.dev/en/crtirgen.html">中国铁路行程信息提示生成器(CRTIRGen)</a></li>
-				<li class="nav-item"><a href="https://www.yuanshen.dev/en/about.html">About</a></li>
-				<li class="nav-item"><a href="https://www.yuanshen.dev/about.html">简体中文</a></li>
-			</ul>
-		</nav>
-		<br />
-		<h2>About me...</h2>
-		<p>
-			I am a high-school retro computing enthusiast, and I wish to share my experience and joy with everyone...
-			In 2017, I got interested in computer hardware. Since then, I frequently visited local computer stores
-			and e-waste recyclers to collect vintage computer hard wares. Now I actually got plenty of them! In the
-			past few years, many people had helped me and taught me lots of useful knowledge. Huge thanks to them!
-			If you want to get in touch with me, please read the "Contact me..." section down below.
-		</p>
-		<h2>Contact me...</h2>
-		The easiest way to get in touch with me is by email: <a
-			href="mailto:lijiaxuan1815@gmail.com">lijiaxuan1815@gmail.com</a> (or <a
-			href="mailto:lijiaxuan1811@163.com">lijiaxuan1811@163.com</a>).
-		<h2>Source code...</h2>
-		<p>The source code of this website is available here: <a
-				href="https://github.com/lijiaxuan1811/yuanshen.dev">https://github.com/lijiaxuan1811/yuanshen.dev</a>.
-			Feel free to use them!</p>
-	</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>YuanRetro-About</title>
+        <link rel="stylesheet" href="../style.css">
+    </head>
+    <body class="body">
+        <nav class="navi">
+            <ul>
+                <li class="nav-item"><a href="https://www.yuanshen.dev/en/index.html">Main</a></li>
+                <li class="nav-item"><a href="https://www.yuanshen.dev/en/music.html">Music</a></li>
+                <li class="nav-item"><a href="https://www.yuanshen.dev/en/pinball.html">JS Pinball Game</a></li>
+                <li class="nav-item"><a href="https://www.yuanshen.dev/en/morse.html">Morse Code</a></li>
+                <li class="nav-item"><a
+                        href="https://www.yuanshen.dev/en/crtirgen.html">中国铁路行程信息提示生成器(CRTIRGen)</a></li>
+                <li class="nav-item"><a href="https://www.yuanshen.dev/en/about.html">About</a></li>
+                <li class="nav-item"><a href="https://www.yuanshen.dev/about.html">简体中文</a></li>
+            </ul>
+        </nav>
+        <br/>
+        <h2>About me...</h2>
+        <p>
+            I am a high-school retro computing enthusiast, and I wish to share my experience and joy with everyone...
+            In 2017, I got interested in computer hardware. Since then, I frequently visited local computer stores
+            and e-waste recyclers to collect vintage computer hard wares. Now I actually got plenty of them! In the
+            past few years, many people had helped me and taught me lots of useful knowledge. Huge thanks to them!
+            If you want to get in touch with me, please read the "Contact me..." section down below.
+        </p>
+        <h2>Contact me...</h2>
+        The easiest way to get in touch with me is by email: <a
+            href="mailto:lijiaxuan1815@gmail.com">lijiaxuan1815@gmail.com</a> (or <a
+            href="mailto:lijiaxuan1811@163.com">lijiaxuan1811@163.com</a>).
+        <h2>Source code...</h2>
+        <p>The source code of this website is available here: <a
+                href="https://github.com/lijiaxuan1811/yuanshen.dev">https://github.com/lijiaxuan1811/yuanshen.dev</a>.
+            Feel free to use them!</p>
+        <footer class="site-footer">
+            <div class="footer-content">
+                <div class="social-links"><a href="https://www.yuanshen.dev/">www.yuanshen.dev</a>|<a
+                        href="https://www.lijiaxuan.xyz/">www.lijiaxuan.xyz</a> &copy; lijiaxuan 2020-2024
+                </div>
+                Your browser User Agent is:
+                <div id="userAgentDisplay"></div>
+                <script>
+                    function getUserAgent() {
+                        //Fetch the user agent and display it in the div tab
+                        document.getElementById("userAgentDisplay").innerHTML = navigator.userAgent;
+                    }
+
+                    //Use this method when the page loads
+                    window.onload = function () {
+                        getUserAgent();
+                    }
+                </script>
+            </div>
+            <div class="social-links">
+                <a href="https://x.com/lijiaxuan2008" target="_blank">Twitter (X)</a>
+                <a href="https://github.com/lijiaxuan1811" target="_blank">GitHub</a>
+                <a href="mailto:lijiaxuan1811@163.com" target="_blank">E-mail</a>
+            </div>
+        </footer>
+    </body>
 </html>

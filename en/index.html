@@ -1,67 +1,79 @@
 <!DOCTYPE html>
 <html lang="en-US">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YuanRetro-Main</title>
-    <link rel="stylesheet" href="../style.css">
-    <style>
-        .column1 {
-            float: left;
-            margin-left: 10px;
-        }
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>YuanRetro-Main</title>
+        <link rel="stylesheet" href="../style.css">
+        <style>
+            .column1 {
+                float: left;
+                margin-left: 10px;
+            }
 
-        .column2 {
-            float: left;
-            margin-top: 50px;
-            margin-left: 100px;
-        }
+            .column2 {
+                float: left;
+                margin-top: 50px;
+                margin-left: 100px;
+            }
 
-        .row:after {
-            content: "";
-            display: table;
-            clear: both;
-        }
-    </style>
-</head>
-<body class="body">
-<nav class="navi">
-    <ul>
-        <li class="nav-item"><a href="https://www.yuanshen.dev/en/index.html">Main</a></li>
-        <li class="nav-item"><a href="https://www.yuanshen.dev/en/music.html">Music</a></li>
-        <li class="nav-item"><a href="https://www.yuanshen.dev/en/pinball.html">JS Pinball Game</a></li>
-        <li class="nav-item"><a href="https://www.yuanshen.dev/en/morse.html">Morse Code</a></li>
-        <li class="nav-item"><a
-                href="https://www.yuanshen.dev/en/crtirgen.html">中国铁路行程信息提示生成器(CRTIRGen)</a></li>
-        <li class="nav-item"><a href="https://www.yuanshen.dev/en/about.html">About</a></li>
-        <li class="nav-item"><a href="https://www.yuanshen.dev/index.html">简体中文</a></li>
-    </ul>
-</nav>
-<br/>
-<div class="row textbox">
-    <h2>Welcome to Genshin Impact(Yuanshen) Retro Computing Hub(YuanRetro)...</h2>
-    <div class="column1">
-        <img src="../nahida.bmp" width="200" height="200" alt="A cute picture of Nahida from video game Genshin Impact">
-    </div>
-    <div class="column2">
-        This site is friendly towards older browsers and slow internet speed...
+            .row:after {
+                content: "";
+                display: table;
+                clear: both;
+            }
+        </style>
+    </head>
+    <body class="body">
+        <nav class="navi">
+            <ul>
+                <li class="nav-item"><a href="https://www.yuanshen.dev/en/index.html">Main</a></li>
+                <li class="nav-item"><a href="https://www.yuanshen.dev/en/music.html">Music</a></li>
+                <li class="nav-item"><a href="https://www.yuanshen.dev/en/pinball.html">JS Pinball Game</a></li>
+                <li class="nav-item"><a href="https://www.yuanshen.dev/en/morse.html">Morse Code</a></li>
+                <li class="nav-item"><a
+                        href="https://www.yuanshen.dev/en/crtirgen.html">中国铁路行程信息提示生成器(CRTIRGen)</a></li>
+                <li class="nav-item"><a href="https://www.yuanshen.dev/en/about.html">About</a></li>
+                <li class="nav-item"><a href="https://www.yuanshen.dev/index.html">简体中文</a></li>
+            </ul>
+        </nav>
         <br/>
-        Have fun!
-    </div>
-</div>
-<br />
-Your User Agent is:
-<div id="userAgentDisplay"></div>
-<script>
-    function getUserAgent() {
-        // Get the user agent string and Display it in an element
-        document.getElementById("userAgentDisplay").innerHTML = navigator.userAgent;
-    }
+        <div class="row textbox">
+            <h2>Welcome to Genshin Impact(Yuanshen) Retro Computing Hub(YuanRetro)...</h2>
+            <div class="column1">
+                <img src="../nahida.png" width="200" height="200"
+                     alt="A cute picture of Nahida from video game Genshin Impact">
+            </div>
+            <div class="column2">
+                This site is friendly towards older browsers and slow internet speed...
+                <br/>
+                Have fun!
+            </div>
+        </div>
+        <footer class="site-footer">
+            <div class="footer-content">
+                <div class="social-links"><a href="https://www.yuanshen.dev/">www.yuanshen.dev</a>|<a
+                        href="https://www.lijiaxuan.xyz/">www.lijiaxuan.xyz</a> &copy; lijiaxuan 2020-2024
+                </div>
+                Your browser User Agent is:
+                <div id="userAgentDisplay"></div>
+                <script>
+                    function getUserAgent() {
+                        //Fetch the user agent and display it in the div tab
+                        document.getElementById("userAgentDisplay").innerHTML = navigator.userAgent;
+                    }
 
-    // Call the function on page load
-    window.onload = function () {
-        getUserAgent();
-    }
-</script>
-</body>
+                    //Use this method when the page loads
+                    window.onload = function () {
+                        getUserAgent();
+                    }
+                </script>
+            </div>
+            <div class="social-links">
+                <a href="https://x.com/lijiaxuan2008" target="_blank">Twitter (X)</a>
+                <a href="https://github.com/lijiaxuan1811" target="_blank">GitHub</a>
+                <a href="mailto:lijiaxuan1811@163.com" target="_blank">E-mail</a>
+            </div>
+        </footer>
+    </body>
 </html>

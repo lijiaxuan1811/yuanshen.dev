@@ -1,71 +1,130 @@
 /* 默认的导航栏样式 */
 @font-face {
-  font-family: "GenshinImpactZhLv1";
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-  src: url(./gichn_mini_zhlv1.ttf) format("TrueType");
+    font-family: "GenshinImpactZhLv1";
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+    src: url(./gichn_mini_zhlv1.ttf) format("TrueType");
 }
 
 .body {
-  font-family: "GenshinImpactZhLv1", sans-serif;
+    font-family: "GenshinImpactZhLv1", sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 .navi {
-  background-color: #8AA32D;
-  padding: 20px 40px;
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4);
+    background-color: #8AA32D;
+    padding: 20px 40px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4);
 }
 
 .navi ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-wrap: wrap; /* 在小屏幕时允许项目换行 */
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap; /* 在小屏幕时允许项目换行 */
 }
 
 .nav-item {
-  margin-right: 25px;
+    margin-right: 25px;
 }
 
 .nav-item a {
-  text-decoration: none;
-  color: white;
-  padding: 8px 16px;
-  transition: background-color 0.3s, color 0.3s;
+    text-decoration: none;
+    color: white;
+    padding: 8px 16px;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .nav-item a:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-  color: #ffcc00;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #ffcc00;
+}
+
+/* 基础按钮样式 */
+.custom-button {
+  background-color: #799625; /* 扁平的绿色背景 */
+  border: none; /* 无边框 */
+  color: white; /* 字体颜色白色 */
+  padding: 10px 10px; /* 内边距 */
+  font-family: "GenshinImpactZhLv1", sans-serif; /* 自定义字体 */
+  font-size: 16px; /* 字体大小 */
+  border-radius: 10px; /* 小的圆角 */
+  cursor: pointer; /* 鼠标指针样式 */
+  transition: background-color 0.3s ease; /* 背景颜色的过渡效果 */
+  width: 100px;
+  height: 50px;
+}
+
+/* 鼠标悬停时的效果 */
+.custom-button:hover {
+  background-color: #45a049; /* 更浅的绿色 */
+}
+
+/* 鼠标按下时的效果 */
+.custom-button:active {
+  background-color: #5ace18; /* 按下时更浅的绿色 */
 }
 
 .textbox {
-  display: inline-block;
-  border: 2px dashed #a6a8a6;
-  border-radius: 10px;
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4);
+    display: inline-block;
+    border: 2px dashed #a6a8a6;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4);
+    padding: 8px 8px;
+}
+
+.site-footer {
+    background-color: #a6a8a6;
+    color: #000000;
+    padding: 20px 10px;
+    text-align: center;
+    margin-top: auto; /* 确保footer位于页面底部 */
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4);
+}
+
+.footer-content {
+    margin: 0 auto;
+}
+
+.social-links {
+    margin: 10px 0;
+}
+
+.social-links a {
+    color: #ffffff;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.social-links a:hover {
+    color: #000000;
+    background-color: rgba(255, 255, 255, 1.0);
 }
 
 /* 响应式布局：针对屏幕宽度小于1090px的设备（如手机） */
 @media (max-width: 1090px) {
-  .navi {
-    padding: 5px 10px; /* 减少导航栏内边距 */
-  }
+    .navi {
+        padding: 5px 10px; /* 减少导航栏内边距 */
+    }
 
-  .navi ul {
-    flex-direction: column; /* 导航项垂直排列 */
-    align-items: center; /* 居中对齐 */
-  }
+    .navi ul {
+        flex-direction: column; /* 导航项垂直排列 */
+        align-items: center; /* 居中对齐 */
+    }
 
-  .nav-item {
-    margin-right: 0;
-    margin-bottom: 25px; /* 增加导航项之间的垂直间距 */
-  }
+    .nav-item {
+        margin-right: 0;
+        margin-bottom: 25px; /* 增加导航项之间的垂直间距 */
+    }
 
-  .nav-item a {
-    font-size: 16px; /* 调整字体大小 */
-    padding: 10px 20px; /* 增加点击区域 */
-  }
+    .nav-item a {
+        font-size: 16px; /* 调整字体大小 */
+        padding: 10px 20px; /* 增加点击区域 */
+    }
 }

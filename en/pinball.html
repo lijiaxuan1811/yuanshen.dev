@@ -1,68 +1,107 @@
 <!DOCTYPE html>
 <html lang="en-US">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>YuanRetro-Pinball</title>
-		<link rel="stylesheet" href="../style.css">
-		<style>
-			/* Base style */
-			.custom-button {
-				background-color: #799625; /* Green background */
-            	border: none; /* No border */
-            	color: white; /* White font */
-            	padding: 12px 24px; /* Inner padding */
-            	font-size: 16px; /* Font size */
-            	border-radius: 10px; /* Small rounded corner */
-           		cursor: pointer; /* Mouse pointer style */
-            	transition: background-color 0.3s ease; /* Transition effect of background */
-				width: 100px;
-				height: 50px;
-			}
-			/* Hover */
-			.custom-button:hover {
-				background-color: #45a049; /* Lighter shade of green */
-			}
-			/* Press */
-			.custom-button:active {
-            	background-color: #5ace18; /* Lightest shade of green */
-        	}
-		</style>
-	</head>
-	<body class="body">
-		<nav class="navi">
-			<ul>
-				<li class="nav-item"><a href="https://www.yuanshen.dev/en/index.html">Main</a></li>
-				<li class="nav-item"><a href="https://www.yuanshen.dev/en/music.html">Music</a></li>
-				<li class="nav-item"><a href="https://www.yuanshen.dev/en/pinball.html">JS Pinball Game</a></li>
-				<li class="nav-item"><a href="https://www.yuanshen.dev/en/morse.html">Morse Code</a></li>
-				<li class="nav-item"><a href="https://www.yuanshen.dev/en/crtirgen.html">中国铁路行程信息提示生成器(CRTIRGen)</a></li>
-				<li class="nav-item"><a href="https://www.yuanshen.dev/en/about.html">About</a></li>
-				<li class="nav-item"><a href="https://www.yuanshen.dev/pinball.html">简体中文</a></li>
-			</ul>
-		</nav>
-		<br />
-		<h2>Pinball game V2.3... Updated 2024.10.24</h2>
-		<p>This is a small pinball game using plain javascript. You can control the panel using 'a' and 'd' keys for
-			left and right or click the buttons. This game might not work if your browser do not support Javascript. You
-			earn 5 points each time you catch the ball using the panel, but if you fail to catch the ball, the game
-			would be over. The game would restart after you press the button on the pop-out dialog.</p>
-		<p>Big thanks to Nille Cheng and his book 'Learn to Create Web Games Using Javascript'(ISBN 978-7-115-46238-1), as the
-			concept of this game and part of the algorithm is base on his codes in the book.</p>
-		<label for="easy">Difficulty selection<br/></label>
-		<!--Checkboxes for three difficulty levels-->
-		<input type="checkbox" id="easy" onclick="clickCheckbox(this)"/>
-		<label for="easy">Easy<br /></label>
-		<input type="checkbox" id="hard" onclick="clickCheckbox(this)"/>
-		<label for="hard">Hard<br /></label>
-		<input type="checkbox" id="insane" onclick="clickCheckbox(this)"/>
-		<label for="insane">Insane<br /></label>
-		<input type="button" id="start" class="custom-button" value="Start!" onclick="start()"/><!--Start game button-->
-		<br />
-		<input type="button" id="leftButton" class="custom-button" value="Left"/><!--Left button-->
-		<!--Create a 400 by 400 px canvas for the game-->
-		<canvas id="canvas" width="400" height="400"></canvas>
-		<input type="button" id="rightButton" class="custom-button" value="Right"/><!--Right button-->
-		<script type="text/javascript" src="./pinball.js"></script>
-	</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>YuanRetro-Pinball</title>
+        <link rel="stylesheet" href="../style.css">
+        <style>
+            .difficulty-container {
+                display: flex;
+                flex-direction: row; /* From left to right */
+                align-items: flex-start; /* Align to the left*/
+            }
+
+            /* Game container */
+            .game-container {
+                display: flex;
+                flex-direction: column; /* From top to bottom */
+            }
+
+            /* Button container */
+            .button-row {
+                display: flex;
+                justify-content: space-between; /* Distance between the two buttons */
+                width: 400px; /* The same as the width of the canvas */
+                margin-top: 20px; /* Distance from the canvas */
+            }
+
+            #canvas {
+                width: 400px; /* Fixed height */
+                height: 400px; /* Fixed width */
+            }
+        </style>
+    </head>
+    <body class="body">
+        <nav class="navi">
+            <ul>
+                <li class="nav-item"><a href="https://www.yuanshen.dev/en/index.html">Main</a></li>
+                <li class="nav-item"><a href="https://www.yuanshen.dev/en/music.html">Music</a></li>
+                <li class="nav-item"><a href="https://www.yuanshen.dev/en/pinball.html">JS Pinball Game</a></li>
+                <li class="nav-item"><a href="https://www.yuanshen.dev/en/morse.html">Morse Code</a></li>
+                <li class="nav-item"><a
+                        href="https://www.yuanshen.dev/en/crtirgen.html">中国铁路行程信息提示生成器(CRTIRGen)</a></li>
+                <li class="nav-item"><a href="https://www.yuanshen.dev/en/about.html">About</a></li>
+                <li class="nav-item"><a href="https://www.yuanshen.dev/pinball.html">简体中文</a></li>
+            </ul>
+        </nav>
+        <br/>
+        <h2>Pinball game V2.4... Updated 2024.11.16</h2>
+        <p>This is a small pinball game using plain javascript. You can control the panel using 'a' and 'd' keys for
+            left and right or click the buttons. This game might not work if your browser do not support Javascript. You
+            earn 5 points each time you catch the ball using the panel, but if you fail to catch the ball, the game
+            would be over. The game would restart after you press the button on the pop-out dialog.</p>
+        <p>Big thanks to Nille Cheng and his book 'Learn to Create Web Games Using Javascript'(ISBN 978-7-115-46238-1),
+            as the
+            concept of this game and part of the algorithm is base on his codes in the book.</p>
+        <div class="difficulty-container">
+            <label for="easy">Difficulty Selection: <br/></label>
+            <input type="checkbox" id="easy" onclick="clickCheckbox(this)"/>
+            <label for="easy">Easy（EZ）<br/></label>
+            <input type="checkbox" id="hard" onclick="clickCheckbox(this)"/>
+            <label for="hard">Hard（HD）<br/></label>
+            <input type="checkbox" id="insane" onclick="clickCheckbox(this)"/>
+            <label for="insane">Insane（IN）<br/></label>
+        </div>
+        <input type="button" id="start" class="custom-button" value="Start!" onclick="start()"/>
+        <!-- Button to start the game -->
+        <div class="game-container">
+            <!-- Canvas -->
+            <canvas id="canvas" width="400" height="400"></canvas>
+
+            <!-- Button container -->
+            <div class="button-row">
+                <input type="button" id="leftButton" class="custom-button" value="Left"/>
+                <!-- Button to move to the left -->
+                <input type="button" id="rightButton" class="custom-button" value="Right"/>
+                <!-- Button to move to the right -->
+            </div>
+        </div>
+        <script type="text/javascript" src="./pinball.js"></script>
+        <footer class="site-footer">
+            <div class="footer-content">
+                <div class="social-links"><a href="https://www.yuanshen.dev/">www.yuanshen.dev</a>|<a
+                        href="https://www.lijiaxuan.xyz/">www.lijiaxuan.xyz</a> &copy; lijiaxuan 2020-2024
+                </div>
+                Your browser User Agent is:
+                <div id="userAgentDisplay"></div>
+                <script>
+                    function getUserAgent() {
+                        //Fetch the user agent and display it in the div tab
+                        document.getElementById("userAgentDisplay").innerHTML = navigator.userAgent;
+                    }
+
+                    //Use this method when the page loads
+                    window.onload = function () {
+                        getUserAgent();
+                    }
+                </script>
+            </div>
+            <div class="social-links">
+                <a href="https://x.com/lijiaxuan2008" target="_blank">Twitter (X)</a>
+                <a href="https://github.com/lijiaxuan1811" target="_blank">GitHub</a>
+                <a href="mailto:lijiaxuan1811@163.com" target="_blank">E-mail</a>
+            </div>
+        </footer>
+    </body>
 </html>
