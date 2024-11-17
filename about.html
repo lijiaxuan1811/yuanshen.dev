@@ -38,5 +38,30 @@
         <p>自然是完全开源的啦（行程信息提示生成器还有单独仓库诶）~可以在以下地址找到哦~<a
                 href="https://github.com/lijiaxuan1811/yuanshen.dev">https://github.com/lijiaxuan1811/yuanshen.dev</a>.
             如果需要的话，随便使用就好啦~</p>
+        <footer class="site-footer">
+            <div class="footer-content">
+                <div class="social-links"><a href="https://www.yuanshen.dev/">www.yuanshen.dev</a>|<a
+                        href="https://www.lijiaxuan.xyz/">www.lijiaxuan.xyz</a> &copy; lijiaxuan 2020-2024
+                </div>
+                你的浏览器User Agent是：
+                <div id="userAgentDisplay"></div>
+                <script>
+                    function getUserAgent() {
+                        //获取浏览器User Agent，在前面的分隔符标签中显示
+                        document.getElementById("userAgentDisplay").innerHTML = navigator.userAgent;
+                    }
+
+                    //页面加载时调用这个方法
+                    window.onload = function () {
+                        getUserAgent();
+                    }
+                </script>
+            </div>
+            <div class="social-links">
+                <a href="https://x.com/lijiaxuan2008" target="_blank">Twitter (X)</a>
+                <a href="https://github.com/lijiaxuan1811" target="_blank">GitHub</a>
+                <a href="mailto:lijiaxuan1811@163.com" target="_blank">E-mail</a>
+            </div>
+        </footer>
     </body>
 </html>
