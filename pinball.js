@@ -1,3 +1,12 @@
+// 获取当前页面路径
+const currentPath = window.location.pathname;
+var scoreName;
+// 动态加载不同的图片文件路径
+if (currentPath.includes("en")) {
+    scoreName = "Score: "
+} else {
+    scoreName = "分数："
+}
 var canv = document.getElementById("canvas");
 var ctx = canv.getContext("2d"); //创建画布和画笔对象
 var easy = document.getElementById("easy");
@@ -240,7 +249,7 @@ function start() {
         } else {
             ctx.clearRect(0, 0, 400, 400); //清除画布，不要留下轨迹
             ctx.font = "20px GenshinImpactZhLv1"; //选择积分显示字体
-            ctx.fillText("分数：" + score, 10, 30); //在画布上显示最新积分
+            ctx.fillText(scoreName + score, 10, 30); //在画布上显示最新积分
             ball.draw(); //调用方法绘制弹球
             panel.draw(); //调用方法绘制挡板
             ball.move(panel.x, panel.x + panel.xSize); //移动弹球，同时传入挡板最新位置，进行碰撞检测

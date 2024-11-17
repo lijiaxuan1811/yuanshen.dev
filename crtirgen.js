@@ -1,9 +1,20 @@
+// 获取当前页面路径
+const currentPath = window.location.pathname;
+var img1Path = "", img2Path = "";
+// 动态加载不同的图片文件路径
+if (currentPath.includes("en")) {
+    img1Path = "../img1.gif";
+    img2Path = "../img2.gif";
+} else {
+    img1Path = "./img1.gif";
+    img2Path = "./img2.gif";
+}
 var canv = document.getElementById("canvas"); //声明画布对象
 var ctx = canv.getContext("2d"); //声明画笔对象
 var img1 = new Image();
 var img2 = new Image(); //声明中国铁路logo和二维码的图片对象
-img1.src = "./img1.gif";
-img2.src = "./img2.gif";
+img1.src = img1Path;
+img2.src = img2Path;
 var date1, time1, date2, time2, trainTypeDrop, trainNo; //声明表单中若干项目的对象变量
 var button = document.getElementById("submit1"); //声明提交按钮对象
 var depTime = "",
@@ -229,8 +240,7 @@ function cusGen() {
 }
 
 button.addEventListener("click", function () {
-    //单击按钮执行初始化函数
-    init();
+    init(); //单击按钮执行初始化函数
 });
 document.onkeydown = function (event) {
     //按下回车键与单击按钮效果相同

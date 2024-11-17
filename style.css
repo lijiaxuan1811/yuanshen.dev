@@ -48,27 +48,30 @@
 
 /* 基础按钮样式 */
 .custom-button {
-  background-color: #799625; /* 扁平的绿色背景 */
-  border: none; /* 无边框 */
-  color: white; /* 字体颜色白色 */
-  padding: 10px 10px; /* 内边距 */
-  font-family: "GenshinImpactZhLv1", sans-serif; /* 自定义字体 */
-  font-size: 16px; /* 字体大小 */
-  border-radius: 10px; /* 小的圆角 */
-  cursor: pointer; /* 鼠标指针样式 */
-  transition: background-color 0.3s ease; /* 背景颜色的过渡效果 */
-  width: 100px;
-  height: 50px;
+    background-color: #799625; /* 扁平的绿色背景 */
+    border: none; /* 无边框 */
+    color: white; /* 字体颜色白色 */
+    padding: 10px 10px; /* 内边距 */
+    font-family: "GenshinImpactZhLv1", sans-serif; /* 自定义字体 */
+    font-size: 16px; /* 字体大小 */
+    border-radius: 10px; /* 小的圆角 */
+    cursor: pointer; /* 鼠标指针样式 */
+    transition: background-color 0.3s ease; /* 背景颜色的过渡效果 */
+    width: 100px;
+    height: 50px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4);
 }
 
 /* 鼠标悬停时的效果 */
 .custom-button:hover {
-  background-color: #45a049; /* 更浅的绿色 */
+    background-color: #45a049; /* 更浅的绿色 */
+    box-shadow: none;
 }
 
 /* 鼠标按下时的效果 */
 .custom-button:active {
-  background-color: #5ace18; /* 按下时更浅的绿色 */
+    background-color: #5ace18; /* 按下时更浅的绿色 */
+    box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.4);
 }
 
 .textbox {
