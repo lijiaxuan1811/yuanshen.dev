@@ -1,71 +1,68 @@
 <!DOCTYPE html>
 <html lang="en-US">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>YuanRetro-Music</title>
-        <link rel="stylesheet" href="../style.css">
-    </head>
-    <body class="body">
-        <nav class="navi">
-            <ul>
-                <li class="nav-item"><a href="https://www.yuanshen.dev/en/index.html">Main</a></li>
-                <li class="nav-item"><a href="https://www.yuanshen.dev/en/music.html">Music</a></li>
-                <li class="nav-item"><a href="https://www.yuanshen.dev/en/pinball.html">JS Pinball Game</a></li>
-                <li class="nav-item"><a href="https://www.yuanshen.dev/en/morse.html">Morse Code</a></li>
-                <li class="nav-item"><a
-                        href="https://www.yuanshen.dev/en/crtirgen.html">中国铁路行程信息提示生成器(CRTIRGen)</a></li>
-                <li class="nav-item"><a href="https://www.yuanshen.dev/en/about.html">About</a></li>
-                <li class="nav-item"><a href="https://www.yuanshen.dev/music.html">简体中文</a></li>
-            </ul>
-        </nav>
-        <br/>
-        <p>
-            This page contains several songs from different video games.
-            <br/>
-            Feel free to test your system with them!
-            PS:Unfortunately audio label is not well-supported before HTML 5,<br/>so if you have trouble playing the
-            songs
-            here, please use the direct links instead.
-            <br/>
-            <a href="../GenshinTheme.mp3">1.Genshin Impact Main Theme-HOYO-MIX/Yu-Peng Chen (mp3 format)</a>
-            <br/>
-            <audio src="../GenshinTheme.mp3" controls>Your browser doesn't seem to support HTML 5 and audio element.
-            </audio>
-            <br/>
-            <a href="../Liyue.mp3">2.璃月 Liyue-HOYO-MIX/Yu-Peng Chen (mp3 format)</a>
-            <br/>
-            <audio src="../Liyue.mp3" controls>Your browser doesn't seem to support HTML 5 and audio element.</audio>
-            <br/>
-            <a href="../th07_02.mp3">3.无何有之乡～ Deep Mountain-Team Shanghai Alice/ZUN (mp3 format)</a>
-            <br/>
-            <audio src="../th07_02.mp3" controls>Your browser doesn't seem to support HTML 5 and audio element.</audio>
-            <br/>
-        </p>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>YuanRetro-Music</title>
+		<link rel="stylesheet" href="../style.css">
+	</head>
+	<body class="body" id="body">
+		<nav class="navi">
+			<ul>
+				<li class="nav-item"><a href="https://www.yuanshen.dev/en/index.html">Main</a></li>
+				<li class="nav-item"><a href="https://www.yuanshen.dev/en/music.html">Music</a></li>
+				<li class="nav-item"><a href="https://www.yuanshen.dev/en/pinball.html">JS Pinball Game</a></li>
+				<li class="nav-item"><a href="https://www.yuanshen.dev/en/morse.html">Morse Code</a></li>
+				<li class="nav-item"><a
+						href="https://www.yuanshen.dev/en/crtirgen.html">中国铁路行程信息提示生成器(CRTIRGen)</a></li>
+				<li class="nav-item"><a href="https://www.yuanshen.dev/en/about.html">About</a></li>
+				<li class="nav-item language"><a href="https://www.yuanshen.dev/music.html">简体中文</a></li>
+			</ul>
+		</nav>
+		<br/>
+		<div class="textbox">
+			<p>
+				This page contains several songs from different video games.
+				<br/>
+				All of them are unlicensed and are for testing purposes only! <br/>
+				PS:Unfortunately audio label is not well-supported before HTML 5,<br/>so if you have trouble playing the
+				songs
+				here, please use the direct links instead.
+				<br/>
+				<a href="../img/GenshinTheme.mp3">1.Genshin Impact Main Theme-HOYO-MIX/Yu-Peng Chen (mp3 format)</a>
+				<br/>
+				<audio src="../img/GenshinTheme.mp3" controls>Your browser doesn't seem to support HTML 5 and audio
+					element.
+				</audio>
+				<br/>
+				<a href="../img/Liyue.mp3">2.璃月 Liyue-HOYO-MIX/Yu-Peng Chen (mp3 format)</a>
+				<br/>
+				<audio src="../img/Liyue.mp3" controls>Your browser doesn't seem to support HTML 5 and audio element.
+				</audio>
+				<br/>
+				<a href="../img/th07_02.mp3">3.无何有之乡～ Deep Mountain-Team Shanghai Alice/ZUN (mp3 format)</a>
+				<br/>
+				<audio src="../img/th07_02.mp3" controls>Your browser doesn't seem to support HTML 5 and audio
+					element.
+				</audio>
+				<br/>
+			</p>
+		</div>
 		<footer class="site-footer">
 			<div class="footer-content">
-				<div class="social-links"><a href="https://www.yuanshen.dev/">www.yuanshen.dev</a>|<a
+				<div class="web-links"><a href="https://www.yuanshen.dev/">www.yuanshen.dev</a>|<a
 						href="https://www.lijiaxuan.xyz/">www.lijiaxuan.xyz</a> &copy; lijiaxuan 2020-2024
 				</div>
 				Your browser User Agent is:
 				<div id="userAgentDisplay"></div>
-				<script>
-					function getUserAgent() {
-						//Fetch the user agent and display it in the div tab
-						document.getElementById("userAgentDisplay").innerHTML = navigator.userAgent;
-					}
-
-					//Use this method when the page loads
-					window.onload = function () {
-						getUserAgent();
-					}
-				</script>
+				<script type="text/javascript" src="../footer.js"></script>
 			</div>
 			<div class="social-links">
-				<a href="https://x.com/lijiaxuan2008" target="_blank">Twitter (X)</a>
-				<a href="https://github.com/lijiaxuan1811" target="_blank">GitHub</a>
-				<a href="mailto:lijiaxuan1811@163.com" target="_blank">E-mail</a>
+				<a href="https://space.bilibili.com/320001333" target="_blank"><img src="../img/bilibili.svg" alt="Bilibili.com logo" style="width: 30px; height: 30px;"/></a>
+				<a href="https://x.com/lijiaxuan2008" target="_blank"><img src="../img/twitter.svg" alt="Twitter logo" style="width: 30px; height: 30px;"/></a>
+				<a href="https://github.com/lijiaxuan1811" target="_blank"><img src="../img/github.svg" alt="GitHub logo" style="width: 30px; height: 30px;"/></a>
+				<a href="mailto:lijiaxuan1811@163.com" target="_blank"><img src="../img/email.svg" alt="My email" style="width: 35px; height: 35px;"/></a>
 			</div>
 		</footer>
-    </body>
+	</body>
 </html>

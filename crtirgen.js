@@ -3,11 +3,11 @@ const currentPath = window.location.pathname;
 var img1Path = "", img2Path = "";
 // 动态加载不同的图片文件路径
 if (currentPath.includes("en")) {
-    img1Path = "../img1.gif";
-    img2Path = "../img2.gif";
+    img1Path = "../img/img1.gif";
+    img2Path = "../img/img2.gif";
 } else {
-    img1Path = "./img1.gif";
-    img2Path = "./img2.gif";
+    img1Path = "./img/img1.gif";
+    img2Path = "./img/img2.gif";
 }
 var canv = document.getElementById("canvas"); //声明画布对象
 var ctx = canv.getContext("2d"); //声明画笔对象

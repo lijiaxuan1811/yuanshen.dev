@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en-US">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>YuanRetro-Morse Code</title>
-        <link rel="stylesheet" href="../style.css">
-        <style>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>YuanRetro-Morse Code</title>
+		<link rel="stylesheet" href="../style.css">
+		<style>
             /* Style settings */
             #textInput {
                 font-family: GenshinImpactZhLv1, sans-serif; /* Font */
@@ -31,78 +31,76 @@
                 color: red;
                 margin-top: 10px; /* Style for error messages */
             }
-        </style>
-    </head>
-    <body class="body">
-        <!-- Navigation menu -->
-        <nav class="navi">
-            <ul>
-                <li class="nav-item"><a href="https://www.yuanshen.dev/en/index.html">Main</a></li>
-                <li class="nav-item"><a href="https://www.yuanshen.dev/en/music.html">Music</a></li>
-                <li class="nav-item"><a href="https://www.yuanshen.dev/en/pinball.html">JS Pinball Game</a></li>
-                <li class="nav-item"><a href="https://www.yuanshen.dev/en/morse.html">Morse Code</a></li>
-                <li class="nav-item"><a
-                        href="https://www.yuanshen.dev/en/crtirgen.html">中国铁路行程信息提示生成器(CRTIRGen)</a></li>
-                <li class="nav-item"><a href="https://www.yuanshen.dev/en/about.html">About</a></li>
-                <li class="nav-item"><a href="https://www.yuanshen.dev/morse.html">简体中文</a></li>
-            </ul>
-        </nav>
-        <br/>
+		</style>
+	</head>
+	<body class="body" id="body">
+		<!-- Navigation menu -->
+		<nav class="navi">
+			<ul>
+				<li class="nav-item"><a href="https://www.yuanshen.dev/en/index.html">Main</a></li>
+				<li class="nav-item"><a href="https://www.yuanshen.dev/en/music.html">Music</a></li>
+				<li class="nav-item"><a href="https://www.yuanshen.dev/en/pinball.html">JS Pinball Game</a></li>
+				<li class="nav-item"><a href="https://www.yuanshen.dev/en/morse.html">Morse Code</a></li>
+				<li class="nav-item"><a
+						href="https://www.yuanshen.dev/en/crtirgen.html">中国铁路行程信息提示生成器(CRTIRGen)</a></li>
+				<li class="nav-item"><a href="https://www.yuanshen.dev/en/about.html">About</a></li>
+				<li class="nav-item language"><a href="https://www.yuanshen.dev/morse.html">简体中文</a></li>
+			</ul>
+		</nav>
+		<br/>
 
-        <h1>Text to Morse Code</h1> <!-- Title -->
+		<h1>Text to Morse Code</h1> <!-- Title -->
+		<div class="textbox-container">
+            <div class="textbox">
+                <!-- User input area for entering text to be converted -->
+                <textarea id="textInput" placeholder="Please input the text"
+                          style="width: 600px; height: 250px;"></textarea>
+                <br/>
+				<div class="control-container">
+					<!-- User can set WPM (words per minute) for the sending speed -->
+					<label for="WPM">Speed (WPM, Words per minute):</label>
+					<input type="number" id="WPM" value="20" min="1"/> <!-- Default WPM set to 20 -->
+					<br/>
 
-        <!-- User input area for entering text to be converted -->
-        <textarea id="textInput" placeholder="Please input the text" style="width: 600px; height: 250px;"></textarea>
-        <br/>
-        <div class="control-container">
-            <!-- User can set WPM (words per minute) for the sending speed -->
-            <label for="WPM">Speed (WPM, Words per minute):</label>
-            <input type="number" id="WPM" value="20" min="1"/> <!-- Default WPM set to 20 -->
-            <br/>
+					<!-- User can set pitch frequency (Hz) -->
+					<label for="fq">Pitch (Hz, Hertz):</label>
+					<input type="number" id="fq" value="600" min="1"/> <!-- Default frequency 600Hz -->
+				</div>
+				<!-- Control buttons -->
+				<div class="button-container">
+					<button class="custom-button" onclick="preparation()">Play</button>
+					<!-- Play button to start sending Morse code -->
+					<button class="custom-button" onclick="pauseSound()">Pause</button> <!-- Pause button -->
+					<button class="custom-button" onclick="resumeSound()">Resume</button> <!-- Resume button -->
+					<button class="custom-button" onclick="stopSound()">Stop</button> <!-- Stop button -->
+					<button class="custom-button" onclick="downloadMorse()">Download Code</button>
+					<!-- Download button -->
+				</div>
+				<div id="error"></div> <!-- Area to display error messages -->
+			</div>
+			<div class="textbox">
+				<img src=../img/morsesheet.png style="width: 600px; height: auto;"
+					 alt="A complete sheet of morse code">
+			</div>
+			<!-- Morse code reference sheet -->
+		</div>
 
-            <!-- User can set pitch frequency (Hz) -->
-            <label for="fq">Pitch (Hz, Hertz):</label>
-            <input type="number" id="fq" value="600" min="1"/> <!-- Default frequency 600Hz -->
-        </div>
-        <!-- Control buttons -->
-        <div class="button-container">
-            <button class="custom-button" onclick="preparation()">Play</button>
-            <!-- Play button to start sending Morse code -->
-            <button class="custom-button" onclick="pauseSound()">Pause</button> <!-- Pause button -->
-            <button class="custom-button" onclick="resumeSound()">Resume</button> <!-- Resume button -->
-            <button class="custom-button" onclick="stopSound()">Stop</button> <!-- Stop button -->
-            <button class="custom-button" onclick="downloadMorse()">Download Code</button>
-            <!-- Download button -->
-        </div>
-        <div id="error"></div> <!-- Area to display error messages -->
-        <div><img src=../morsesheet.png style="width: 600px; height: auto;" alt="A complete sheet of morse code"></div>
-        <!-- Morse code reference sheet -->
-
-        <script src="../morse.js"></script>
-        <footer class="site-footer">
-            <div class="footer-content">
-                <div class="social-links"><a href="https://www.yuanshen.dev/">www.yuanshen.dev</a>|<a
-                        href="https://www.lijiaxuan.xyz/">www.lijiaxuan.xyz</a> &copy; lijiaxuan 2020-2024
-                </div>
-                Your browser User Agent is:
-                <div id="userAgentDisplay"></div>
-                <script>
-                    function getUserAgent() {
-                        //Fetch the user agent and display it in the div tab
-                        document.getElementById("userAgentDisplay").innerHTML = navigator.userAgent;
-                    }
-
-                    //Use this method when the page loads
-                    window.onload = function () {
-                        getUserAgent();
-                    }
-                </script>
-            </div>
-            <div class="social-links">
-                <a href="https://x.com/lijiaxuan2008" target="_blank">Twitter (X)</a>
-                <a href="https://github.com/lijiaxuan1811" target="_blank">GitHub</a>
-                <a href="mailto:lijiaxuan1811@163.com" target="_blank">E-mail</a>
-            </div>
-        </footer>
-    </body>
+		<script src="../morse.js"></script>
+		<footer class="site-footer">
+			<div class="footer-content">
+				<div class="web-links"><a href="https://www.yuanshen.dev/">www.yuanshen.dev</a>|<a
+						href="https://www.lijiaxuan.xyz/">www.lijiaxuan.xyz</a> &copy; lijiaxuan 2020-2024
+				</div>
+				Your browser User Agent is:
+				<div id="userAgentDisplay"></div>
+				<script type="text/javascript" src="../footer.js"></script>
+			</div>
+			<div class="social-links">
+				<a href="https://space.bilibili.com/320001333" target="_blank"><img src="../img/bilibili.svg" alt="Bilibili.com logo" style="width: 30px; height: 30px;"/></a>
+				<a href="https://x.com/lijiaxuan2008" target="_blank"><img src="../img/twitter.svg" alt="Twitter logo" style="width: 30px; height: 30px;"/></a>
+				<a href="https://github.com/lijiaxuan1811" target="_blank"><img src="../img/github.svg" alt="GitHub logo" style="width: 30px; height: 30px;"/></a>
+				<a href="mailto:lijiaxuan1811@163.com" target="_blank"><img src="../img/email.svg" alt="My email" style="width: 35px; height: 35px;"/></a>
+			</div>
+		</footer>
+	</body>
 </html>

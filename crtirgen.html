@@ -6,7 +6,7 @@
         <title>YuanRetro-中国铁路行程信息提示生成器(CRTIRGen)</title>
         <link rel="stylesheet" href="./style.css">
     </head>
-    <body class="body">
+    <body class="body" id="body">
         <nav class="navi">
             <ul>
                 <li class="nav-item"><a href="https://www.yuanshen.dev/">主页</a></li>
@@ -16,121 +16,120 @@
                 <li class="nav-item"><a
                         href="https://www.yuanshen.dev/crtirgen.html">中国铁路行程信息提示生成器(CRTIRGen)</a></li>
                 <li class="nav-item"><a href="https://www.yuanshen.dev/about.html">关于</a></li>
-                <li class="nav-item"><a href="https://www.yuanshen.dev/en/crtirgen.html">English</a></li>
+                <li class="nav-item language"><a href="https://www.yuanshen.dev/en/crtirgen.html">English</a></li>
             </ul>
         </nav>
         <br/>
         <h2>中国铁路行程信息提示生成器 V1.2-2024.07.23</h2>
-        <p>一、铁路磁票（报销凭证）票号（21字符）构成：车站TMIS（5位数，查询请前往<a
-                href="https://rail.re/">https://rail.re/</a>）+出票机器类型（2位数，00-09为人工售票窗口，20-29为车票代售点，30-39为自动售票机）+出票机器编号（3位数）+结算日期（4位数，MMDD格式，一般为乘车日期下一天）+票纸编号（7字符，一般为1字母+6数字）
-        </p>
-        <p>如：（1）18089（青岛站）31（售票机）042（机器号）0517（结算日期,5月17日）H000565（票纸号）<br/>（2）17984（胶州站）00（人工窗口）003（机器号）0229（结算日期，2月29日）P062258（票纸号）<br/>（3）17999（蓝村站）30（售票机）031（机器号）1213（结算日期，12月13日）A016888（票纸号）
-        </p>
-        <p>
-            二、电子票号（25数字）构成：车站TMIS（5位数）+出票机器类型（2位数，同上）+出票机器编号（3位数）+结算日期（4位数，同上）+7位数（一般9开头，含义未知，如果您恰好知道，请不吝赐教哦~）+年份（4位数）</p>
-        <p>如：（1）22972（东莞港站）30（售票机）003（机器号）1114（结算日期，11月14日）9005786（未知）2020（年份）<br/>（2）29957（达州站）00（人工窗口）005（机器号）0319（结算日期，3月19日）9110473（未知）2021（年份）<br/>（3）39500（咸阳站）00（人工窗口）003（机器号）0214（结算日期，2月14日）9155434（未知）2022（年份）
-        </p>
-        <p>三、行程信息提示“出单”号码（10位数）构成：车站TMIS（5位数）+出票机器类型（2位数，同上）+出票机器编号（3位数）</p>
-        <p>如：（1）17963（胶州北站）30（售票机）008（机器号）<br/>（2）66827（徐州东站）30（售票机）088（机器号）<br/>（3）18056（城阳站）00（人工窗口）003（机器号）
-        </p>
-        <form id="customSelection">
-            <br/>
-            <label for="date1">开车日期：</label>
-            <input type="date" id="date1" min="0000-01-01" max="9999-12-31"/>
-            <label for="time1">开车时间：</label>
-            <input type="time" id="time1"/><br/>
-            <label for="date2">打印日期：</label>
-            <input type="date" id="date2" min="0000-01-01" max="9999-12-31"/>
-            <label for="time2">打印时间：</label>
-            <input type="time" id="time2" step="1"/><br/><!--添加step="1"使秒数选框出现-->
-            <label for="depStation">出发车站：</label>
-            <input type="text" id="depStation" size="10"/>
-            <label for="depStation">站</label>
-            <label for="depPy">站名拼音（首字母大写）：</label>
-            <input type="text" id="depPy" size="14"/><br/>
-            <label for="trainTypeDrop">车次号：</label>
-            <select id="trainTypeDrop">
-                <option value="normal">普客(无前缀)</option><!--"Normal"通过判断语句转为无前缀，其他的直接使用value中的值作为车次号前缀-->
-                <option value="K">快速(K)</option>
-                <option value="T">特快(T)</option>
-                <option value="Z">直特(Z)</option>
-                <option value="T">旅游(Y)</option>
-                <option value="L">临客(L)</option>
-                <option value="S">市域/市郊(S)</option>
-                <option value="C">城际(C)</option>
-                <option value="D">动车(D)</option>
-                <option value="G">高铁(G)</option>
-            </select>
-            <label for="trainTypeDrop">次</label>
-            <input type="text" id="trainNo" size="8"/><br/>
-            <label for="arrStation">到达车站：</label>
-            <input type="text" id="arrStation" size="10"/>
-            <label for="arrStation">站</label>
-            <label for="arrPy">站名拼音（首字母大写）：</label>
-            <input type="text" id="arrPy" size="14"/><br/>
-            <label for="seatNumber">座号：</label>
-            <input type="text" id="seatNumber" size="10"/>
-            <label for="seatType">坐席类别：</label>
-            <input type="text" id="seatType" size="10"/><br/>
-            <label for="fare">票价（带小数点后一位）：</label>
-            <input type="text" id="fare" size="6"/>
-            <label for="fare">元</label>
-            <label for="ticketCheck">检票口（没有可不填）：</label>
-            <input type="text" id="ticketCheck" size="12"/><br/>
-            <label for="TMIS">车站TMIS号码（5位数，查询请前往<a href="https://rail.re/">https://rail.re/</a>）：</label>
-            <!--TMIS为每个铁路车站的唯一五位数编号-->
-            <input type="text" id="TMIS" size="8"/><br/>
-            <label for="machineType">打印机器类型（2位数，00-09：车站售票窗口；20-29：车票代售点；30-39：自动售票机）：</label>
-            <input type="text" id="machineType" size="5"/><br/>
-            <label for="machineNo">打印机器编号（3位数）：</label><!--凭条尾部的“出单”10位数号码即为TMIS（5位数）+机器类型（2位数）+机器编号（3位数）-->
-            <input type="text" id="machineNo" size="5"/>
-            <label for="orderNo">订单号（10个字符）：</label><!--一般为E开头-->
-            <input type="text" id="orderNo" size="10"/><br/>
-            <label for="ticketNo">电子票号（25位数）：</label>
-            <!--前14位数为TMIS（5位数）+机器类型（2位数）+机器编号（3位数）+结算日期（MMDD，4位数）；最后4位数为年份；两部分中间的7位数未知-->
-            <input type="text" id="ticketNo" size="30"/><br/>
-            <label for="name">乘车人姓名：</label>
-            <input type="text" id="name" size="8"/>
-            <label for="idTypeEng">身份证件类型代码（2字母）：</label>
-            <input type="text" id="idTypeEng" size="6"/><br/>
-            <label for="idTypeChn">身份证件类型（中文）：</label>
-            <input type="text" id="idTypeChn" size="12"/>
-            <label for="idNo">身份证件号码（必要位置使用‘*’代替）：</label>
-            <input type="text" id="idNo" size="18"/>
-            <input type="button" value="确认" id="submit1"/>
-        </form>
-        <canvas id="canvas" width="800" height="1400" style="width: 800px; height: 1400px;"></canvas>
+        <div class="textbox-container">
+            <div class="textbox" style="width: 550px;">
+                <p>一、铁路磁票（报销凭证）票号（21字符）构成：车站TMIS（5位数，查询请前往<a
+                        href="https://rail.re/">https://rail.re/</a>）+出票机器类型（2位数，00-09为人工售票窗口，20-29为车票代售点，30-39为自动售票机）+出票机器编号（3位数）+结算日期（4位数，MMDD格式，一般为乘车日期下一天）+票纸编号（7字符，一般为1字母+6数字）
+                </p>
+                <p>如：（1）18089（青岛站）31（售票机）042（机器号）0517（结算日期,5月17日）H000565（票纸号）<br/>（2）17984（胶州站）00（人工窗口）003（机器号）0229（结算日期，2月29日）P062258（票纸号）<br/>（3）17999（蓝村站）30（售票机）031（机器号）1213（结算日期，12月13日）A016888（票纸号）
+                </p>
+                <p>
+                    二、电子票号（25数字）构成：车站TMIS（5位数）+出票机器类型（2位数，同上）+出票机器编号（3位数）+结算日期（4位数，同上）+7位数（一般9开头，含义未知，如果您恰好知道，请不吝赐教哦~）+年份（4位数）</p>
+                <p>如：（1）22972（东莞港站）30（售票机）003（机器号）1114（结算日期，11月14日）9005786（未知）2020（年份）<br/>（2）29957（达州站）00（人工窗口）005（机器号）0319（结算日期，3月19日）9110473（未知）2021（年份）<br/>（3）39500（咸阳站）00（人工窗口）003（机器号）0214（结算日期，2月14日）9155434（未知）2022（年份）
+                </p>
+                <p>三、行程信息提示“出单”号码（10位数）构成：车站TMIS（5位数）+出票机器类型（2位数，同上）+出票机器编号（3位数）</p>
+                <p>如：（1）17963（胶州北站）30（售票机）008（机器号）<br/>（2）66827（徐州东站）30（售票机）088（机器号）<br/>（3）18056（城阳站）00（人工窗口）003（机器号）
+                </p>
+            </div>
+            <div class="textbox" style="width: 850px;">
+                <form id="customSelection">
+                    <br/>
+                    <label for="date1">开车日期：</label>
+                    <input type="date" id="date1" min="0000-01-01" max="9999-12-31"/>
+                    <label for="time1">开车时间：</label>
+                    <input type="time" id="time1"/><br/>
+                    <label for="date2">打印日期：</label>
+                    <input type="date" id="date2" min="0000-01-01" max="9999-12-31"/>
+                    <label for="time2">打印时间：</label>
+                    <input type="time" id="time2" step="1"/><br/><!--添加step="1"使秒数选框出现-->
+                    <label for="depStation">出发车站：</label>
+                    <input type="text" id="depStation" size="10"/>
+                    <label for="depStation">站</label>
+                    <label for="depPy">站名拼音（首字母大写）：</label>
+                    <input type="text" id="depPy" size="14"/><br/>
+                    <label for="trainTypeDrop">车次号：</label>
+                    <select id="trainTypeDrop">
+                        <option value="normal">普客(无前缀)</option><!--"Normal"通过判断语句转为无前缀，其他的直接使用value中的值作为车次号前缀-->
+                        <option value="K">快速(K)</option>
+                        <option value="T">特快(T)</option>
+                        <option value="Z">直特(Z)</option>
+                        <option value="T">旅游(Y)</option>
+                        <option value="L">临客(L)</option>
+                        <option value="S">市域/市郊(S)</option>
+                        <option value="C">城际(C)</option>
+                        <option value="D">动车(D)</option>
+                        <option value="G">高铁(G)</option>
+                    </select>
+                    <label for="trainTypeDrop">次</label>
+                    <input type="text" id="trainNo" size="8"/><br/>
+                    <label for="arrStation">到达车站：</label>
+                    <input type="text" id="arrStation" size="10"/>
+                    <label for="arrStation">站</label>
+                    <label for="arrPy">站名拼音（首字母大写）：</label>
+                    <input type="text" id="arrPy" size="14"/><br/>
+                    <label for="seatNumber">座号：</label>
+                    <input type="text" id="seatNumber" size="10"/>
+                    <label for="seatType">坐席类别：</label>
+                    <input type="text" id="seatType" size="10"/><br/>
+                    <label for="fare">票价（带小数点后一位）：</label>
+                    <input type="text" id="fare" size="6"/>
+                    <label for="fare">元</label>
+                    <label for="ticketCheck">检票口（没有可不填）：</label>
+                    <input type="text" id="ticketCheck" size="12"/><br/>
+                    <label for="TMIS">车站TMIS号码（5位数，查询请前往<a href="https://rail.re/">https://rail.re/</a>）：</label>
+                    <!--TMIS为每个铁路车站的唯一五位数编号-->
+                    <input type="text" id="TMIS" size="8"/><br/>
+                    <label for="machineType">打印机器类型（2位数，00-09：车站售票窗口；20-29：车票代售点；30-39：自动售票机）：</label>
+                    <input type="text" id="machineType" size="5"/><br/>
+                    <label for="machineNo">打印机器编号（3位数）：</label><!--凭条尾部的“出单”10位数号码即为TMIS（5位数）+机器类型（2位数）+机器编号（3位数）-->
+                    <input type="text" id="machineNo" size="5"/>
+                    <label for="orderNo">订单号（10个字符）：</label><!--一般为E开头-->
+                    <input type="text" id="orderNo" size="10"/><br/>
+                    <label for="ticketNo">电子票号（25位数）：</label>
+                    <!--前14位数为TMIS（5位数）+机器类型（2位数）+机器编号（3位数）+结算日期（MMDD，4位数）；最后4位数为年份；两部分中间的7位数未知-->
+                    <input type="text" id="ticketNo" size="30"/><br/>
+                    <label for="name">乘车人姓名：</label>
+                    <input type="text" id="name" size="8"/>
+                    <label for="idTypeEng">身份证件类型代码（2字母）：</label>
+                    <input type="text" id="idTypeEng" size="6"/><br/>
+                    <label for="idTypeChn">身份证件类型（中文）：</label>
+                    <input type="text" id="idTypeChn" size="12"/>
+                    <label for="idNo">身份证件号码（必要位置使用‘*’代替）：</label>
+                    <input type="text" id="idNo" size="18"/>
+                    <input type="button" value="确认" id="submit1" class="custom-button"/>
+                </form>
+                <canvas id="canvas" width="800" height="1400" style="width: 800px; height: 1400px;"></canvas>
+            </div>
+            <div class="textbox" style="width: 1430px;">
+                <p>注：如需保存生成的图片，右键单击上方区域并选择“图片另存为”选项就可以哦~</p>
+                <p>站长建议在桌面端使用基于Chromium内核的浏览器或火狐浏览器访问诶~</p>
+                <p>本站不会收集任何个人信息，请放心使用；使用时请大家遵守国家法律法规，切忌用于违法违规用途噢~</p>
+                <p>如有任何意见或反馈，请大胆联系站长哦~<a href="mailto:lijiaxuan1811@163.com">lijiaxuan1811@163.com</a>或者在以下页面提交Issue：<a
+                        href="https://github.com/lijiaxuan1811/China-Railway-Trip-Information-Reminder-Generator">https://github.com/lijiaxuan1811/China-Railway-Trip-Information-Reminder-Generator</a>
+                    非常感谢诸位宝贵的反馈噢！</p>
+            </div>
+        </div>
         <script type="text/javascript" src="./crtirgen.js"></script>
-        <p>注：如需保存生成的图片，右键单击上方区域并选择“图片另存为”选项就可以哦~</p>
-        <p>站长建议在桌面端使用基于Chromium内核的浏览器或火狐浏览器访问诶~</p>
-        <p>本站不会收集任何个人信息，请放心使用；使用时请大家遵守国家法律法规，切忌用于违法违规用途噢~</p>
-        <p>如有任何意见或反馈，请大胆联系站长哦~<a href="mailto:lijiaxuan1811@163.com">lijiaxuan1811@163.com</a>或者在以下页面提交Issue：<a
-                href="https://github.com/lijiaxuan1811/China-Railway-Trip-Information-Reminder-Generator">https://github.com/lijiaxuan1811/China-Railway-Trip-Information-Reminder-Generator</a>
-            非常感谢诸位宝贵的反馈噢！</p>
-		<footer class="site-footer">
-			<div class="footer-content">
-				<div class="social-links"><a href="https://www.yuanshen.dev/">www.yuanshen.dev</a>|<a
-						href="https://www.lijiaxuan.xyz/">www.lijiaxuan.xyz</a> &copy; lijiaxuan 2020-2024
-				</div>
-				你的浏览器User Agent是：
-				<div id="userAgentDisplay"></div>
-				<script>
-					function getUserAgent() {
-						//获取浏览器User Agent，在前面的分隔符标签中显示
-						document.getElementById("userAgentDisplay").innerHTML = navigator.userAgent;
-					}
-
-					//页面加载时调用这个方法
-					window.onload = function () {
-						getUserAgent();
-					}
-				</script>
-			</div>
-			<div class="social-links">
-				<a href="https://x.com/lijiaxuan2008" target="_blank">Twitter (X)</a>
-				<a href="https://github.com/lijiaxuan1811" target="_blank">GitHub</a>
-				<a href="mailto:lijiaxuan1811@163.com" target="_blank">E-mail</a>
-			</div>
-		</footer>
+        <footer class="site-footer">
+            <div class="footer-content">
+                <div class="web-links"><a href="https://www.yuanshen.dev/">www.yuanshen.dev</a>|<a
+                        href="https://www.lijiaxuan.xyz/">www.lijiaxuan.xyz</a> &copy; lijiaxuan 2020-2024
+                </div>
+                你的浏览器User Agent是：
+                <div id="userAgentDisplay"></div>
+                <script type="text/javascript" src="./footer.js"></script>
+            </div>
+            <div class="social-links">
+                <a href="https://space.bilibili.com/320001333" target="_blank"><img src="./img/bilibili.svg" alt="Bilibili.com logo" style="width: 30px; height: 30px;"/></a>
+                <a href="https://x.com/lijiaxuan2008" target="_blank"><img src="./img/twitter.svg" alt="Twitter logo" style="width: 30px; height: 30px;"/></a>
+                <a href="https://github.com/lijiaxuan1811" target="_blank"><img src="./img/github.svg" alt="GitHub logo" style="width: 30px; height: 30px;"/></a>
+                <a href="mailto:lijiaxuan1811@163.com" target="_blank"><img src="./img/email.svg" alt="My email" style="width: 35px; height: 35px;"/></a>
+            </div>
+        </footer>
     </body>
 </html>

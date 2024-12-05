@@ -6,7 +6,7 @@
         <title>YuanRetro-关于</title>
         <link rel="stylesheet" href="./style.css">
     </head>
-    <body class="body">
+    <body class="body" id="body">
         <nav class="navi">
             <ul>
                 <li class="nav-item"><a href="https://www.yuanshen.dev/">主页</a></li>
@@ -16,51 +16,44 @@
                 <li class="nav-item"><a
                         href="https://www.yuanshen.dev/crtirgen.html">中国铁路行程信息提示生成器(CRTIRGen)</a></li>
                 <li class="nav-item"><a href="https://www.yuanshen.dev/about.html">关于</a></li>
-                <li class="nav-item"><a href="https://www.yuanshen.dev/en/about.html">English</a></li>
+                <li class="nav-item language"><a href="https://www.yuanshen.dev/en/about.html">English</a></li>
             </ul>
         </nav>
         <br/>
-        <h2>关于我……</h2>
-        <p>
-            一枚喜欢古董科技的高中生哦~这个网站是自己用不多的HTML和JS知识从零写
-            <del>（拼凑）</del>
-            出来的，不足之处还请多多谅解啦~<br/>
-            当然你也可以在Github仓库向我提交Issue呦~<br/>
-            2017年的时候，我机缘巧合在中入坑了古董科技，之后我就渐渐地学习了一些硬件知识，并且经常造访本地的电脑城和电子回收站，寻找一些古董硬件<br/>
-            在此期间，我的计算机知识也得到了不少进步，比如我用来开发这个网站的主力电脑，就是自己用许多不同来源的配件一点点组装起来的awa<br/>
-            回看刚刚入坑时候的一些迷惑行为，真心感觉自己很傻55555，但是哪怕现在，还是有数不清的小小细节是我所不知道的，学习的路是永无止境的哩~
-        </p>
-        <h2>联系我……</h2>
-        最快的方式自然是发邮件啦~以下的两个邮箱地址都可以使用哦~<a
-            href="mailto:lijiaxuan1815@gmail.com">lijiaxuan1815@gmail.com</a> (or <a
-            href="mailto:lijiaxuan1811@163.com">lijiaxuan1811@163.com</a>)
-        <h2>源代码……</h2>
-        <p>自然是完全开源的啦（行程信息提示生成器还有单独仓库诶）~可以在以下地址找到哦~<a
-                href="https://github.com/lijiaxuan1811/yuanshen.dev">https://github.com/lijiaxuan1811/yuanshen.dev</a>.
-            如果需要的话，随便使用就好啦~</p>
+        <div class="textbox">
+            <h2>关于我……</h2>
+            <p>
+                一枚喜欢古董科技的高中生哦~这个网站是自己用不多的HTML和JS知识从零写
+                <del>（拼凑）</del>
+                出来的，不足之处还请多多谅解啦~<br/>
+                当然你也可以在Github仓库向我提交Issue呦~<br/>
+                2017年的时候，我机缘巧合在中入坑了古董科技，之后我就渐渐地学习了一些硬件知识，并且经常造访本地的电脑城和电子回收站，寻找一些古董硬件<br/>
+                在此期间，我的计算机知识也得到了不少进步，比如我用来开发这个网站的主力电脑，就是自己用许多不同来源的配件一点点组装起来的awa<br/>
+                回看刚刚入坑时候的一些迷惑行为，真心感觉自己很傻55555，但是哪怕现在，还是有数不清的小小细节是我所不知道的，学习的路是永无止境的哩~
+            </p>
+            <h2>联系我……</h2>
+            最快的方式自然是发邮件啦~以下的两个邮箱地址都可以使用哦~<a
+                href="mailto:lijiaxuan1815@gmail.com">lijiaxuan1815@gmail.com</a> (or <a
+                href="mailto:lijiaxuan1811@163.com">lijiaxuan1811@163.com</a>)
+            <h2>源代码……</h2>
+            <p>自然是完全开源的啦（行程信息提示生成器还有单独仓库诶）~可以在以下地址找到哦~<a
+                    href="https://github.com/lijiaxuan1811/yuanshen.dev">https://github.com/lijiaxuan1811/yuanshen.dev</a>.
+                如果需要的话，随便使用就好啦~</p>
+        </div>
         <footer class="site-footer">
             <div class="footer-content">
-                <div class="social-links"><a href="https://www.yuanshen.dev/">www.yuanshen.dev</a>|<a
+                <div class="web-links"><a href="https://www.yuanshen.dev/">www.yuanshen.dev</a>|<a
                         href="https://www.lijiaxuan.xyz/">www.lijiaxuan.xyz</a> &copy; lijiaxuan 2020-2024
                 </div>
                 你的浏览器User Agent是：
                 <div id="userAgentDisplay"></div>
-                <script>
-                    function getUserAgent() {
-                        //获取浏览器User Agent，在前面的分隔符标签中显示
-                        document.getElementById("userAgentDisplay").innerHTML = navigator.userAgent;
-                    }
-
-                    //页面加载时调用这个方法
-                    window.onload = function () {
-                        getUserAgent();
-                    }
-                </script>
+                <script type="text/javascript" src="./footer.js"></script>
             </div>
             <div class="social-links">
-                <a href="https://x.com/lijiaxuan2008" target="_blank">Twitter (X)</a>
-                <a href="https://github.com/lijiaxuan1811" target="_blank">GitHub</a>
-                <a href="mailto:lijiaxuan1811@163.com" target="_blank">E-mail</a>
+                <a href="https://space.bilibili.com/320001333" target="_blank"><img src="./img/bilibili.svg" alt="Bilibili.com logo" style="width: 30px; height: 30px;"/></a>
+                <a href="https://x.com/lijiaxuan2008" target="_blank"><img src="./img/twitter.svg" alt="Twitter logo" style="width: 30px; height: 30px;"/></a>
+                <a href="https://github.com/lijiaxuan1811" target="_blank"><img src="./img/github.svg" alt="GitHub logo" style="width: 30px; height: 30px;"/></a>
+                <a href="mailto:lijiaxuan1811@163.com" target="_blank"><img src="./img/email.svg" alt="My email" style="width: 35px; height: 35px;"/></a>
             </div>
         </footer>
     </body>

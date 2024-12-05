@@ -1,11 +1,13 @@
 // 获取当前页面路径
 const currentPath = window.location.pathname;
-var scoreName;
-// 动态加载不同的图片文件路径
+var scoreName, gameOverMsg;
+// 根据页面语言动态加载不同的字符串
 if (currentPath.includes("en")) {
-    scoreName = "Score: "
+    scoreName = "Score: ";
+    gameOverMsg = "Oh no! Game over!";
 } else {
-    scoreName = "分数："
+    scoreName = "分数：";
+    gameOverMsg = "完喽，寄了!";
 }
 var canv = document.getElementById("canvas");
 var ctx = canv.getContext("2d"); //创建画布和画笔对象
@@ -134,7 +136,7 @@ var ball = {
                 //接住了，弹起并且加五分
             } else {
                 //this.y += this.ySpeed;
-                window.alert("完喽，寄了!");
+                window.alert(gameOverMsg);
                 //this.x = 0;
                 //this.y = 0;
                 score = 0;

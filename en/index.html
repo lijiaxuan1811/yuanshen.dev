@@ -6,25 +6,22 @@
         <title>YuanRetro-Main</title>
         <link rel="stylesheet" href="../style.css">
         <style>
+            .row {
+                display: flex;
+                justify-content: flex-start;
+                align-content: flex-start;
+            }
+
             .column1 {
-                float: left;
-                margin-left: 10px;
+                flex-shrink: 0;
             }
 
             .column2 {
-                float: left;
-                margin-top: 50px;
-                margin-left: 100px;
-            }
-
-            .row:after {
-                content: "";
-                display: table;
-                clear: both;
+                margin: auto auto auto 40px;
             }
         </style>
     </head>
-    <body class="body">
+    <body class="body" id="body">
         <nav class="navi">
             <ul>
                 <li class="nav-item"><a href="https://www.yuanshen.dev/en/index.html">Main</a></li>
@@ -34,14 +31,14 @@
                 <li class="nav-item"><a
                         href="https://www.yuanshen.dev/en/crtirgen.html">中国铁路行程信息提示生成器(CRTIRGen)</a></li>
                 <li class="nav-item"><a href="https://www.yuanshen.dev/en/about.html">About</a></li>
-                <li class="nav-item"><a href="https://www.yuanshen.dev/index.html">简体中文</a></li>
+                <li class="nav-item language"><a href="https://www.yuanshen.dev/index.html">简体中文</a></li>
             </ul>
         </nav>
         <br/>
+        <h2>Welcome to Genshin Impact(Yuanshen) Retro Computing Hub(YuanRetro)...</h2>
         <div class="row textbox">
-            <h2>Welcome to Genshin Impact(Yuanshen) Retro Computing Hub(YuanRetro)...</h2>
             <div class="column1">
-                <img src="../nahida.png" width="200" height="200"
+                <img src="../img/nahida.png" width="200" height="200"
                      alt="A cute picture of Nahida from video game Genshin Impact">
             </div>
             <div class="column2">
@@ -52,27 +49,18 @@
         </div>
         <footer class="site-footer">
             <div class="footer-content">
-                <div class="social-links"><a href="https://www.yuanshen.dev/">www.yuanshen.dev</a>|<a
+                <div class="web-links"><a href="https://www.yuanshen.dev/">www.yuanshen.dev</a>|<a
                         href="https://www.lijiaxuan.xyz/">www.lijiaxuan.xyz</a> &copy; lijiaxuan 2020-2024
                 </div>
                 Your browser User Agent is:
                 <div id="userAgentDisplay"></div>
-                <script>
-                    function getUserAgent() {
-                        //Fetch the user agent and display it in the div tab
-                        document.getElementById("userAgentDisplay").innerHTML = navigator.userAgent;
-                    }
-
-                    //Use this method when the page loads
-                    window.onload = function () {
-                        getUserAgent();
-                    }
-                </script>
+                <script type="text/javascript" src="../footer.js"></script>
             </div>
             <div class="social-links">
-                <a href="https://x.com/lijiaxuan2008" target="_blank">Twitter (X)</a>
-                <a href="https://github.com/lijiaxuan1811" target="_blank">GitHub</a>
-                <a href="mailto:lijiaxuan1811@163.com" target="_blank">E-mail</a>
+                <a href="https://space.bilibili.com/320001333" target="_blank"><img src="../img/bilibili.svg" alt="Bilibili.com logo" style="width: 30px; height: 30px;"/></a>
+                <a href="https://x.com/lijiaxuan2008" target="_blank"><img src="../img/twitter.svg" alt="Twitter logo" style="width: 30px; height: 30px;"/></a>
+                <a href="https://github.com/lijiaxuan1811" target="_blank"><img src="../img/github.svg" alt="GitHub logo" style="width: 30px; height: 30px;"/></a>
+                <a href="mailto:lijiaxuan1811@163.com" target="_blank"><img src="../img/email.svg" alt="My email" style="width: 35px; height: 35px;"/></a>
             </div>
         </footer>
     </body>
