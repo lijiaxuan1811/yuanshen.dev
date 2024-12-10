@@ -1,16 +1,11 @@
 <!DOCTYPE html>
 <html lang="en-US">
-    <head>
-        <meta charset="UTF-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>YuanRetro-404 Not Found</title>
-        <link rel="stylesheet" href="https://www.yuanshen.dev/style.css">
-    </head>
-    <style>
-        body {
-            background: rgb(232, 255, 232);
-        }
-
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>YuanRetro-404 Not Found</title>
+	</head>
+	<style>
         .row {
             display: flex;
             align-items: center;
@@ -32,47 +27,141 @@
             display: table;
             clear: both;
         }
-    </style>
-    <body class="body">
-        <div style="text-align: center;">
-            <h2>404 Not Found</h2>
-        </div>
-        <div class="row">
-            <img src="https://www.yuanshen.dev/img/paimon.bmp" width="150" height="246"
-                 alt="《原神》里面的派蒙 Paimon from video game Genshin Impact">
-            <span>前面的区域，以后再来探索吧~<br/>How about we explore the area ahead of us later~~
+		h1 {
+            text-align: left;
+		}
+	</style>
+	<body class="body" id="body">
+		<div style="text-align: center;">
+			<h1>404 Not Found</h1>
+		</div>
+		<div class="textbox">
+			<div class="row" id="row">
+				<div id="paimonImg"></div>
+				<span>前面的区域，以后再来探索吧~<br/>How about we explore the area ahead of us later~~
 				<br/><a href="https://www.yuanshen.dev">返回主页</a>/<a href="https://www.yuanshen.dev/en/index.html">Return
 					to main page</a>
 			</span>
-        </div>
-        <hr>
-        <div style="text-align: center;">Genshen Impact(Yuanshen) Retro Computing Hub(GIRCH)</div>
-        <div style="text-align: center;">Powered by Nginx</div>
-        <footer class="site-footer">
-            <div class="footer-content">
-                <div class="web-links"><a href="https://www.yuanshen.dev/">www.yuanshen.dev</a>|<a
-                        href="https://www.lijiaxuan.xyz/">www.lijiaxuan.xyz</a> &copy; lijiaxuan 2020-2024
-                </div>
-                Your browser User Agent is:
-                <div id="userAgentDisplay"></div>
-                <script>
-                    function getUserAgent() {
-                        //Fetch the user agent and display it in the div tab
-                        document.getElementById("userAgentDisplay").innerHTML = navigator.userAgent;
-                    }
+			</div>
+			<hr>
+			<div style="text-align: center;">Genshen Impact(Yuanshen) Retro Computing Hub(GIRCH)</div>
+			<div style="text-align: center;">Powered by Nginx</div>
+		</div>
+		<footer class="site-footer">
+			<div class="footer-content">
+				<div class="web-links"><a href="https://www.yuanshen.dev/">www.yuanshen.dev</a>|<a
+						href="https://www.lijiaxuan.xyz/">www.lijiaxuan.xyz</a> &copy; lijiaxuan 2020-2024
+				</div>
+				Your browser User Agent is:
+				<div id="userAgentDisplay"></div>
+			</div>
+			<div class="social-links">
+				<a id="bilibili" href="https://space.bilibili.com/320001333" target="_blank"></a>
+				<a id="twitter" href="https://x.com/lijiaxuan2008" target="_blank"></a>
+				<a id="telegram" href="https://t.me/BI4LPZ" target="_blank"></a>
+				<a id="github" href="https://github.com/lijiaxuan1811" target="_blank"></a>
+				<a id="email" href="mailto:lijiaxuan1811@163.com" target="_blank"></a>
+			</div>
+		</footer>
+		<script>
+            function getUserAgent() {
+                //Fetch the user agent and display it in the div tab
+                document.getElementById("userAgentDisplay").innerHTML = navigator.userAgent;
+            }
 
-                    //Use this method when the page loads
-                    window.onload = function () {
-                        getUserAgent();
-                    }
-                </script>
-            </div>
-            <div class="social-links">
-                <a href="https://space.bilibili.com/320001333" target="_blank"><img src="https://www.yuanshen.dev/img/bilibili.svg" alt="Bilibili.com logo" style="width: 30px; height: 30px;"/></a>
-                <a href="https://x.com/lijiaxuan2008" target="_blank"><img src="https://www.yuanshen.dev/img/twitter.svg" alt="Twitter logo" style="width: 30px; height: 30px;"/></a>
-                <a href="https://github.com/lijiaxuan1811" target="_blank"><img src="https://www.yuanshen.dev/img/github.svg" alt="GitHub logo" style="width: 30px; height: 30px;"/></a>
-                <a href="mailto:lijiaxuan1811@163.com" target="_blank"><img src="https://www.yuanshen.dev/img/email.svg" alt="My email" style="width: 35px; height: 35px;"/></a>
-            </div>
-        </footer>
-    </body>
+            //Use this method when the page loads
+            window.onload = function () {
+                getUserAgent();
+            }
+
+            // 获取当前页面路径
+            const currentPath = window.location.pathname;
+            let pathDegree = 0;
+            // 数一数到底在第几层目录()
+            for (let char of currentPath) {
+                if (char === "/") {
+                    pathDegree++;
+                }
+            }
+
+            // 减去多余的一个斜线
+            pathDegree -= 1;
+            let pathName = "";
+            if (pathDegree === 0) {
+                pathName = "./";
+            } else {
+                for(let i = 0; i < pathDegree; i++) {
+                    pathName += "../";
+                }
+            }
+
+            //动态确定style.css文件的地址
+            let link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = `${pathName}style.css`;
+            document.head.appendChild(link);
+
+            //动态确定图片文件的地址
+            let paimonDiv= document.getElementById('paimonImg');
+            let paimonImg= document.createElement('img');
+            paimonImg.src = `${pathName}img/paimon.png`;
+            paimonImg.id = "paimon";
+            paimonImg.alt = "《原神》里面的派蒙 Paimon from video game Genshin Impact";
+            paimonDiv.appendChild(paimonImg);
+            let bilibiliDiv= document.getElementById('bilibili');
+            let bilibiliImg = document.createElement('img');
+            bilibiliImg.src = `${pathName}img/bilibili.svg`;
+            bilibiliImg.id = "bili";
+            bilibiliImg.alt = "Bilibili logo";
+            bilibiliImg.style.width = "30px";
+            bilibiliImg.style.height = "30px";
+            bilibiliDiv.appendChild(bilibiliImg);
+            let twitterDiv= document.getElementById('twitter');
+            let twitterImg = document.createElement('img');
+            twitterImg.src = `${pathName}img/twitter.svg`;
+            twitterImg.id = "twit";
+            twitterImg.alt = "Twitter logo";
+            twitterImg.style.width = "30px";
+            twitterImg.style.height = "30px";
+            twitterDiv.appendChild(twitterImg);
+            let telegramDiv= document.getElementById('telegram');
+            let telegramImg = document.createElement('img');
+            telegramImg.src = `${pathName}img/telegram.svg`;
+            telegramImg.id = "tele";
+            telegramImg.alt = "Telegram logo";
+            telegramImg.style.width = "30px";
+            telegramImg.style.height = "30px";
+            telegramDiv.appendChild(telegramImg);
+            let githubDiv= document.getElementById('github');
+            let githubImg = document.createElement('img');
+            githubImg.src = `${pathName}img/github.svg`;
+            githubImg.id = "git";
+            githubImg.alt = "Github logo";
+            githubImg.style.width = "30px";
+            githubImg.style.height = "30px";
+            githubDiv.appendChild(githubImg);
+            let emailDiv= document.getElementById('email');
+            let emailImg = document.createElement('img');
+            emailImg.src = `${pathName}img/email.svg`;
+            emailImg.id = "ema";
+            emailImg.alt = "My email";
+            emailImg.style.width = "30px";
+            emailImg.style.height = "30px";
+            emailDiv.appendChild(emailImg);
+            //页面加载时调用这个方法
+            window.onload = function () {
+                //随机选取一个背景图
+                function getRandomInt(min, max) {
+                    return Math.floor(Math.random() * (max - min + 1)) + min;
+                }
+                const bodyElement = document.getElementById("body");
+                let backgroundURL = `url('${pathName}img/bg${getRandomInt(1, 11)}.jpg') no-repeat center center fixed`;
+                bodyElement.style.background = backgroundURL;
+                bodyElement.style.backgroundSize = "cover";
+                bodyElement.style.animation = "blurFadeIn 1s ease-out forwards";
+                bodyElement.style.webkitAnimation = "blurFadeIn 1s ease-out forwards";
+            }
+		</script>
+	</body>
 </html>

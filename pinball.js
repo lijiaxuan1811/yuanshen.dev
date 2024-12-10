@@ -1,6 +1,6 @@
 // 获取当前页面路径
 const currentPath = window.location.pathname;
-var scoreName, gameOverMsg;
+let scoreName, gameOverMsg;
 // 根据页面语言动态加载不同的字符串
 if (currentPath.includes("en")) {
     scoreName = "Score: ";
@@ -9,21 +9,22 @@ if (currentPath.includes("en")) {
     scoreName = "分数：";
     gameOverMsg = "完喽，寄了!";
 }
-var canv = document.getElementById("canvas");
-var ctx = canv.getContext("2d"); //创建画布和画笔对象
-var easy = document.getElementById("easy");
-var hard = document.getElementById("hard");
-var insane = document.getElementById("insane"); //创建三个复选框对象
+let canv = document.getElementById("canvas");
+let ctx = canv.getContext("2d"); //创建画布和画笔对象
+let easy = document.getElementById("easy");
+let hard = document.getElementById("hard");
+let insane = document.getElementById("insane"); //创建三个复选框对象
 //声明一些杂七杂八的变量
-var startX = 0;
-var startY = 0;
-var panelX = 0;
-var flag = false;
-var score = 0;
-var intervalTime = 30;
-var mainInterval;
-var leftInterval;
-var rightInterval;
+let startX = 0;
+let startY = 0;
+let panelX = 0;
+let flag = false;
+let score = 0;
+let intervalTime = 30;
+let mainInterval;
+let leftInterval;
+let rightInterval;
+let waitTime;
 
 //var testI = 0;
 function debounce(func, wait, imme) {
@@ -62,13 +63,13 @@ function clickCheckbox(checkbox) {
 
 function readCheckbox() {
     if (easy.checked) {
-        return 30;
+        return [30, 20];
     } else if (hard.checked) {
-        return 20;
+        return [20, 10];
     } else if (insane.checked) {
-        return 10;
+        return [10, 5];
     } else {
-        return 30;
+        return [30, 20];
     }
     //判断选中了哪个复选框，返回对应的间隔时间
 }
@@ -84,24 +85,18 @@ function prep() {
         startX = Math.floor(Math.random() * 1000);
         if (startX > 10 && startX < 390) {
             break;
-        } else {
-            continue;
         }
     }
     while (true) {
         startY = Math.floor(Math.random() * 1000);
         if (startY > 10 && startY < 380) {
             break;
-        } else {
-            continue;
         }
     }
     while (true) {
         panelX = Math.floor(Math.random() * 1000);
         if (panelX > 0 && panelX < 350) {
             break;
-        } else {
-            continue;
         }
     }
 }
@@ -162,7 +157,7 @@ var panel = {
 };
 
 function keyPanel(event) {
-    if (event.keyCode == 65) {
+    if (event.keyCode === 65 || event.keyCode === 37) {
         //‘a’被按下了，向左移动
         //console.log("Left!",testI);
         //testI++;
@@ -171,7 +166,7 @@ function keyPanel(event) {
             panel.x = 0; //再移动就出左边界喽，所以移动到左边界就好
         }
     }
-    if (event.keyCode == 68) {
+    if (event.keyCode === 68 || event.keyCode === 39) {
         //‘d’被按下了，向右移动
         //console.log("Right!",testI);
         //testI++;
@@ -184,7 +179,7 @@ function keyPanel(event) {
 }
 
 //调用debounce函数
-var dbPanelKey = debounce(keyPanel, 20);
+var dbPanelKey = debounce(keyPanel, waitTime);
 
 function leftClick() {
     panel.x -= 15;
@@ -237,9 +232,11 @@ function start() {
     panel.x = panelX;
     clearInterval(leftInterval);
     clearInterval(rightInterval);
-    intervalTime = readCheckbox(); //这个间隔时间是根据难度决定的哦～（EZ=30ms，HD=20ms，IN=10ms，不选=30ms）
+    let checkboxResult = readCheckbox(); //这个画布更新时间和挡板移动间隔是根据难度决定的哦～（EZ=30ms, 20ms; HD=20ms, 10ms; IN=10ms, 5ms; 不选=30ms, 20ms）
+    intervalTime = checkboxResult[0];
+    waitTime = checkboxResult[1];
     mainInterval = setInterval(function () {
-        if (flag == true) {
+        if (flag === true) {
             //上一次寄了，所以重新生成小球和挡板的位置（也许可以但不能百分百避免游戏寄掉的死循环）
             prep();
             ball.x = startX;
