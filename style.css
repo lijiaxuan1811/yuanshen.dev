@@ -181,8 +181,16 @@ h1 {
     margin: 0 auto;
 }
 
+.social-links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 800px;
+    margin: 0 auto 0;
+}
+
 .social-links a {
-    margin-right: 50px
+    padding: 0 10px;
 }
 
 .web-links a {
