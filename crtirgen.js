@@ -1,6 +1,6 @@
 // 获取当前页面路径
 const currentPath = window.location.pathname;
-var img1Path = "", img2Path = "";
+var img1Path, img2Path;
 // 动态加载不同的图片文件路径
 if (currentPath.includes("en")) {
     img1Path = "../img/img1.gif";
@@ -17,6 +17,7 @@ img1.src = img1Path;
 img2.src = img2Path;
 var date1, time1, date2, time2, trainTypeDrop, trainNo; //声明表单中若干项目的对象变量
 var button = document.getElementById("submit1"); //声明提交按钮对象
+let downloadBtn = document.getElementById("downloadButton");
 var depTime = "",
     depYear = "",
     depStation = "",
@@ -50,7 +51,7 @@ var depMonth = 0,
     temp3 = 0; //声明数字、临时变量
 
 function readForm() {
-    //本函数从输入表单中读取所有输入的数据
+    //本函数从输入表单中读取所有输入的数据th
     date1 = document.getElementById("date1");
     time1 = document.getElementById("time1");
     date2 = document.getElementById("date2");
@@ -58,7 +59,7 @@ function readForm() {
     trainTypeDrop = document.getElementById("trainTypeDrop"); //车次类型下拉框对象
     trainNo = document.getElementById("trainNo");
     temp1 = trainTypeDrop.options[trainTypeDrop.selectedIndex].value; //获取下拉框所有选择项中被选中项的值
-    if (temp1 == "normal") {
+    if (temp1 === "normal") {
         trainNumber = trainNo.value; //如果类型为普客，则不加任何前缀
     } else {
         trainNumber = temp1 + trainNo.value; //否则，使用该项的值作为车次号前缀
@@ -143,13 +144,13 @@ function init() {
 
 function pyLocation(lastPointer, turn) {
     //本函数用于计算始发到达站拼音和车次号的x坐标位置，以便更好与其他元素对齐
-    if (turn == 1) {
+    if (turn === 1) {
         //计算始发站拼音位置
         return (lastPointer - 60) / 2 + 90 - (depPy.length / 2) * 13 - 5;
-    } else if (turn == 2) {
+    } else if (turn === 2) {
         //计算车次号位置
         return lastPointer - 125 / 2 - (trainNumber.length / 2) * 13 - 5;
-    } else if (turn == 3) {
+    } else if (turn === 3) {
         //计算到达站拼音位置
         return (lastPointer + 30 - temp) / 2 + temp - (depPy.length / 2) * 13 - 5;
     }
@@ -162,7 +163,7 @@ function cusGen() {
     ctx.fillText(depYear, (pointer += 150), 325);
     ctx.fillText("年", (pointer += 60), 325);
     ctx.font = "60px 宋体";
-    if (depMonth != 0 && depDay != 0) {
+    if (depMonth !== 0 && depDay !== 0) {
         //本判断语句为极其早期所写，后期将进行进一步优化
         //fillText()方法可以传入第三个参数，用于限制本次填充的文字的最大宽度，因此可以做出文字细长效果
         if (depMonth >= 0 && depMonth < 10) {
@@ -228,7 +229,7 @@ function cusGen() {
     temp3 = 750 - 23 * fare.length; //确定票价信息填充x坐标
     ctx.fillText(fare, temp3, 775, 23 * fare.length); //填充票价信息，限制每个字符宽度平均为23px
     ctx.font = "30px 宋体";
-    if (ticketCheck != "") ctx.fillText("检票口：", temp2 - 110, 530); //如果检票口信息不为空，那么填充“检票口”三个汉字
+    if (ticketCheck !== "") ctx.fillText("检票口：", temp2 - 110, 530); //如果检票口信息不为空，那么填充“检票口”三个汉字
     ctx.fillText("票价：", temp3 - 80, 775); //填充“票价”二字，x坐标为票价信息填充x坐标-80px
     ctx.fillText(seatType, 40 + 23 * seatNumber.length + 10, 530); //填充坐席类别，x坐标为座位号尾部+10px
     ctx.fillText(name, 40, 610); //填充姓名
@@ -242,10 +243,28 @@ function cusGen() {
 button.addEventListener("click", function () {
     init(); //单击按钮执行初始化函数
 });
+
 document.onkeydown = function (event) {
     //按下回车键与单击按钮效果相同
-    if (event.keyCode == 13) {
+    if (event.keyCode === 13) {
         //键码13为回车键
         init();
     }
 };
+
+downloadBtn.addEventListener("click", function () {
+    // 将画布转换为图片数据
+    const image = canv.toDataURL('image/png');
+
+    // 创建隐藏的<a>元素
+    const link = document.createElement('a');
+    link.href = image;
+    link.download = 'canvas-image.png'; // 指定下载文件名
+    document.body.appendChild(link); // 添加到文档中
+
+    // 模拟点击
+    link.click();
+
+    // 移除<a>元素
+    document.body.removeChild(link);
+});

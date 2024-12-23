@@ -19,7 +19,7 @@
                 <li class="nav-item language"><a href="https://www.yuanshen.dev/en/crtirgen.html">English</a></li>
             </ul>
         </nav>
-        <h1>中国铁路行程信息提示生成器 V1.2-2024.07.23</h1>
+        <h1>中国铁路行程信息提示生成器 V1.3-2024.12.23</h1>
         <div class="textbox-container">
             <div class="textbox" style="width: 550px;">
                 <p>一、铁路磁票（报销凭证）票号（21字符）构成：车站TMIS（5位数，查询请前往<a
@@ -28,7 +28,7 @@
                 <p>如：（1）18089（青岛站）31（售票机）042（机器号）0517（结算日期,5月17日）H000565（票纸号）<br/>（2）17984（胶州站）00（人工窗口）003（机器号）0229（结算日期，2月29日）P062258（票纸号）<br/>（3）17999（蓝村站）30（售票机）031（机器号）1213（结算日期，12月13日）A016888（票纸号）
                 </p>
                 <p>
-                    二、电子票号（25数字）构成：车站TMIS（5位数）+出票机器类型（2位数，同上）+出票机器编号（3位数）+结算日期（4位数，同上）+7位数（一般9开头，含义未知，如果您恰好知道，请不吝赐教哦~）+年份（4位数）</p>
+                    二、电子票号（25个数字）构成：车站TMIS（5位数）+出票机器类型（2位数，同上）+出票机器编号（3位数）+结算日期（4位数，同上）+7位数（一般9开头，含义未知，如果您恰好知道，请不吝赐教哦~）+年份（4位数）</p>
                 <p>如：（1）22972（东莞港站）30（售票机）003（机器号）1114（结算日期，11月14日）9005786（未知）2020（年份）<br/>（2）29957（达州站）00（人工窗口）005（机器号）0319（结算日期，3月19日）9110473（未知）2021（年份）<br/>（3）39500（咸阳站）00（人工窗口）003（机器号）0214（结算日期，2月14日）9155434（未知）2022（年份）
                 </p>
                 <p>三、行程信息提示“出单”号码（10位数）构成：车站TMIS（5位数）+出票机器类型（2位数，同上）+出票机器编号（3位数）</p>
@@ -94,7 +94,7 @@
                     <input type="text" id="ticketNo" size="30"/><br/>
                     <label for="name">乘车人姓名：</label>
                     <input type="text" id="name" size="8"/>
-                    <label for="idTypeEng">身份证件类型代码（2字母）：</label>
+                    <label for="idTypeEng">身份证件类型代码（2个字母）：</label>
                     <input type="text" id="idTypeEng" size="6"/><br/>
                     <label for="idTypeChn">身份证件类型（中文）：</label>
                     <input type="text" id="idTypeChn" size="12"/>
@@ -105,7 +105,8 @@
                 <canvas id="canvas" width="800" height="1400" style="width: 800px; height: 1400px;"></canvas>
             </div>
             <div class="textbox" style="width: 1430px;">
-                <p>注：如需保存生成的图片，右键单击上方区域并选择“图片另存为”选项就可以哦~</p>
+                <input type="button" id="downloadButton" class="custom-button" value="下载图片"/>
+                <p>注：如需保存生成的图片，右键单击上方区域并选择“图片另存为”选项或者点击这个按钮就可以哦~</p>
                 <p>站长建议在桌面端使用基于Chromium内核的浏览器或火狐浏览器访问诶~</p>
                 <p>本站不会收集任何个人信息，请放心使用；使用时请大家遵守国家法律法规，切忌用于违法违规用途噢~</p>
                 <p>如有任何意见或反馈，请大胆联系站长哦~<a href="mailto:lijiaxuan1811@163.com">lijiaxuan1811@163.com</a>或者在以下页面提交Issue：<a
@@ -116,8 +117,11 @@
         <script type="text/javascript" src="./crtirgen.js"></script>
         <footer class="site-footer">
             <div class="footer-content">
-                <div class="web-links"><a href="https://www.yuanshen.dev/">www.yuanshen.dev</a>|<a
-                        href="https://www.lijiaxuan.xyz/">www.lijiaxuan.xyz</a>|<a href="https://www.collei.xyz/">www.collei.xyz</a>
+                <div class="web-links">
+                    <a href="https://www.yuanshen.dev/">·www.yuanshen.dev</a>
+                    <a href="https://www.lijiaxuan.xyz/">·www.lijiaxuan.xyz</a>
+                    <a href="https://www.collei.xyz/">·www.collei.xyz</a>
+                    <a href="https://www.keqing.org/">·www.keqing.org</a>
                     &copy; lijiaxuan 2020-2024
                 </div>
                 你的浏览器User Agent是：
