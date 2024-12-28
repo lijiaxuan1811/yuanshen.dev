@@ -22,7 +22,7 @@ window.onload = function () {
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
     const bodyElement = document.getElementById("body");
-    let backgroundURL = `url('${getImgPath()}/img/bg${getRandomInt(1, 11)}.jpg') no-repeat center center fixed`;
+    let backgroundURL = `url('${getImgPath()}/img/bg${getRandomInt(1, 11)}.webp') no-repeat center center fixed`;
     bodyElement.style.background = backgroundURL;
     bodyElement.style.backgroundSize = "cover";
     bodyElement.style.animation = "blurFadeIn 1s ease-out forwards";

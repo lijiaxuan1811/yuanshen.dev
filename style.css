@@ -4,7 +4,7 @@
     font-weight: normal;
     font-style: normal;
     font-display: swap;
-    src: url(./img/gichn_mini_zhlv1.ttf) format("TrueType");
+    src: url(./img/gichn.woff2) format("woff");
 }
 
 @keyframes blurFadeIn {
@@ -75,6 +75,13 @@
 .navi:hover {
     background-color: var(--hover-green);
     transition: 0.5s;
+    border-radius: 0px;
+}
+
+.navi:not(:hover) {
+    background-color: var(--default-green);
+    transition: 0.5s;
+    border-radius: 15px;
 }
 
 .nav-item {
@@ -142,7 +149,7 @@ h1 {
 .textbox-container {
     display: flex;  /* 使用flex布局 */
     gap: 10px; /* 元素之间的间距 */
-    justify-content: flex-start; /* 如果需要左对齐 */
+    justify-content: flex-start; /* 左对齐 */
     flex-wrap: wrap; /* 当屏幕较窄时，自动换行 */
 }
 
@@ -152,7 +159,7 @@ h1 {
     border: 2px dashed var(--default-grey);
     border-radius: 15px;
     box-shadow: 5px 5px 10px var(--box-shadow);
-    padding: 8px 8px;
+    padding: 1rem 1rem;
     background-color: rgba(255, 255, 255, 0.7);
     overflow: auto; /* 当内容过多时显示滚动条 */
 }
@@ -160,6 +167,13 @@ h1 {
 .textbox:hover {
     background-color: var(--hover-white);
     transition: 0.5s;
+    border-radius: 0px;
+}
+
+.textbox:not(:hover) {
+    border: 2px dashed var(--default-grey);
+    transition: 0.5s;
+    border-radius: 15px;
 }
 
 .site-footer {
@@ -175,6 +189,13 @@ h1 {
 .site-footer:hover {
     background-color: var(--hover-grey);
     transition: 0.5s;
+    border-radius: 0px;
+}
+
+.site-footer:not(:hover) {
+    background-color: var(--default-grey);
+    transition: 0.5s;
+    border-radius: 15px;
 }
 
 .footer-content {
@@ -200,7 +221,7 @@ h1 {
 
 .web-links a:hover {
     color: black;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.7);
 }
 
 /* 响应式布局：针对屏幕宽度小于1090px的设备（如手机） */
