@@ -5,20 +5,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>YuanRetro-中国铁路行程信息提示生成器(CRTIRGen)</title>
         <link rel="stylesheet" href="./style.css">
+        <script src="./jquery-3.7.1.min.js"></script>
     </head>
     <body class="body" id="body">
-        <nav class="navi">
-            <ul>
-                <li class="nav-item"><a href="https://www.yuanshen.dev/">主页</a></li>
-                <li class="nav-item"><a href="https://www.yuanshen.dev/music.html">音乐</a></li>
-                <li class="nav-item"><a href="https://www.yuanshen.dev/pinball.html">JS弹球</a></li>
-                <li class="nav-item"><a href="https://www.yuanshen.dev/morse.html">莫尔斯电码</a></li>
-                <li class="nav-item"><a
-                        href="https://www.yuanshen.dev/crtirgen.html">中国铁路行程信息提示生成器(CRTIRGen)</a></li>
-                <li class="nav-item"><a href="https://www.yuanshen.dev/about.html">关于</a></li>
-                <li class="nav-item language"><a href="https://www.yuanshen.dev/en/crtirgen.html">English</a></li>
-            </ul>
-        </nav>
+        <nav class="navi"></nav>
         <h1>中国铁路行程信息提示生成器 V1.3-2024.12.23</h1>
         <div class="textbox-container">
             <div class="textbox" style="width: 550px;">
@@ -65,7 +55,7 @@
                         <option value="G">高铁(G)</option>
                     </select>
                     <label for="trainTypeDrop">次</label>
-                    <input type="text" id="trainNo" size="8"/><br/>
+                    <label for="trainNo"></label><input type="text" id="trainNo" size="8"/><br/>
                     <label for="arrStation">到达车站：</label>
                     <input type="text" id="arrStation" size="10"/>
                     <label for="arrStation">站</label>
@@ -104,7 +94,7 @@
                 </form>
                 <canvas id="canvas" width="800" height="1400" style="width: 800px; height: 1400px;"></canvas>
             </div>
-            <div class="textbox" style="width: 1430px;">
+            <div class="textbox" style="width: 1450px;">
                 <input type="button" id="downloadButton" class="custom-button" value="下载图片"/>
                 <p>注：如需保存生成的图片，右键单击上方区域并选择“图片另存为”选项或者点击这个按钮就可以哦~</p>
                 <p>站长建议在桌面端使用基于Chromium内核的浏览器或火狐浏览器访问诶~</p>
@@ -115,27 +105,14 @@
             </div>
         </div>
         <script type="text/javascript" src="./crtirgen.js"></script>
-        <footer class="site-footer">
-            <div class="footer-content">
-                <div class="web-links">
-                    <a href="https://www.yuanshen.dev/">·www.yuanshen.dev</a>
-                    <a href="https://www.lijiaxuan.xyz/">·www.lijiaxuan.xyz</a>
-                    <a href="https://www.collei.xyz/">·www.collei.xyz</a>
-                    <a href="https://www.keqing.org/">·www.keqing.org</a>
-                    &copy; lijiaxuan 2020-2025
-                </div>
-                你的浏览器User Agent是：
-                <div id="userAgentDisplay"></div>
-                <script type="text/javascript" src="./footer.js"></script>
-            </div>
-            <div class="social-links">
-                <a href="https://space.bilibili.com/320001333" target="_blank"><img src="./img/bilibili.svg" alt="Bilibili logo" style="width: 30px; height: 30px;"/></a>
-                <a href="https://x.com/lijiaxuan2008" target="_blank"><img src="./img/twitter.svg" alt="Twitter logo" style="width: 30px; height: 30px;"/></a>
-                <a href="https://t.me/BI4LPZ" target="_blank"><img src="./img/telegram.svg" alt="Telegram logo" style="width: 30px; height: 30px;"/></a>
-                <a href="https://github.com/lijiaxuan1811" target="_blank"><img src="./img/github.svg" alt="GitHub logo" style="width: 30px; height: 30px;"/></a>
-                <a href="mailto:lijiaxuan1811@163.com" target="_blank"><img src="./img/email.svg" alt="My email" style="width: 35px; height: 35px;"/></a>
-            </div>
-            <div class="web-links"><a href="https://icp.gov.moe/?keyword=20243140" target="_blank">萌ICP备20243140号</a></div>
-        </footer>
+        <footer class="site-footer"></footer>
+        <script>
+            $(document).ready(function() {
+                // 加载底边栏内容
+                $(".site-footer").load("./footer.html");
+                // 加载顶边栏内容
+                $(".navi").load("./navi.html");
+            });
+        </script>
     </body>
 </html>

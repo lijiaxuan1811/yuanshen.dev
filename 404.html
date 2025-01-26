@@ -4,6 +4,7 @@
 		<meta charset="UTF-8"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>YuanRetro-404 Not Found</title>
+		<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 	</head>
 	<style>
         .row {
@@ -32,6 +33,7 @@
 		}
 	</style>
 	<body class="body" id="body">
+		<nav class="navi"></nav>
 		<div style="text-align: center;">
 			<h1>404 Not Found</h1>
 		</div>
@@ -100,14 +102,22 @@
                 }
             }
 
-            //动态确定style.css文件的地址
+            // 动态确定页脚文件的地址
+            $(document).ready(function() {
+                // 加载底边栏内容
+                $(".site-footer").load(`${pathName}footer.html`);
+                // 加载顶边栏内容
+                $(".navi").load(`${pathName}navi.html`);
+            });
+
+            // 动态确定style.css文件的地址
             let link = document.createElement('link');
             link.rel = 'stylesheet';
             link.type = 'text/css';
             link.href = `${pathName}style.css`;
             document.head.appendChild(link);
 
-            //动态确定图片文件的地址
+            // 动态确定图片文件的地址
             let paimonDiv= document.getElementById('paimonImg');
             let paimonImg= document.createElement('img');
             paimonImg.src = `${pathName}img/paimon.png`;
@@ -154,9 +164,9 @@
             emailImg.style.width = "30px";
             emailImg.style.height = "30px";
             emailDiv.appendChild(emailImg);
-            //页面加载时调用这个方法
+            // 页面加载时调用这个方法
             window.onload = function () {
-                //随机选取一个背景图
+                // 随机选取一个背景图
                 function getRandomInt(min, max) {
                     return Math.floor(Math.random() * (max - min + 1)) + min;
                 }

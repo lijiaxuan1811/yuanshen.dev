@@ -45,6 +45,8 @@
     --hover-grey: rgba(114, 115, 114, 0.7);
     --box-shadow: rgba(0, 0, 0, 0.4);
     --yellow-text: rgb(255, 200, 0);
+    --default-blue: rgb(0, 0, 238);
+    --hover-blue: rgb(123, 0, 255);
 }
 
 .body {
@@ -75,7 +77,7 @@
 .navi:hover {
     background-color: var(--hover-green);
     transition: 0.5s;
-    border-radius: 0px;
+    border-radius: 0;
 }
 
 .navi:not(:hover) {
@@ -167,7 +169,18 @@ h1 {
 .textbox:hover {
     background-color: var(--hover-white);
     transition: 0.5s;
-    border-radius: 0px;
+    border-radius: 0;
+}
+
+.textbox a {
+    text-decoration: none;
+    color: var(--default-blue);
+}
+
+.textbox a:hover {
+    background-color: black;
+    color: white;
+    transition: 0.5s;
 }
 
 .textbox:not(:hover) {
@@ -189,7 +202,7 @@ h1 {
 .site-footer:hover {
     background-color: var(--hover-grey);
     transition: 0.5s;
-    border-radius: 0px;
+    border-radius: 0;
 }
 
 .site-footer:not(:hover) {
@@ -222,6 +235,13 @@ h1 {
 .web-links a:hover {
     color: black;
     background-color: rgba(255, 255, 255, 0.7);
+    transition: 0.5s;
+}
+
+.linkImage {
+    border-radius: 5px;
+    margin-right: 10px;
+    vertical-align: middle;
 }
 
 /* 响应式布局：针对屏幕宽度小于1090px的设备（如手机） */
@@ -252,5 +272,9 @@ h1 {
     .web-links{
         display: flex;
         flex-direction: column; /* 垂直方向排列 */
+    }
+
+    .textbox {
+        width: 100%;
     }
 }

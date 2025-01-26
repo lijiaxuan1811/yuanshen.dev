@@ -5,6 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>YuanRetro-JS弹球</title>
 		<link rel="stylesheet" href="./style.css">
+		<script src="./jquery-3.7.1.min.js"></script>
 		<style>
             .difficulty-container {
                 display: flex;
@@ -33,18 +34,7 @@
 		</style>
 	</head>
 	<body class="body" id="body">
-		<nav class="navi">
-			<ul>
-				<li class="nav-item"><a href="https://www.yuanshen.dev/">主页</a></li>
-				<li class="nav-item"><a href="https://www.yuanshen.dev/music.html">音乐</a></li>
-				<li class="nav-item"><a href="https://www.yuanshen.dev/pinball.html">JS弹球</a></li>
-				<li class="nav-item"><a href="https://www.yuanshen.dev/morse.html">莫尔斯电码</a></li>
-				<li class="nav-item"><a
-						href="https://www.yuanshen.dev/crtirgen.html">中国铁路行程信息提示生成器(CRTIRGen)</a></li>
-				<li class="nav-item"><a href="https://www.yuanshen.dev/about.html">关于</a></li>
-				<li class="nav-item language"><a href="https://www.yuanshen.dev/en/pinball.html">English</a></li>
-			</ul>
-		</nav>
+		<nav class="navi"></nav>
 		<h1>弹球游戏 V2.5
 			<del>更新时间2024.12.05</del>
 		</h1>
@@ -84,34 +74,14 @@
 			</div>
 		</div>
 		<script type="text/javascript" src="./pinball.js"></script>
-		<footer class="site-footer">
-			<div class="footer-content">
-				<div class="web-links">
-					<a href="https://www.yuanshen.dev/">·www.yuanshen.dev</a>
-                    <a href="https://www.lijiaxuan.xyz/">·www.lijiaxuan.xyz</a>
-                    <a href="https://www.collei.xyz/">·www.collei.xyz</a>
-					<a href="https://www.keqing.org/">·www.keqing.org</a>
-					&copy; lijiaxuan 2020-2025
-				</div>
-				你的浏览器User Agent是：
-				<div id="userAgentDisplay"></div>
-				<script type="text/javascript" src="./footer.js"></script>
-			</div>
-			<div class="social-links">
-				<a href="https://space.bilibili.com/320001333" target="_blank"><img src="./img/bilibili.svg"
-																					alt="Bilibili logo"
-																					style="width: 30px; height: 30px;"/></a>
-				<a href="https://x.com/lijiaxuan2008" target="_blank"><img src="./img/twitter.svg" alt="Twitter logo"
-																		   style="width: 30px; height: 30px;"/></a>
-				<a href="https://t.me/BI4LPZ" target="_blank"><img src="./img/telegram.svg" alt="Telegram logo"
-																   style="width: 30px; height: 30px;"/></a>
-				<a href="https://github.com/lijiaxuan1811" target="_blank"><img src="./img/github.svg" alt="GitHub logo"
-																				style="width: 30px; height: 30px;"/></a>
-				<a href="mailto:lijiaxuan1811@163.com" target="_blank"><img src="./img/email.svg" alt="My email"
-																			style="width: 35px; height: 35px;"/></a>
-			</div>
-			<div class="web-links"><a href="https://icp.gov.moe/?keyword=20243140" target="_blank">萌ICP备20243140号</a>
-			</div>
-		</footer>
+		<footer class="site-footer"></footer>
+		<script>
+            $(document).ready(function() {
+                // 加载底边栏内容
+                $(".site-footer").load("./footer.html");
+                // 加载顶边栏内容
+                $(".navi").load("./navi.html");
+            });
+		</script>
 	</body>
 </html>
