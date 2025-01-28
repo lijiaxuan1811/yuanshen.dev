@@ -50,66 +50,36 @@
 			<div style="text-align: center;">Genshen Impact(Yuanshen) Retro Computing Hub(GIRCH)</div>
 			<div style="text-align: center;">Powered by Nginx</div>
 		</div>
-		<footer class="site-footer">
-			<div class="footer-content">
-				<div class="web-links">
-					<a href="https://www.yuanshen.dev/">·www.yuanshen.dev</a>
-					<a href="https://www.lijiaxuan.xyz/">·www.lijiaxuan.xyz</a>
-					<a href="https://www.collei.xyz/">·www.collei.xyz</a>
-					<a href="https://www.keqing.org/">·www.keqing.org</a>
-					&copy; lijiaxuan 2020-2025
-				</div>
-				Your browser User Agent is:
-				<div id="userAgentDisplay"></div>
-			</div>
-			<div class="social-links">
-				<a id="bilibili" href="https://space.bilibili.com/320001333" target="_blank"></a>
-				<a id="twitter" href="https://x.com/lijiaxuan2008" target="_blank"></a>
-				<a id="telegram" href="https://t.me/BI4LPZ" target="_blank"></a>
-				<a id="github" href="https://github.com/lijiaxuan1811" target="_blank"></a>
-				<a id="email" href="mailto:lijiaxuan1811@163.com" target="_blank"></a>
-			</div>
-			<div class="web-links"><a href="https://icp.gov.moe/?keyword=20243140" target="_blank">萌ICP备20243140号</a></div>
-		</footer>
+		<footer class="site-footer"></footer>
 		<script>
-            function getUserAgent() {
-                //Fetch the user agent and display it in the div tab
-                document.getElementById("userAgentDisplay").innerHTML = navigator.userAgent;
-            }
+			// 获取当前页面路径
+			const currentPath = window.location.pathname;
+			let pathDegree = 0;
+			// 数一数到底在第几层目录()
+			for (let char of currentPath) {
+				if (char === "/") {
+					pathDegree++;
+				}
+			}
 
-            //Use this method when the page loads
-            window.onload = function () {
-                getUserAgent();
-            }
+			// 减去多余的一个斜线
+			pathDegree -= 1;
+			let pathName = "";
+			if (pathDegree === 0) {
+				pathName = "./";
+			} else {
+				for(let i = 0; i < pathDegree; i++) {
+					pathName += "../";
+				}
+			}
 
-            // 获取当前页面路径
-            const currentPath = window.location.pathname;
-            let pathDegree = 0;
-            // 数一数到底在第几层目录()
-            for (let char of currentPath) {
-                if (char === "/") {
-                    pathDegree++;
-                }
-            }
-
-            // 减去多余的一个斜线
-            pathDegree -= 1;
-            let pathName = "";
-            if (pathDegree === 0) {
-                pathName = "./";
-            } else {
-                for(let i = 0; i < pathDegree; i++) {
-                    pathName += "../";
-                }
-            }
-
-            // 动态确定页脚文件的地址
-            $(document).ready(function() {
-                // 加载底边栏内容
-                $(".site-footer").load(`${pathName}footer.html`);
-                // 加载顶边栏内容
-                $(".navi").load(`${pathName}navi.html`);
-            });
+			// 动态确定页眉页脚文件的地址
+			$(document).ready(function() {
+				// 加载底边栏内容
+				$(".site-footer").load(`${pathName}footer.html`);
+				// 加载顶边栏内容
+				$(".navi").load(`${pathName}navi.html`);
+			});
 
             // 动态确定style.css文件的地址
             let link = document.createElement('link');
@@ -125,46 +95,6 @@
             paimonImg.id = "paimon";
             paimonImg.alt = "《原神》里面的派蒙 Paimon from video game Genshin Impact";
             paimonDiv.appendChild(paimonImg);
-            let bilibiliDiv= document.getElementById('bilibili');
-            let bilibiliImg = document.createElement('img');
-            bilibiliImg.src = `${pathName}img/bilibili.svg`;
-            bilibiliImg.id = "bili";
-            bilibiliImg.alt = "Bilibili logo";
-            bilibiliImg.style.width = "30px";
-            bilibiliImg.style.height = "30px";
-            bilibiliDiv.appendChild(bilibiliImg);
-            let twitterDiv= document.getElementById('twitter');
-            let twitterImg = document.createElement('img');
-            twitterImg.src = `${pathName}img/twitter.svg`;
-            twitterImg.id = "twit";
-            twitterImg.alt = "Twitter logo";
-            twitterImg.style.width = "30px";
-            twitterImg.style.height = "30px";
-            twitterDiv.appendChild(twitterImg);
-            let telegramDiv= document.getElementById('telegram');
-            let telegramImg = document.createElement('img');
-            telegramImg.src = `${pathName}img/telegram.svg`;
-            telegramImg.id = "tele";
-            telegramImg.alt = "Telegram logo";
-            telegramImg.style.width = "30px";
-            telegramImg.style.height = "30px";
-            telegramDiv.appendChild(telegramImg);
-            let githubDiv= document.getElementById('github');
-            let githubImg = document.createElement('img');
-            githubImg.src = `${pathName}img/github.svg`;
-            githubImg.id = "git";
-            githubImg.alt = "Github logo";
-            githubImg.style.width = "30px";
-            githubImg.style.height = "30px";
-            githubDiv.appendChild(githubImg);
-            let emailDiv= document.getElementById('email');
-            let emailImg = document.createElement('img');
-            emailImg.src = `${pathName}img/email.svg`;
-            emailImg.id = "ema";
-            emailImg.alt = "My email";
-            emailImg.style.width = "30px";
-            emailImg.style.height = "30px";
-            emailDiv.appendChild(emailImg);
             // 页面加载时调用这个方法
             window.onload = function () {
                 // 随机选取一个背景图

@@ -23,11 +23,6 @@ function changeLang() {
     }
 }
 
-function getUserAgent() {
-    //获取浏览器User Agent，在前面的分隔符标签中显示
-    document.getElementById("userAgentDisplay").innerHTML = navigator.userAgent;
-}
-
 //页面加载时调用这个方法
 window.onload = function () {
     //随机选取一个背景图
@@ -41,6 +36,4 @@ window.onload = function () {
     bodyElement.style.backgroundSize = "cover";
     bodyElement.style.animation = "blurFadeIn 1s ease-out forwards";
     bodyElement.style.webkitAnimation = "blurFadeIn 1s ease-out forwards";
-    //获取User Agent
-    getUserAgent();
 }
