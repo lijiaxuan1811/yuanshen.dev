@@ -10,8 +10,24 @@ function getImgPath() {
     }
 }
 
+let hideTimeout;
+// 显示子菜单
+function showMenu() {
+    clearTimeout(hideTimeout); // 清除隐藏的计时器
+    const submenu = document.getElementById('submenu-container');
+    submenu.style.display = 'block';
+}
+
+// 隐藏子菜单
+function hideMenu() {
+    hideTimeout = setTimeout(function () {
+        const submenu = document.getElementById('submenu-container');
+        submenu.style.display = 'none';
+    }, 300); // 延迟 300 毫秒隐藏菜单
+}
+
+// 点击切换语言时候跳转到对应页面
 function changeLang() {
-    // 点击切换语言时候跳转到对应页面
     const parts = currentImgPath.split("/"); // 使用 / 分割字符串
     const lastPart = parts[parts.length - 1]; // 获取最后一段
     if (currentImgPath.includes("en")) {

@@ -108,6 +108,19 @@
     color: var(--yellow-text);
 }
 
+/* 子菜单 */
+.submenu-container {
+    position: absolute;
+    background: var(--hover-green);
+    border-radius: 15px;
+    box-shadow: 5px 5px 10px var(--box-shadow);
+}
+
+.submenu-item {
+    color: white;
+    padding: 15px;
+}
+
 /* 基础按钮样式 */
 .custom-button {
     background-color: var(--default-green); /* 扁平的绿色背景 */
