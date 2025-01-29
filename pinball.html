@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>YuanRetro-JS弹球</title>
-		<link rel="stylesheet" href="./style.css">
-		<script src="./jquery-3.7.1.min.js"></script>
-		<link rel="icon" href="./img/nahida.png" type="image/x-icon">
-		<style>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>YuanRetro-JS弹球</title>
+        <link rel="stylesheet" href="/style.css">
+        <script src="/jquery-3.7.1.min.js"></script>
+        <link rel="icon" href="/img/nahida.png" type="image/x-icon">
+        <style>
             .difficulty-container {
                 display: flex;
                 flex-direction: row; /* 难度选项垂直排列 */
@@ -32,58 +32,58 @@
                 width: 400px; /* 画布固定宽度 */
                 height: 400px; /* 画布固定高度 */
             }
-		</style>
-	</head>
-	<body class="body" id="body">
-		<nav class="navi"></nav>
-		<h1>弹球游戏 V2.5
-			<del>更新时间2024.12.05</del>
-		</h1>
-		<div class="textbox-container">
-			<div class="textbox" style="width: 450px;">
-				<p>用纯JavaScript写的小小游戏，可以分别用键盘的“a”和“d”或者左右箭头键控制挡板左右移动，也可以使用
-					<del>（移动设备友好）</del>
-					的按钮哦~<br/>如果浏览器不支持或者屏蔽了JavaScript，游戏可（ken）能（ding）就不能运行了哦~<br/>每次接住弹球可以得到5分，但是如果没接住的话，就寄喽~
-				</p>
-				<p>感谢
-					<del>（n年前买的x）</del>
-					程晨的《JavaScript网页游戏制作轻松学》(ISBN 978-7-115-46238-1)，这里的算法和部分代码参考了书中的思路哦~
-				</p>
-			</div>
-			<div class="textbox">
-				<div class="difficulty-container">
-					<label for="easy">难度选择<br/></label>
-					<input type="checkbox" id="easy" onclick="clickCheckbox(this)"/>
-					<label for="easy">简单（EZ）<br/></label>
-					<input type="checkbox" id="hard" onclick="clickCheckbox(this)"/>
-					<label for="hard">困难（HD）<br/></label>
-					<input type="checkbox" id="insane" onclick="clickCheckbox(this)"/>
-					<label for="insane">疯狂（IN）<br/></label>
-				</div>
-				<input type="button" id="start" class="custom-button" value="开始游戏！" onclick="start()"/>
-				<!-- 进入游戏按钮 -->
-				<div class="game-container">
-					<!-- 画布 -->
-					<canvas id="canvas" width="400" height="400"></canvas>
+        </style>
+    </head>
+    <body class="body" id="body">
+        <nav class="navi"></nav>
+        <h1>弹球游戏 V2.5
+            <del>更新时间2024.12.05</del>
+        </h1>
+        <div class="textbox-container">
+            <div class="textbox" style="width: 450px;">
+                <p>用纯JavaScript写的小小游戏，可以分别用键盘的“a”和“d”或者左右箭头键控制挡板左右移动，也可以使用
+                    <del>（移动设备友好）</del>
+                    的按钮哦~<br/>如果浏览器不支持或者屏蔽了JavaScript，游戏可（ken）能（ding）就不能运行了哦~<br/>每次接住弹球可以得到5分，但是如果没接住的话，就寄喽~
+                </p>
+                <p>感谢
+                    <del>（n年前买的x）</del>
+                    程晨的《JavaScript网页游戏制作轻松学》(ISBN 978-7-115-46238-1)，这里的算法和部分代码参考了书中的思路哦~
+                </p>
+            </div>
+            <div class="textbox">
+                <div class="difficulty-container">
+                    <label for="easy">难度选择<br/></label>
+                    <input type="checkbox" id="easy" onclick="clickCheckbox(this)"/>
+                    <label for="easy">简单（EZ）<br/></label>
+                    <input type="checkbox" id="hard" onclick="clickCheckbox(this)"/>
+                    <label for="hard">困难（HD）<br/></label>
+                    <input type="checkbox" id="insane" onclick="clickCheckbox(this)"/>
+                    <label for="insane">疯狂（IN）<br/></label>
+                </div>
+                <input type="button" id="start" class="custom-button" value="开始游戏！" onclick="start()"/>
+                <!-- 进入游戏按钮 -->
+                <div class="game-container">
+                    <!-- 画布 -->
+                    <canvas id="canvas" width="400" height="400"></canvas>
 
-					<!-- 按钮容器 -->
-					<div class="button-row">
-						<input type="button" id="leftButton" class="custom-button" value="左"/> <!-- 向左按钮 -->
-						<input type="button" id="rightButton" class="custom-button" value="右"/> <!-- 向右按钮 -->
-					</div>
-				</div>
-			</div>
-		</div>
-		<script type="text/javascript" src="./pinball.js"></script>
-		<footer class="site-footer"></footer>
-		<script>
-            $(document).ready(function() {
+                    <!-- 按钮容器 -->
+                    <div class="button-row">
+                        <input type="button" id="leftButton" class="custom-button" value="左"/> <!-- 向左按钮 -->
+                        <input type="button" id="rightButton" class="custom-button" value="右"/> <!-- 向右按钮 -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript" src="/pinball.js"></script>
+        <footer class="site-footer"></footer>
+        <script>
+            $(document).ready(function () {
                 // 加载底边栏内容
-                $(".site-footer").load("./footer.html");
+                $(".site-footer").load("/footer.html");
                 // 加载顶边栏内容
-                $(".navi").load("./navi.html");
+                $(".navi").load("/navi.html");
             });
-		</script>
-		<script type="text/javascript" src="./footer.js"></script>
-	</body>
+        </script>
+        <script type="text/javascript" src="/footer.js"></script>
+    </body>
 </html>

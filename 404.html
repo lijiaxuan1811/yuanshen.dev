@@ -1,115 +1,91 @@
 <!DOCTYPE html>
 <html lang="en-US">
-	<head>
-		<meta charset="UTF-8"/>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>YuanRetro-404 Not Found</title>
-		<link rel="icon" href="https://www.yuanshen.dev/img/nahida.png" type="image/x-icon">
-	</head>
-	<style>
-        .row {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-        }
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>YuanRetro-404 Not Found</title>
+        <link rel="stylesheet" href="/style.css">
+        <script src="/jquery-3.7.1.min.js"></script>
+        <link rel="icon" href="/img/nahida.png" type="image/x-icon">
+        <style>
+            .row {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+            }
 
-        .row img {
-            max-width: 100%;
-            height: auto;
-        }
+            .row img {
+                max-width: 100%;
+                height: auto;
+            }
 
-        .row span {
-            margin-left: 10px;
-        }
+            .row span {
+                margin-left: 10px;
+            }
 
-        .row:after {
-            content: "";
-            display: table;
-            clear: both;
-        }
-		h1 {
-            text-align: left;
-		}
-	</style>
-	<body class="body" id="body">
-		<nav class="navi"></nav>
-		<div style="text-align: center;">
-			<h1>404 Not Found</h1>
-		</div>
-		<div class="textbox">
-			<div class="row" id="row">
-				<div id="paimonImg"></div>
-				<span>前面的区域，以后再来探索吧~<br/>How about we explore the area ahead of us later~~
+            .row:after {
+                content: "";
+                display: table;
+                clear: both;
+            }
+
+            h1 {
+                text-align: left;
+            }
+        </style>
+    </head>
+    <body class="body" id="body">
+        <nav class="navi"></nav>
+        <div style="text-align: center;">
+            <h1>404 Not Found</h1>
+        </div>
+        <div class="textbox">
+            <div class="row" id="row">
+                <div id="paimonImg"><img id="paimon" src="/img/paimon.png"
+                                         alt="《原神》里面的派蒙 Paimon from video game Genshin Impact"/></div>
+                <span>前面的区域，以后再来探索吧~<br/>How about we explore the area ahead of us later~~
 				<br/><a href="https://www.yuanshen.dev">返回主页</a>/<a href="https://www.yuanshen.dev/en/index.html">Return
 					to main page</a>
 			</span>
-			</div>
-			<hr>
-			<div style="text-align: center;">Genshen Impact(Yuanshen) Retro Computing Hub(GIRCH)</div>
-			<div style="text-align: center;">Powered by Nginx</div>
-		</div>
-		<footer class="site-footer"></footer>
-		<script>
-			document.addEventListener("DOMContentLoaded", function () {
-				const currentPath = window.location.pathname.replace(/\/$/, ""); // 去掉结尾的 /
-				const pathDepth = currentPath.split('/').length - 1;
-				let pathName = pathDepth === 0 ? "./" : "../".repeat(pathDepth);
-
-				// 动态加载 jQuery
-				let jQueryScript = document.createElement('script');
-				jQueryScript.src = `${pathName}jquery-3.7.1.min.js`;
-				jQueryScript.onload = function() {
-					$(document).ready(function() {
-						$(".site-footer").load(`${pathName}footer.html`);
-						$(".navi").load(`${pathName}navi.html`);
-
-						let paimonImg = $('<img>', {
-							id: 'paimon',
-							src: `${pathName}img/paimon.png`,
-							alt: '《原神》里面的派蒙 Paimon from video game Genshin Impact'
-						});
-						$('#paimonImg').append(paimonImg);
-
-						// 修正 SVG 图标路径
-						$('#bilibili').attr('src', `${pathName}img/bilibili.svg`);
-						$('#twitter').attr('src', `${pathName}img/twitter.svg`);
-						$('#telegram').attr('src', `${pathName}img/telegram.svg`);
-						$('#github').attr('src', `${pathName}img/github.svg`);
-						$('#email').attr('src', `${pathName}img/email.svg`);
-					});
-				};
-				document.head.appendChild(jQueryScript);
-
-				// 动态加载 CSS
-				let style = document.createElement('link');
-				style.rel = 'stylesheet';
-				style.type = 'text/css';
-				style.href = `${pathName}style.css`;
-				document.head.appendChild(style);
-
-				// 随机背景图
-				function getRandomInt(min, max) {
-					return Math.floor(Math.random() * (max - min + 1)) + min;
-				}
-
-				const bodyElement = document.getElementById("body");
-				bodyElement.style.backgroundImage = `url('${pathName}img/bg${getRandomInt(1, 11)}.webp')`;
-				bodyElement.style.backgroundRepeat = "no-repeat";
-				bodyElement.style.backgroundPosition = "center center";
-				bodyElement.style.backgroundAttachment = "fixed";
-				bodyElement.style.backgroundSize = "cover";
-				bodyElement.style.animation = "blurFadeIn 1s ease-out forwards";
-				bodyElement.style.webkitAnimation = "blurFadeIn 1s ease-out forwards";
-
-				// 加载页脚js
-				let footerScript = document.createElement('script');
-				footerScript.src = `${pathName}footer.js`;
-				footerScript.type = "text/javascript";
-				footerScript.defer = true;  // 确保它在 HTML 加载后执行
-				document.head.appendChild(footerScript);
-
-			});
+            </div>
+            <hr>
+            <div style="text-align: center;">Genshen Impact(Yuanshen) Retro Computing Hub(GIRCH)</div>
+            <div style="text-align: center;">Powered by Nginx</div>
+        </div>
+        <footer class="site-footer"></footer>
+        <script>
+            const userLang = navigator.language || navigator.userLanguage;
+            let ifChinese = false;
+            $(document).ready(function () {
+                if (userLang.includes('zh')) {
+                    // 如果是中文语言环境
+                    $(".site-footer").load("/footer.html"); // 加载底边栏内容
+                    $(".navi").load("/navi.html"); // 加载顶边栏内容
+                    ifChinese = true;
+                } else {
+                    // 如果是英文语言环境
+                    $(".site-footer").load("/en/footer.html"); // 加载底边栏内容
+                    $(".navi").load("/en/navi.html"); // 加载顶边栏内容
+                    ifChinese = false;
+                }
+            });
+        </script>
+        <script type="text/javascript" src="/footer.js"></script>
+        <script>
+            // 点击切换语言时候跳转到对应页面 (404特殊）
+            function changeLang() {
+                if (ifChinese) {
+                    $(".site-footer").load("/en/footer.html"); // 加载底边栏内容
+                    $(".navi").load("/en/navi.html"); // 加载顶边栏内容
+                    ifChinese = false;
+                } else {
+                    // 如果是中文语言环境
+                    $(".site-footer").load("/footer.html"); // 加载底边栏内容
+                    $(".navi").load("/navi.html"); // 加载顶边栏内容
+                    ifChinese = true;
+                }
+            }
 		</script>
-	</body>
+    </body>
 </html>

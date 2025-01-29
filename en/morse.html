@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en-US">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>YuanRetro-Morse Code</title>
-		<link rel="stylesheet" href="../style.css">
-		<script src="../jquery-3.7.1.min.js"></script>
-		<link rel="icon" href="../img/nahida.png" type="image/x-icon">
-		<style>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>YuanRetro-Morse Code</title>
+        <link rel="stylesheet" href="/style.css">
+        <script src="/jquery-3.7.1.min.js"></script>
+        <link rel="icon" href="/img/nahida.png" type="image/x-icon">
+        <style>
             /* Style settings */
             #textInput {
                 font-family: GenshinImpactZhLv1, sans-serif; /* Font */
@@ -33,57 +33,57 @@
                 color: red;
                 margin-top: 10px; /* Style for error messages */
             }
-		</style>
-	</head>
-	<body class="body" id="body">
-		<!-- Navigation menu -->
-		<nav class="navi"></nav>
-		<h1>Text to Morse Code</h1> <!-- Title -->
-		<div class="textbox-container">
+        </style>
+    </head>
+    <body class="body" id="body">
+        <!-- Navigation menu -->
+        <nav class="navi"></nav>
+        <h1>Text to Morse Code</h1> <!-- Title -->
+        <div class="textbox-container">
             <div class="textbox">
                 <!-- User input area for entering text to be converted -->
                 <textarea id="textInput" placeholder="Please input the text"
                           style="width: 600px; height: 250px;"></textarea>
                 <br/>
-				<div class="control-container">
-					<!-- User can set WPM (words per minute) for the sending speed -->
-					<label for="WPM">Speed (WPM, Words per minute):</label>
-					<input type="number" id="WPM" value="20" min="1"/> <!-- Default WPM set to 20 -->
-					<br/>
+                <div class="control-container">
+                    <!-- User can set WPM (words per minute) for the sending speed -->
+                    <label for="WPM">Speed (WPM, Words per minute):</label>
+                    <input type="number" id="WPM" value="20" min="1"/> <!-- Default WPM set to 20 -->
+                    <br/>
 
-					<!-- User can set pitch frequency (Hz) -->
-					<label for="fq">Pitch (Hz, Hertz):</label>
-					<input type="number" id="fq" value="600" min="1"/> <!-- Default frequency 600Hz -->
-				</div>
-				<!-- Control buttons -->
-				<div class="button-container">
-					<button class="custom-button" onclick="preparation()">Play</button>
-					<!-- Play button to start sending Morse code -->
-					<button class="custom-button" onclick="pauseSound()">Pause</button> <!-- Pause button -->
-					<button class="custom-button" onclick="resumeSound()">Resume</button> <!-- Resume button -->
-					<button class="custom-button" onclick="stopSound()">Stop</button> <!-- Stop button -->
-					<button class="custom-button" onclick="downloadMorse()">Download Code</button>
-					<!-- Download button -->
-				</div>
-				<div id="error"></div> <!-- Area to display error messages -->
-			</div>
-			<div class="textbox">
-				<img src=../img/morsesheet.png style="width: 600px; height: auto;"
-					 alt="A complete sheet of morse code">
-			</div>
-			<!-- Morse code reference sheet -->
-		</div>
+                    <!-- User can set pitch frequency (Hz) -->
+                    <label for="fq">Pitch (Hz, Hertz):</label>
+                    <input type="number" id="fq" value="600" min="1"/> <!-- Default frequency 600Hz -->
+                </div>
+                <!-- Control buttons -->
+                <div class="button-container">
+                    <button class="custom-button" onclick="preparation()">Play</button>
+                    <!-- Play button to start sending Morse code -->
+                    <button class="custom-button" onclick="pauseSound()">Pause</button> <!-- Pause button -->
+                    <button class="custom-button" onclick="resumeSound()">Resume</button> <!-- Resume button -->
+                    <button class="custom-button" onclick="stopSound()">Stop</button> <!-- Stop button -->
+                    <button class="custom-button" onclick="downloadMorse()">Download Code</button>
+                    <!-- Download button -->
+                </div>
+                <div id="error"></div> <!-- Area to display error messages -->
+            </div>
+            <div class="textbox">
+                <img src=/img/morsesheet.png style="width: 600px; height: auto;"
+                     alt="A complete sheet of morse code">
+            </div>
+            <!-- Morse code reference sheet -->
+        </div>
 
-		<script src="../morse.js"></script>
-		<footer class="site-footer"></footer>
-		<script>
-            $(document).ready(function() {
+        <script src="/morse.js"></script>
+        <footer class="site-footer"></footer>
+        <script>
+            $(document).ready(function () {
                 // Load footer
                 $(".site-footer").load("./footer.html");
                 // Load navigation bar
                 $(".navi").load("./navi.html");
             });
-		</script>
-		<script type="text/javascript" src="../footer.js"></script>
-	</body>
+        </script>
+        <script type="text/javascript" src="/footer.js"></script>
+    </body>
 </html>

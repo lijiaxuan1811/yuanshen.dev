@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>YuanRetro-莫尔斯电码</title>
-		<link rel="stylesheet" href="./style.css">
-		<script src="./jquery-3.7.1.min.js"></script>
-		<link rel="icon" href="./img/nahida.png" type="image/x-icon">
-		<style>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>YuanRetro-莫尔斯电码</title>
+        <link rel="stylesheet" href="/style.css">
+        <script src="/jquery-3.7.1.min.js"></script>
+        <link rel="icon" href="/img/nahida.png" type="image/x-icon">
+        <style>
             /* 样式设置 */
             #textInput {
                 font-family: GenshinImpactZhLv1, sans-serif; /* 字体 */
@@ -33,67 +33,67 @@
                 color: red;
                 margin-top: 10px; /* 错误提示的样式 */
             }
-		</style>
-	</head>
-	<body class="body" id="body">
-		<!-- 导航菜单 -->
-		<nav class="navi">
-			<ul>
-				<li class="nav-item"><a href="https://www.yuanshen.dev/">主页</a></li>
-				<li class="nav-item"><a href="https://www.yuanshen.dev/music.html">音乐</a></li>
-				<li class="nav-item"><a href="https://www.yuanshen.dev/pinball.html">JS弹球</a></li>
-				<li class="nav-item"><a href="https://www.yuanshen.dev/morse.html">莫尔斯电码</a></li>
-				<li class="nav-item"><a
-						href="https://www.yuanshen.dev/crtirgen.html">中国铁路行程信息提示生成器(CRTIRGen)</a></li>
-				<li class="nav-item"><a href="https://www.yuanshen.dev/about.html">关于</a></li>
-				<li class="nav-item language"><a href="https://www.yuanshen.dev/en/morse.html">English</a></li>
-			</ul>
-		</nav>
-		<h1>文字转莫尔斯电码</h1> <!-- 标题 -->
-		<div class="textbox-container">
-			<div class="textbox">
-				<!-- 用户输入框，供用户输入需要转换的文本 -->
-				<textarea id="textInput" placeholder="输入要转换的文本" style="width: 600px; height: 250px;"></textarea>
-				<br/>
+        </style>
+    </head>
+    <body class="body" id="body">
+        <!-- 导航菜单 -->
+        <nav class="navi">
+            <ul>
+                <li class="nav-item"><a href="https://www.yuanshen.dev/">主页</a></li>
+                <li class="nav-item"><a href="https://www.yuanshen.dev/music.html">音乐</a></li>
+                <li class="nav-item"><a href="https://www.yuanshen.dev/pinball.html">JS弹球</a></li>
+                <li class="nav-item"><a href="https://www.yuanshen.dev/morse.html">莫尔斯电码</a></li>
+                <li class="nav-item"><a
+                        href="https://www.yuanshen.dev/crtirgen.html">中国铁路行程信息提示生成器(CRTIRGen)</a></li>
+                <li class="nav-item"><a href="https://www.yuanshen.dev/about.html">关于</a></li>
+                <li class="nav-item language"><a href="https://www.yuanshen.dev/en/morse.html">English</a></li>
+            </ul>
+        </nav>
+        <h1>文字转莫尔斯电码</h1> <!-- 标题 -->
+        <div class="textbox-container">
+            <div class="textbox">
+                <!-- 用户输入框，供用户输入需要转换的文本 -->
+                <textarea id="textInput" placeholder="输入要转换的文本" style="width: 600px; height: 250px;"></textarea>
+                <br/>
 
-				<div class="control-container">
-					<!-- 用户可以设置WPM(每分钟单词数)，即拍发速度 -->
-					<label for="WPM">拍发速度（WPM，单词每分钟）：</label>
-					<input type="number" id="WPM" value="20" min="1"/> <!-- 默认WPM设置为20 -->
-					<br/>
+                <div class="control-container">
+                    <!-- 用户可以设置WPM(每分钟单词数)，即拍发速度 -->
+                    <label for="WPM">拍发速度（WPM，单词每分钟）：</label>
+                    <input type="number" id="WPM" value="20" min="1"/> <!-- 默认WPM设置为20 -->
+                    <br/>
 
-					<!-- 用户可以设置电码音高（Hz，赫兹） -->
-					<label for="fq">电码音高（Hz，赫兹）：</label>
-					<input type="number" id="fq" value="600" min="1"/> <!-- 默认频率600Hz -->
-				</div>
+                    <!-- 用户可以设置电码音高（Hz，赫兹） -->
+                    <label for="fq">电码音高（Hz，赫兹）：</label>
+                    <input type="number" id="fq" value="600" min="1"/> <!-- 默认频率600Hz -->
+                </div>
 
-				<!-- 控制按钮 -->
-				<div class="button-container">
-					<button class="custom-button" onclick="preparation()">播放</button> <!-- 播放按钮，点击开始播放莫尔斯电码 -->
-					<button class="custom-button" onclick="pauseSound()">暂停</button> <!-- 暂停按钮 -->
-					<button class="custom-button" onclick="resumeSound()">继续</button> <!-- 继续按钮 -->
-					<button class="custom-button" onclick="stopSound()">停止</button> <!-- 停止按钮 -->
-					<button class="custom-button" onclick="downloadMorse()">下载电码</button> <!-- 下载按钮 -->
-				</div>
+                <!-- 控制按钮 -->
+                <div class="button-container">
+                    <button class="custom-button" onclick="preparation()">播放</button> <!-- 播放按钮，点击开始播放莫尔斯电码 -->
+                    <button class="custom-button" onclick="pauseSound()">暂停</button> <!-- 暂停按钮 -->
+                    <button class="custom-button" onclick="resumeSound()">继续</button> <!-- 继续按钮 -->
+                    <button class="custom-button" onclick="stopSound()">停止</button> <!-- 停止按钮 -->
+                    <button class="custom-button" onclick="downloadMorse()">下载电码</button> <!-- 下载按钮 -->
+                </div>
 
-				<div id="error"></div> <!-- 显示错误信息的区域 -->
-			</div>
-			<div class="textbox">
-				<img src=./img/morsesheet.png style="width: 600px; height: auto;" alt="莫尔斯电码对照表">
-				<!--电码对照表-->
-			</div>
-		</div>
+                <div id="error"></div> <!-- 显示错误信息的区域 -->
+            </div>
+            <div class="textbox">
+                <img src=/img/morsesheet.png style="width: 600px; height: auto;" alt="莫尔斯电码对照表">
+                <!--电码对照表-->
+            </div>
+        </div>
 
-		<script src="./morse.js"></script>
-		<footer class="site-footer"></footer>
-		<script>
-            $(document).ready(function() {
+        <script src="/morse.js"></script>
+        <footer class="site-footer"></footer>
+        <script>
+            $(document).ready(function () {
                 // 加载底边栏内容
-                $(".site-footer").load("./footer.html");
+                $(".site-footer").load("/footer.html");
                 // 加载顶边栏内容
-                $(".navi").load("./navi.html");
+                $(".navi").load("/navi.html");
             });
-		</script>
-		<script type="text/javascript" src="./footer.js"></script>
-	</body>
+        </script>
+        <script type="text/javascript" src="/footer.js"></script>
+    </body>
 </html>

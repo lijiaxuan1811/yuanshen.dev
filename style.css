@@ -4,7 +4,7 @@
     font-weight: normal;
     font-style: normal;
     font-display: swap;
-    src: url(./img/gichn.woff2) format("woff");
+    src: url(/img/gichn.woff2) format("woff");
 }
 
 @keyframes blurFadeIn {
