@@ -4,7 +4,6 @@
 		<meta charset="UTF-8"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>YuanRetro-404 Not Found</title>
-		<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 		<link rel="icon" href="https://www.yuanshen.dev/img/nahida.png" type="image/x-icon">
 	</head>
 	<style>
@@ -52,73 +51,65 @@
 		</div>
 		<footer class="site-footer"></footer>
 		<script>
-			// 获取当前页面路径
-			const currentPath = window.location.pathname;
-			let pathDegree = 0;
-			// 数一数到底在第几层目录()
-			for (let char of currentPath) {
-				if (char === "/") {
-					pathDegree++;
+			document.addEventListener("DOMContentLoaded", function () {
+				const currentPath = window.location.pathname.replace(/\/$/, ""); // 去掉结尾的 /
+				const pathDepth = currentPath.split('/').length - 1;
+				let pathName = pathDepth === 0 ? "./" : "../".repeat(pathDepth);
+
+				// 动态加载 jQuery
+				let jQueryScript = document.createElement('script');
+				jQueryScript.src = `${pathName}jquery-3.7.1.min.js`;
+				jQueryScript.onload = function() {
+					$(document).ready(function() {
+						$(".site-footer").load(`${pathName}footer.html`);
+						$(".navi").load(`${pathName}navi.html`);
+
+						let paimonImg = $('<img>', {
+							id: 'paimon',
+							src: `${pathName}img/paimon.png`,
+							alt: '《原神》里面的派蒙 Paimon from video game Genshin Impact'
+						});
+						$('#paimonImg').append(paimonImg);
+
+						// 修正 SVG 图标路径
+						$('#bilibili').attr('src', `${pathName}img/bilibili.svg`);
+						$('#twitter').attr('src', `${pathName}img/twitter.svg`);
+						$('#telegram').attr('src', `${pathName}img/telegram.svg`);
+						$('#github').attr('src', `${pathName}img/github.svg`);
+						$('#email').attr('src', `${pathName}img/email.svg`);
+					});
+				};
+				document.head.appendChild(jQueryScript);
+
+				// 动态加载 CSS
+				let style = document.createElement('link');
+				style.rel = 'stylesheet';
+				style.type = 'text/css';
+				style.href = `${pathName}style.css`;
+				document.head.appendChild(style);
+
+				// 随机背景图
+				function getRandomInt(min, max) {
+					return Math.floor(Math.random() * (max - min + 1)) + min;
 				}
-			}
 
-			// 减去多余的一个斜线
-			pathDegree -= 1;
-			let pathName = "";
-			if (pathDegree === 0) {
-				pathName = "./";
-			} else {
-				for(let i = 0; i < pathDegree; i++) {
-					pathName += "../";
-				}
-			}
+				const bodyElement = document.getElementById("body");
+				bodyElement.style.backgroundImage = `url('${pathName}img/bg${getRandomInt(1, 11)}.webp')`;
+				bodyElement.style.backgroundRepeat = "no-repeat";
+				bodyElement.style.backgroundPosition = "center center";
+				bodyElement.style.backgroundAttachment = "fixed";
+				bodyElement.style.backgroundSize = "cover";
+				bodyElement.style.animation = "blurFadeIn 1s ease-out forwards";
+				bodyElement.style.webkitAnimation = "blurFadeIn 1s ease-out forwards";
 
-			// 动态确定页眉页脚文件的地址
-			$(document).ready(function() {
-				// 加载底边栏内容
-				$(".site-footer").load(`${pathName}footer.html`);
-				// 加载顶边栏内容
-				$(".navi").load(`${pathName}navi.html`);
+				// 加载页脚js
+				let footerScript = document.createElement('script');
+				footerScript.src = `${pathName}footer.js`;
+				footerScript.type = "text/javascript";
+				footerScript.defer = true;  // 确保它在 HTML 加载后执行
+				document.head.appendChild(footerScript);
+
 			});
-
-            // 动态确定style.css文件的地址
-            let link = document.createElement('link');
-            link.rel = 'stylesheet';
-            link.type = 'text/css';
-            link.href = `${pathName}style.css`;
-            document.head.appendChild(link);
-
-            // 动态确定图片文件的地址
-			let paimonImg = $('<img>', {
-				id: 'paimon',
-				src: `${pathName}img/paimon.png`,
-				alt: '《原神》里面的派蒙 Paimon from video game Genshin Impact'
-			});
-			$('#paimonImg').append(paimonImg);
-            let $bilibili = $('#bilibili');
-            $bilibili.src = `${pathName}img/bilibili.svg`;
-            let $twitter = $('#twitter');
-            $twitter.src = `${pathName}img/twitter.svg`;
-            let $telegram = $('#telegram');
-            $telegram.src = `${pathName}img/telegram.svg`;
-            let $github = $('#github');
-            $github.src = `${pathName}img/github.svg`;
-            let $email = $('#email');
-            $email.src = `${pathName}img/email.svg`;
-
-            // 页面加载时调用这个方法
-            window.onload = function () {
-                // 随机选取一个背景图
-                function getRandomInt(min, max) {
-                    return Math.floor(Math.random() * (max - min + 1)) + min;
-                }
-                const bodyElement = document.getElementById("body");
-                let backgroundURL = `url('${pathName}img/bg${getRandomInt(1, 11)}.webp') no-repeat center center fixed`;
-                bodyElement.style.background = backgroundURL;
-                bodyElement.style.backgroundSize = "cover";
-                bodyElement.style.animation = "blurFadeIn 1s ease-out forwards";
-                bodyElement.style.webkitAnimation = "blurFadeIn 1s ease-out forwards";
-            }
 		</script>
 	</body>
 </html>

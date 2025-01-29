@@ -1,12 +1,21 @@
 // 获取当前页面路径
-const currentImgPath = window.location.pathname;
+const currentPath = window.location.pathname;
+let pathDegree = 0;
+// 数一数到底在第几层目录()
+for (let char of currentPath) {
+    if (char === "/") {
+        pathDegree++;
+    }
+}
 
-// 动态加载不同的图片文件路径
-function getImgPath() {
-    if (currentImgPath.includes("en")) {
-        return "..";
-    }else {
-        return ".";
+// 减去多余的一个斜线
+pathDegree -= 1;
+let pathName = "";
+if (pathDegree === 0) {
+    pathName = "./";
+} else {
+    for(let i = 0; i < pathDegree; i++) {
+        pathName += "../";
     }
 }
 
@@ -28,12 +37,17 @@ function hideMenu() {
 
 // 点击切换语言时候跳转到对应页面
 function changeLang() {
-    const parts = currentImgPath.split("/"); // 使用 / 分割字符串
+    const parts = currentPath.split("/"); // 使用 / 分割字符串
     const lastPart = parts[parts.length - 1]; // 获取最后一段
-    if (currentImgPath.includes("en")) {
+    if (currentPath.includes("en")) {
         window.location.href = `https://www.yuanshen.dev/${lastPart}`;
-    }else if (currentImgPath.includes("404")) {
+    }else if (currentPath.includes("404")) {
         window.location.href = `https://www.yuanshen.dev/404.html`;
+        if (currentPath.includes("en")) {
+            $(".navi").load(`https://www.yuanshen.dev/navi.html`);
+        } else {
+            $(".navi").load(`https://www.yuanshen.dev/en/navi.html`);
+        }
     }else {
         window.location.href = `https://www.yuanshen.dev/en/${lastPart}`;
     }
@@ -47,7 +61,7 @@ window.onload = function () {
     }
     const bodyElement = document.getElementById("body");
     let backgroundURL;
-    backgroundURL = `url('${getImgPath()}/img/bg${getRandomInt(1, 11)}.webp') no-repeat center center fixed`;
+    backgroundURL = `url('${pathName}img/bg${getRandomInt(1, 11)}.webp') no-repeat center center fixed`;
     bodyElement.style.background = backgroundURL;
     bodyElement.style.backgroundSize = "cover";
     bodyElement.style.animation = "blurFadeIn 1s ease-out forwards";
