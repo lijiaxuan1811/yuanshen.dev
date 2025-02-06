@@ -1,72 +1,63 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>YuanRetro-主页</title>
-        <link rel="stylesheet" href="/style.css">
-        <script src="/jquery-3.7.1.min.js"></script>
-        <link rel="icon" href="/img/nahida.png" type="image/x-icon">
-        <style>
-            .row {
-                display: flex;
-                justify-content: flex-start;
-                align-content: flex-start;
-            }
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YuanRetro-主页</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="jquery-3.7.1.min.js"></script>
+    <link rel="icon" href="img/nahida.png" type="image/x-icon">
+    <script>
+        $(document).ready(function () {
+            // 加载底边栏内容
+            $(".site-footer").load("footer.html");
+            // 加载顶边栏内容
+            $(".navi").load("navi.html");
+        });
+    </script>
+    <script type="text/javascript" src="footer.js"></script>
+    <style>
+        .row {
+            display: flex;
+            justify-content: flex-start;
+            align-content: flex-start;
+        }
 
-            .column1 {
-                flex-shrink: 0;
-            }
+        .column1 {
+            flex-shrink: 0;
+        }
 
-            .column2 {
-                margin: auto auto auto 40px;
-            }
-        </style>
-    </head>
-    <body class="body" id="body">
-        <nav class="navi">
-            <ul>
-                <li class="nav-item"><a href="https://www.yuanshen.dev/">主页</a></li>
-                <li class="nav-item"><a href="https://www.yuanshen.dev/music.html">音乐</a></li>
-                <li class="nav-item"><a href="https://www.yuanshen.dev/pinball.html">JS弹球</a></li>
-                <li class="nav-item"><a href="https://www.yuanshen.dev/morse.html">莫尔斯电码</a></li>
-                <li class="nav-item"><a
-                        href="https://www.yuanshen.dev/crtirgen.html">中国铁路行程信息提示生成器(CRTIRGen)</a>
-                </li>
-                <li class="nav-item"><a href="https://www.yuanshen.dev/about.html">关于</a></li>
-                <li class="nav-item language"><a href="https://www.yuanshen.dev/en/index.html">English</a></li>
-            </ul>
-        </nav>
-        <h1>欢迎来到YuanRetro，一个
-            <del>乱乱糟糟</del>
-            的电脑小站
-        </h1>
-        <div class="textbox-container">
-            <div class="row textbox">
-                <div class="column1">
-                    <img src="/img/nahida.png" width="200" height="200" alt="《原神》里面可爱的纳西妲">
-                </div>
-                <div class="column2">
-                    欢迎来到YuanRetro，一个二刺螈，无线电火腿，交通爱好者和科技菌的小站~
-                    <br/>
-                    尽情探索吧！
-                </div>
-            </div>
-            <div class="row textbox">
-                <a href="https://info.flagcounter.com/XY2k"><img
-                        src="https://s05.flagcounter.com/count2/XY2k/bg_FFFFFF/txt_000000/border_CCCCCC/columns_3/maxflags_250/viewers_0/labels_1/pageviews_1/flags_1/percent_0/"
-                        alt="Free counters!" border="0"></a>
-            </div>
+        .column2 {
+            margin: auto auto auto 40px;
+        }
+    </style>
+</head>
+<body class="body" id="body">
+<nav class="navi"></nav>
+
+<h1>欢迎来到YuanRetro，一个
+    <del>乱乱糟糟</del>
+    的电脑小站
+</h1>
+
+<div class="textbox-container">
+    <div class="row textbox">
+        <div class="column1">
+            <img src="img/nahida.png" width="200" height="200" alt="《原神》里面可爱的纳西妲">
         </div>
-        <footer class="site-footer"></footer>
-        <script>
-            $(document).ready(function () {
-                // 加载底边栏内容
-                $(".site-footer").load("/footer.html");
-                // 加载顶边栏内容
-                $(".navi").load("/navi.html");
-            });
-        </script>
-        <script type="text/javascript" src="/footer.js"></script>
-    </body>
+        <div class="column2">
+            欢迎来到YuanRetro，一个二刺螈，无线电火腿，交通爱好者和科技菌的小站~
+            <br/>
+            尽情探索吧！
+        </div>
+    </div>
+    <div class="row textbox">
+        <a href="https://info.flagcounter.com/XY2k"><img
+                src="https://s05.flagcounter.com/count2/XY2k/bg_FFFFFF/txt_000000/border_CCCCCC/columns_3/maxflags_250/viewers_0/labels_1/pageviews_1/flags_1/percent_0/"
+                alt="Free counters!" border="0"></a>
+    </div>
+</div>
+<footer class="site-footer"></footer>
+
+</body>
 </html>
