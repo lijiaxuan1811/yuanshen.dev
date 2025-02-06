@@ -20,7 +20,7 @@
             $(".navi").load("navi.html");
             // 加载文章列表
             $.ajax({
-                url: '/YuanRetro/articles/', // 注意：此处 URL 为目录列表页面的地址
+                url: 'articles/', // 注意：此处 URL 为目录列表页面的地址
                 method: 'GET',
                 success: function(data){
                     // 将返回的 HTML 数据包装到临时容器中以便解析
@@ -31,7 +31,7 @@
                         // 过滤掉指向上级目录的链接，并且只保留以 .md 结尾的文件
                         if (href && href !== '../' && href.toLowerCase().endsWith('.md')) {
                             // 构造链接：访问 articles.html 时传递 article 参数（包含 .md 后缀）
-                            var linkUrl = '/YuanRetro/articles.html?article=' + encodeURIComponent(href);
+                            var linkUrl = './articles.html?article=' + encodeURIComponent(href);
                             // 以链接文本显示文件名称（你也可以使用 decodeURIComponent(href)）
                             var fileName = $(this).text();
                             // 将构造好的链接添加到 .articleList 列表中
