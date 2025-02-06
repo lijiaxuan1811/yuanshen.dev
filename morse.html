@@ -4,9 +4,9 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>YuanRetro-莫尔斯电码</title>
-        <link rel="stylesheet" href="/style.css">
-        <script src="/jquery-3.7.1.min.js"></script>
-        <link rel="icon" href="/img/nahida.png" type="image/x-icon">
+        <link rel="stylesheet" href="style.css">
+        <script src="jquery-3.7.1.min.js"></script>
+        <link rel="icon" href="img/nahida.png" type="image/x-icon">
         <style>
             /* 样式设置 */
             #textInput {
@@ -37,18 +37,7 @@
     </head>
     <body class="body" id="body">
         <!-- 导航菜单 -->
-        <nav class="navi">
-            <ul>
-                <li class="nav-item"><a href="https://www.yuanshen.dev/">主页</a></li>
-                <li class="nav-item"><a href="https://www.yuanshen.dev/music.html">音乐</a></li>
-                <li class="nav-item"><a href="https://www.yuanshen.dev/pinball.html">JS弹球</a></li>
-                <li class="nav-item"><a href="https://www.yuanshen.dev/morse.html">莫尔斯电码</a></li>
-                <li class="nav-item"><a
-                        href="https://www.yuanshen.dev/crtirgen.html">中国铁路行程信息提示生成器(CRTIRGen)</a></li>
-                <li class="nav-item"><a href="https://www.yuanshen.dev/about.html">关于</a></li>
-                <li class="nav-item language"><a href="https://www.yuanshen.dev/en/morse.html">English</a></li>
-            </ul>
-        </nav>
+        <nav class="navi"></nav>
         <h1>文字转莫尔斯电码</h1> <!-- 标题 -->
         <div class="textbox-container">
             <div class="textbox">
@@ -79,21 +68,21 @@
                 <div id="error"></div> <!-- 显示错误信息的区域 -->
             </div>
             <div class="textbox">
-                <img src=/img/morsesheet.png style="width: 600px; height: auto;" alt="莫尔斯电码对照表">
+                <img src=img/morsesheet.png style="width: 600px; height: auto;" alt="莫尔斯电码对照表">
                 <!--电码对照表-->
             </div>
         </div>
 
-        <script src="/morse.js"></script>
+        <script src="morse.js"></script>
         <footer class="site-footer"></footer>
         <script>
             $(document).ready(function () {
                 // 加载底边栏内容
-                $(".site-footer").load("/footer.html");
+                $(".site-footer").load("footer.html");
                 // 加载顶边栏内容
-                $(".navi").load("/navi.html");
+                $(".navi").load("navi.html");
             });
         </script>
-        <script type="text/javascript" src="/footer.js"></script>
+        <script type="text/javascript" src="footer.js"></script>
     </body>
 </html>

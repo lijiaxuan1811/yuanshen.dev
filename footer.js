@@ -36,7 +36,7 @@ window.onload = function () {
 
     const bodyElement = document.getElementById("body");
     let backgroundURL;
-    backgroundURL = `url('/img/bg${getRandomInt(1, 11)}.webp') no-repeat center center fixed`;
+    backgroundURL = `url('img/bg${getRandomInt(1, 11)}.webp') no-repeat center center fixed`;
     bodyElement.style.background = backgroundURL;
     bodyElement.style.backgroundSize = "cover";
     bodyElement.style.animation = "blurFadeIn 1s ease-out forwards";
